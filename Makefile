@@ -1,0 +1,43 @@
+NAME = minishell
+
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -g3
+RM = rm -rf
+
+SRCS = main.c \
+	   main_utils.c \
+	   debug.c \
+	   src/error.c \
+	   src/env.c \
+	   src/expand.c \
+	   src/redirect.c \
+	   src/redirect_utils.c \
+	   src/comand.c \
+	   src/comand_utils.c \
+	   src/super_split.c \
+	   src/super_split_utils.c \
+	   src/super_split_utils_2.c \
+	   src/unify_.c \
+	   src/here_doc.c
+
+OBJS = $(SRCS:.c=.o)
+
+LIBFT_DIR = libft
+LIBFT_LIB = $(LIBFT_DIR)/libft.a
+
+$(NAME): $(OBJS)
+		make -C libft
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lreadline $(LIBFT_LIB)
+
+%.o: %.c
+		$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+		$(RM) $(OBJS)
+		make clean -C libft
+
+fclean: clean
+		$(RM) $(NAME)
+		make fclean -C libft
+
+re: fclean all

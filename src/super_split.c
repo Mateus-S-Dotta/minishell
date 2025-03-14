@@ -1,0 +1,123 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   super_split.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
+/*   Updated: 2025/03/14 17:42:13 by msalaibb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../minishell.h"
+
+static int	count_s_s(char *cmd)
+{
+	int		i;
+	int		count;
+	int		find;
+	char	quote;
+
+	i = 0;
+	count = 0;
+	while (cmd[i] != '\0' && cmd[i] == 32)
+		i++;
+	while (cmd[i] != '\0')
+	{
+		find = 0;
+		quote = '\0';
+		if (is_word(cmd, i))
+		{
+			find = 1;
+			count++;
+		}
+		while (is_word(cmd, i))
+			i++;
+		jump_quotes(cmd, &i, &count, find);
+		jump_all(cmd, &i, &count);
+	}
+	return (count);
+}
+
+static char	**super_split(char *cmd)
+{
+	char	**split;
+	int		i;
+	int		max;
+	int		j;
+
+	max = count_s_s(cmd);
+	ft_putnbr_fd(max, debug_fd());
+	split = (char **)calloc(max + 1, sizeof(char *));
+	if (split == NULL)
+		exit_error_minishell("Malloc Error\n", 1);
+	i = -1;
+	j = 0;
+	while (cmd[j] == ' ')
+		j++;
+	while (++i < max)
+		if (cmd[j] == '|')
+			pipe_case(split, cmd, &j, i);
+	else
+	{
+		split[i] = (char *)calloc(count_letter(cmd, j) + 1, sizeof(char *));
+		copy_str(split[i], cmd, &j);
+	}
+	return (split);
+}
+
+static void	count_quote(int *count, int *in_quotes, int i, int j)
+{
+	count[i] += 1;
+	*in_quotes = j;
+}
+
+static void	find_quote(char **cmd)
+{
+	int	i;
+	int	count[2];
+	int	in_quotes;
+
+	i = -1;
+	count[0] = 0;
+	count[1] = 0;
+	in_quotes = 0;
+	while (cmd[0][++i] != '\0')
+	{
+		if (cmd[0][i] == '$' && in_quotes != 1)
+			verify_money_start(cmd, &i, &in_quotes, count);
+		else if (cmd[0][i] == '\"' && in_quotes == 0)
+			count_quote(count, &in_quotes, 1, 2);
+		else if (cmd[0][i] == '\'' && in_quotes == 0)
+			count_quote(count, &in_quotes, 0, 1);
+		else if (cmd[0][i] == '\'' && in_quotes == 1)
+			count_quote(count, &in_quotes, 0, 0);
+		else if (cmd[0][i] == '\"' && in_quotes == 2)
+			count_quote(count, &in_quotes, 1, 0);
+	}
+	if (count[0] % 2 != 0 || count[1] % 2 != 0)
+		exit_error_minishell("No Closed quote\n", 1);
+}
+
+char	**super_ft_split(char *cmd)
+{
+	int		i;
+	char	**cmds_w;
+
+	find_quote(&cmd);
+	i = 0;
+	while (cmd[i] != '\0' && (cmd[i] == 32 || cmd[i] == '\''
+			|| cmd[i] == '\"'))
+		i++;
+	if (cmd[i] == '\0')
+	{
+		free(cmd);
+		exit_error_minishell("", 1);
+	}
+	cmds_w = super_split(cmd);
+	free(cmd);
+	if (cmds_w == NULL)
+		exit_error_minishell("Malloc Error\n", 1);
+	return (cmds_w);
+}
