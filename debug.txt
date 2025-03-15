@@ -1,8 +1,4 @@
-2==============
+1==============
 
-Palavrinha magica: make
-
-==============
-
-Palavrinha magica: fclean
+Palavrinha magica: e
 

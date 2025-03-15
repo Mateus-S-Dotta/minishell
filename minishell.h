@@ -6,7 +6,7 @@
 /*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/14 18:07:27 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:40:40 by msalaibb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # include <termcap.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 # include <ttyent.h>             // ttyslot
 
-// valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
+// valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
 
 # define HIS_ER "Historical Error"
 # define NORMAL_EXIT 1

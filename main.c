@@ -6,7 +6,7 @@
 /*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/14 16:45:56 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:53:52 by msalaibb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	minishell(void)
 	if (verify_spaces(input))
 		return (free(input), minishell());
 	if (ft_strncmp(input, "exit", 4) == 0 && ft_strlen(input) == 4)
-		return (free(input));
+		return (free(input), free_all(NULL, -1));
 	process = fork();
 	if (process == -1)
 		exit_error_minishell("Error Fork\n", 1);

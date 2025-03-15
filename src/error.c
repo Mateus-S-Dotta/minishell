@@ -6,7 +6,7 @@
 /*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:06:39 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/13 20:14:46 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:50:50 by msalaibb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	free_all(char *str, int error_num)
 	t_flags	*flags_copy;
 	t_flags	*flags;
 
+	close_all(get_t_min()->in_fd, get_t_min()->out_fd);
 	cmds = get_t_min()->cmds;
 	while (cmds != NULL)
 	{
