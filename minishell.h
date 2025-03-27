@@ -6,7 +6,7 @@
 /*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/15 14:40:40 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:43:39 by msalaibb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	print_split(char **cmds);
 
 // Main
 t_min	*get_t_min(void);
-void	restart_shell(char *str);
 
 // Main_utils.c
 int		verify_spaces(char *input);
@@ -90,7 +89,7 @@ void	free_normal_comand(t_cmds *new_cmds, char **cmd_w);
 
 //Normal_comand_utils.c
 int		new_flag(t_cmds *new_cmds, char *cmd, int type);
-void	super_close(int fd_1, int fd_2, int redirect, int process);
+void	super_close(int fd_1, int fd_2, int redirect);
 void	close_all(int fd_1, int fd_2);
 char	**unify_flags(t_cmds *cmds);
 

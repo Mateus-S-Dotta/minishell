@@ -6,7 +6,7 @@
 /*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/14 17:42:13 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/03/26 21:00:33 by msalaibb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static char	**super_split(char *cmd)
 	int		j;
 
 	max = count_s_s(cmd);
-	ft_putnbr_fd(max, debug_fd());
 	split = (char **)calloc(max + 1, sizeof(char *));
 	if (split == NULL)
 		exit_error_minishell("Malloc Error\n", 1);

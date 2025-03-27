@@ -6,13 +6,13 @@
 /*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/14 17:41:06 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:45:05 by msalaibb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	pipe_comand(t_cmds *cmds)
+static void	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 {
 	char	**cmd_w;
 	int		p_fd[2];
@@ -25,7 +25,10 @@ static void	pipe_comand(t_cmds *cmds)
 		return ;
 	if (process == 0)
 	{
-		redirect(p_fd[1], 1, cmds);
+		if (cmds2 != NULL)
+			redirect(p_fd[1], 1, cmds);
+		else
+			redirect(get_t_min()->out_fd, 1, cmds);
 		close_all(p_fd[0], p_fd[1]);
 		cmd_w = unify_flags(cmds);
 		if (cmds->path != NULL)
@@ -33,7 +36,7 @@ static void	pipe_comand(t_cmds *cmds)
 		new_error(cmd_w);
 	}
 	else
-		super_close(p_fd[0], p_fd[1], 0, process);
+		super_close(p_fd[0], p_fd[1], 0);
 }
 
 static void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
@@ -116,18 +119,12 @@ void	normal_comand(char *cmd)
 	t_cmds	*cmds;
 
 	cmd_w = super_ft_split(cmd);
-	print_split(cmd_w);
 	create_cmds(get_t_min()->cmds, cmd_w, 0);
 	free_split(cmd_w);
 	cmds = get_t_min()->cmds;
-	while (cmds != NULL && cmds->next != NULL)
+	while (cmds != NULL)
 	{
-		pipe_comand(cmds);
+		pipe_comand(cmds, cmds->next);
 		cmds = cmds->next;
 	}
-	redirect(get_t_min()->out_fd, 1, cmds);
-	cmd_w = unify_flags(cmds);
-	if (cmds->path != NULL)
-		execve(cmds->path, cmd_w, get_t_min()->env);
-	new_error(cmd_w);
 }
