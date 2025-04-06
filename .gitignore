@@ -1,3 +1,4 @@
 .vscode
 .nfs*
+*.o
 debug.txt
