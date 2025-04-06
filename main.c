@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/26 20:33:52 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/05 18:02:24 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	inicialize(char *env[])
 {
 	get_t_min()->in_fd = dup(0);
 	get_t_min()->out_fd = dup(1);
+	get_t_min()->sig = 0;
 	get_t_min()->env = env;
 }
 
@@ -33,13 +34,14 @@ void	minishell(void)
 
 	while (1)
 	{
+		sig_minishell();
 		input = readline("minishell> ");
 		if (!input)
-			continue;
+			continue ;
 		if (verify_spaces(input))
-			continue;
+			continue ;
 		if ((ft_strncmp(input, "exit", 4) == 0 && ft_strlen(input) == 4))
-			break;
+			break ;
 		add_history(input);
 		normal_comand(input);
 		i = 1;

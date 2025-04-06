@@ -18,12 +18,15 @@ SRCS = main.c \
 	   src/super_split_utils.c \
 	   src/super_split_utils_2.c \
 	   src/unify_.c \
-	   src/here_doc.c
+	   src/here_doc.c \
+	   signals.c
 
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
+
+all: $(NAME)
 
 $(NAME): $(OBJS)
 		make -C libft

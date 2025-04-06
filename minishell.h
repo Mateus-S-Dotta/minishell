@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/26 20:43:39 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/05 16:27:14 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_cmds
 typedef struct s_min {
 	int		in_fd;
 	int		out_fd;
+	int		sig;
 	char	**env;
 	int		error;
 
@@ -127,5 +128,10 @@ int		count_letter(char *cmd, int j);
 int		there_is_heredok(char **cmd, int i);
 void	open_here_doc(t_flags *f2);
 void	find_all_here_doc(t_cmds *cmd, int *c);
+
+// Signal
+void	sig_minishell(void);
+void	sig_cmd(void);
+
 
 #endif

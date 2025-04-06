@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   comand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/26 20:45:05 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/05 19:52:43 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int		signal_val = 0;
 
 static void	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 {
@@ -21,10 +23,12 @@ static void	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 	if (pipe(p_fd) == -1)
 		return ;
 	process = fork();
+	sig_cmd();
 	if (process == -1)
 		return ;
 	if (process == 0)
 	{
+		signal_val = 87;
 		if (cmds2 != NULL)
 			redirect(p_fd[1], 1, cmds);
 		else
