@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 18:45:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/14 18:13:22 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/07 22:05:08 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,10 @@ void	find_all_here_doc(t_cmds *cmd, int *c)
 	}
 }
 
-void	open_here_doc(t_flags *f2)
+static void	open_node(t_flags *f2, int *p_fd)
 {
 	char	*input;
-	int		p_fd[2];
 
-	if (f2 == NULL || f2->flag == NULL)
-		free_all("bash: syntax error near unexpected token newline\n", 1);
-	if (pipe(p_fd) == -1)
-		free_all("Pipe Error\n", 1);
-	dup_func(get_t_min()->in_fd, 0, get_t_min()->out_fd, 1);
 	input = NULL;
 	while (1)
 	{
@@ -78,9 +72,31 @@ void	open_here_doc(t_flags *f2)
 		ft_putstr_fd(input, p_fd[1]);
 		ft_putstr_fd("\n", p_fd[1]);
 	}
-	dup_func(p_fd[0], 0, -1, -1);
-	close_all(p_fd[0], p_fd[1]);
-	free_flag(f2);
+	exit (1);
+}
+
+void	open_here_doc(t_flags *f2)
+{
+	pid_t	pid;
+	int		p_fd[2];
+
+	if (f2 == NULL || f2->flag == NULL)
+		free_all("bash: syntax error near unexpected token newline\n", 1);
+	if (pipe(p_fd) == -1)
+		free_all("Pipe Error\n", 1);
+	dup_func(get_t_min()->in_fd, 0, get_t_min()->out_fd, 1);
+	pid = fork();
+	if (pid == -1)
+		exit_error_minishell("Unable to open heredoc", 5);
+	if (pid == 0)
+		open_node(f2, p_fd);
+	else
+	{
+		wait(&pid);
+		dup_func(p_fd[0], 0, -1, -1);
+		close_all(p_fd[0], p_fd[1]);
+		free_flag(f2);
+	}
 }
 
 int	there_is_heredok(char **cmd, int i)

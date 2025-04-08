@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/05 16:27:14 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/07 21:27:01 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_min {
 	int		sig;
 	char	**env;
 	int		error;
-
+	pid_t	prc_pid[1024];
 	t_cmds	*cmds;
 }	t_min;
 
@@ -90,7 +90,7 @@ void	free_normal_comand(t_cmds *new_cmds, char **cmd_w);
 
 //Normal_comand_utils.c
 int		new_flag(t_cmds *new_cmds, char *cmd, int type);
-void	super_close(int fd_1, int fd_2, int redirect);
+void	super_close(int fd_1, int fd_2, int redirect, int qnd_hd);
 void	close_all(int fd_1, int fd_2);
 char	**unify_flags(t_cmds *cmds);
 
@@ -132,6 +132,7 @@ void	find_all_here_doc(t_cmds *cmd, int *c);
 // Signal
 void	sig_minishell(void);
 void	sig_cmd(void);
+void	wait_last_status(t_min *min);
 
 
 #endif

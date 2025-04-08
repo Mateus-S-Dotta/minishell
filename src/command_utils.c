@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   comand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:07:20 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/26 20:34:19 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/07 21:29:10 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,13 @@ void	close_all(int fd_1, int fd_2)
 	close(fd_2);
 }
 
-void	super_close(int fd_1, int fd_2, int redirect)
+void	super_close(int fd_1, int fd_2, int redirect, int qnt_hd)
 {
+	while (qnt_hd > 0)
+	{
+		wait(NULL);
+		qnt_hd--;
+	}
 	if (dup2(fd_1, redirect) == -1)
 		exit_error_minishell("Dup2 Error\n", 1);
 	close_all(fd_1, fd_2);

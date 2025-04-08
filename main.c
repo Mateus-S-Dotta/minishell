@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/05 18:02:24 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:53:22 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void	minishell(void)
 		add_history(input);
 		normal_comand(input);
 		i = 1;
-		while (i > 0)
-			i = wait(NULL);
+		wait_last_status(get_t_min());
 		free_all(NULL, -1);
 		if (dup2(get_t_min()->in_fd, 0) == -1)
 			return ;

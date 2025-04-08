@@ -1,0 +1,226 @@
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+Flag: <<
+Type: 0
+---
+Flag: EOF
+Type: 0
+---
+Flag: >
+Type: 0
+---
+Flag: batata
+Type: 0
+
+Path: Vazio
+
+==============
+
+Comando: ls
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: vim
+Quote: 0
+
+=====Flags====
+Flag: batata
+Type: 0
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+Flag: <<
+Type: 0
+---
+Flag: batata
+Type: 0
+---
+Flag: <
+Type: 0
+---
+Flag: batata
+Type: 0
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+Flag: <<
+Type: 0
+---
+Flag: EOF
+Type: 0
+---
+Flag: <
+Type: 0
+---
+Flag: batata
+Type: 0
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+Flag: /dev/random
+Type: 0
+
+Path: Vazio
+
+==============
+
+Comando: ls
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: ls
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: clear
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: ls
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: cat
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: ls
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+
+==============
+
+Comando: clear
+Quote: 0
+
+=====Flags====
+
+Path: Vazio
+

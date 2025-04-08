@@ -12,8 +12,8 @@ SRCS = main.c \
 	   src/expand.c \
 	   src/redirect.c \
 	   src/redirect_utils.c \
-	   src/comand.c \
-	   src/comand_utils.c \
+	   src/command.c \
+	   src/command_utils.c \
 	   src/super_split.c \
 	   src/super_split_utils.c \
 	   src/super_split_utils_2.c \
