@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/14 17:36:54 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:33:31 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
+static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 {
 	char	**cmd_w;
 
@@ -31,7 +31,7 @@ static int	heredoc_counter(t_cmds *cmds)
 {
 	int		i;
 	t_flags	*tmp_flag;
-	
+
 	i = 0;
 	tmp_flag = cmds->flags;
 	if (ft_strncmp(cmds->cmd, "<<", 2) == 0)
@@ -60,7 +60,7 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		return (-1);
 	process = fork();
 	if (process == -1)
-	return (-1);
+		return (-1);
 	if (process == 0)
 		pipe_node(cmds, cmds2, p_fd);
 	else

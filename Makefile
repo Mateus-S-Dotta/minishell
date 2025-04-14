@@ -19,7 +19,8 @@ SRCS = main.c \
 	   src/super_split_utils_2.c \
 	   src/unify_.c \
 	   src/here_doc.c \
-	   signals.c
+	   src/signals.c \
+	   src/here_doc_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
