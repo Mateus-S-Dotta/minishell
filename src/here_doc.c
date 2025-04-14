@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 18:45:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/07 22:05:08 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:37:28 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	open_node(t_flags *f2, int *p_fd)
 	input = NULL;
 	while (1)
 	{
+		std_hd_sig();
 		input = readline("> ");
 		if (ft_strncmp(f2->flag, input, ft_strlen(f2->flag)) == 0)
 			break ;
@@ -72,12 +73,11 @@ static void	open_node(t_flags *f2, int *p_fd)
 		ft_putstr_fd(input, p_fd[1]);
 		ft_putstr_fd("\n", p_fd[1]);
 	}
-	exit (1);
 }
 
 void	open_here_doc(t_flags *f2)
 {
-	pid_t	pid;
+	// pid_t	pid;
 	int		p_fd[2];
 
 	if (f2 == NULL || f2->flag == NULL)
@@ -85,18 +85,19 @@ void	open_here_doc(t_flags *f2)
 	if (pipe(p_fd) == -1)
 		free_all("Pipe Error\n", 1);
 	dup_func(get_t_min()->in_fd, 0, get_t_min()->out_fd, 1);
-	pid = fork();
-	if (pid == -1)
-		exit_error_minishell("Unable to open heredoc", 5);
-	if (pid == 0)
-		open_node(f2, p_fd);
-	else
-	{
-		wait(&pid);
-		dup_func(p_fd[0], 0, -1, -1);
-		close_all(p_fd[0], p_fd[1]);
-		free_flag(f2);
-	}
+	// pid = fork();
+	// if (pid == -1)
+	// 	exit_error_minishell("Unable to open heredoc", 5);
+	// if (pid == 0)
+	open_node(f2, p_fd);
+	// else
+	// {
+		// wait(&pid);
+
+	dup_func(p_fd[0], 0, -1, -1);
+	close_all(p_fd[0], p_fd[1]);
+	free_flag(f2);
+	// }
 }
 
 int	there_is_heredok(char **cmd, int i)

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/07 20:53:22 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:39:35 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	minishell(void)
 
 	while (1)
 	{
-		sig_minishell();
+		set_std_sig();
 		input = readline("minishell> ");
 		if (!input)
 			continue ;

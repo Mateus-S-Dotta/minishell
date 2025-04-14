@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/07 21:27:01 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:43:39 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,13 @@ void	open_here_doc(t_flags *f2);
 void	find_all_here_doc(t_cmds *cmd, int *c);
 
 // Signal
-void	sig_minishell(void);
-void	sig_cmd(void);
+void	set_std_sig(void);
 void	wait_last_status(t_min *min);
+void	std_cmd_c(int sig);
+void	std_cmd_back_slash(int sig);
+void	set_std_cmd(void);
+void	std_hd_sig(void);
+void	sigint_hd(int sig);
 
 
 #endif

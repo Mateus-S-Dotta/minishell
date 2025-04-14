@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comand.c                                           :+:      :+:    :+:   */
+/*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/07 21:49:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:36:54 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,15 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 	pid_t	process;
 
 	qnd_hd = heredoc_counter(cmds);
+	if (!qnd_hd)
+		set_std_cmd();
+	else
+		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
 	process = fork();
-	sig_cmd();
 	if (process == -1)
-		return (-1);
+	return (-1);
 	if (process == 0)
 		pipe_node(cmds, cmds2, p_fd);
 	else
@@ -152,7 +155,6 @@ void	normal_comand(char *cmd)
 	create_cmds(get_t_min()->cmds, cmd_w, 0);
 	free_split(cmd_w);
 	cmds = get_t_min()->cmds;
-	print_cmds();
 	while (cmds != NULL)
 	{
 		(get_t_min()->prc_pid[++i]) = (pid_t)pipe_comand(cmds, cmds->next);
