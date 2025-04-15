@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comand_utils.c                                     :+:      :+:    :+:   */
+/*   command_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:07:20 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/13 19:52:50 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:43:07 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ void	close_all(int fd_1, int fd_2)
 	close(fd_2);
 }
 
-void	super_close(int fd_1, int fd_2, int redirect, int process)
+void	super_close(int fd_1, int fd_2, int redirect, int qnt_hd)
 {
-	int	status;
-
-	waitpid(process, &status, 0);
-	if (!WIFEXITED(status))
-		exit_error_minishell("Children Error\n", 1);
+	while (qnt_hd > 0)
+	{
+		wait(NULL);
+		qnt_hd--;
+	}
 	if (dup2(fd_1, redirect) == -1)
 		exit_error_minishell("Dup2 Error\n", 1);
 	close_all(fd_1, fd_2);

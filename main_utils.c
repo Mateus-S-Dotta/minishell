@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:21:51 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/12 16:25:02 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/07 21:56:31 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,20 @@ int	verify_spaces(char *input)
 	if (input[i] == '\0')
 		return (1);
 	return (0);
+}
+
+void	wait_last_status(t_min *min)
+{
+	int		i;
+	int		status;
+
+	i = -1;
+	while (min->prc_pid[++i])
+	{
+		waitpid (min->prc_pid[i], &status, 0);
+		if (WIFEXITED(status))
+			min->sig = WEXITSTATUS(status);
+	}
+	while (i--)
+		min->prc_pid[i] = 0;
 }

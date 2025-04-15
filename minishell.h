@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/15 14:40:40 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:43:39 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ typedef struct s_cmds
 typedef struct s_min {
 	int		in_fd;
 	int		out_fd;
+	int		sig;
 	char	**env;
 	int		error;
-
+	pid_t	prc_pid[1024];
 	t_cmds	*cmds;
 }	t_min;
 
@@ -68,7 +69,6 @@ void	print_split(char **cmds);
 
 // Main
 t_min	*get_t_min(void);
-void	restart_shell(char *str);
 
 // Main_utils.c
 int		verify_spaces(char *input);
@@ -90,7 +90,7 @@ void	free_normal_comand(t_cmds *new_cmds, char **cmd_w);
 
 //Normal_comand_utils.c
 int		new_flag(t_cmds *new_cmds, char *cmd, int type);
-void	super_close(int fd_1, int fd_2, int redirect, int process);
+void	super_close(int fd_1, int fd_2, int redirect, int qnd_hd);
 void	close_all(int fd_1, int fd_2);
 char	**unify_flags(t_cmds *cmds);
 
@@ -128,5 +128,15 @@ int		count_letter(char *cmd, int j);
 int		there_is_heredok(char **cmd, int i);
 void	open_here_doc(t_flags *f2);
 void	find_all_here_doc(t_cmds *cmd, int *c);
+
+// Signal
+void	set_std_sig(void);
+void	wait_last_status(t_min *min);
+void	std_cmd_c(int sig);
+void	std_cmd_back_slash(int sig);
+void	set_std_cmd(void);
+void	std_hd_sig(void);
+void	sigint_hd(int sig);
+
 
 #endif

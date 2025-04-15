@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 18:45:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/14 18:13:22 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:39:51 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,14 @@ void	find_all_here_doc(t_cmds *cmd, int *c)
 	}
 }
 
-void	open_here_doc(t_flags *f2)
+static void	open_node(t_flags *f2, int *p_fd)
 {
 	char	*input;
-	int		p_fd[2];
 
-	if (f2 == NULL || f2->flag == NULL)
-		free_all("bash: syntax error near unexpected token newline\n", 1);
-	if (pipe(p_fd) == -1)
-		free_all("Pipe Error\n", 1);
-	dup_func(get_t_min()->in_fd, 0, get_t_min()->out_fd, 1);
 	input = NULL;
 	while (1)
 	{
+		std_hd_sig();
 		input = readline("> ");
 		if (ft_strncmp(f2->flag, input, ft_strlen(f2->flag)) == 0)
 			break ;
@@ -78,6 +73,18 @@ void	open_here_doc(t_flags *f2)
 		ft_putstr_fd(input, p_fd[1]);
 		ft_putstr_fd("\n", p_fd[1]);
 	}
+}
+
+void	open_here_doc(t_flags *f2)
+{
+	int		p_fd[2];
+
+	if (f2 == NULL || f2->flag == NULL)
+		free_all("bash: syntax error near unexpected token newline\n", 1);
+	if (pipe(p_fd) == -1)
+		free_all("Pipe Error\n", 1);
+	dup_func(get_t_min()->in_fd, 0, get_t_min()->out_fd, 1);
+	open_node(f2, p_fd);
 	dup_func(p_fd[0], 0, -1, -1);
 	close_all(p_fd[0], p_fd[1]);
 	free_flag(f2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:42:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/14 17:36:01 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:36:43 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handle_more(t_cmds *cmds, char more, int *controller)
 {
 	t_flags	*flags_copy;
 	t_flags	*flags_next;
-	
+
 	flags_copy = cmds->flags;
 	while (flags_copy != NULL)
 	{

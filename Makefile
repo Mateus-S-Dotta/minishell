@@ -12,18 +12,22 @@ SRCS = main.c \
 	   src/expand.c \
 	   src/redirect.c \
 	   src/redirect_utils.c \
-	   src/comand.c \
-	   src/comand_utils.c \
+	   src/command.c \
+	   src/command_utils.c \
 	   src/super_split.c \
 	   src/super_split_utils.c \
 	   src/super_split_utils_2.c \
 	   src/unify_.c \
-	   src/here_doc.c
+	   src/here_doc.c \
+	   src/signals.c \
+	   src/here_doc_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
+
+all: $(NAME)
 
 $(NAME): $(OBJS)
 		make -C libft

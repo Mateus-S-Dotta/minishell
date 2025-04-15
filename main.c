@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/15 14:53:52 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:39:35 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	inicialize(char *env[])
 {
 	get_t_min()->in_fd = dup(0);
 	get_t_min()->out_fd = dup(1);
+	get_t_min()->sig = 0;
 	get_t_min()->env = env;
 }
 
@@ -29,39 +30,28 @@ t_min	*get_t_min(void)
 void	minishell(void)
 {
 	char	*input;
-	pid_t	process;
-	int		status;
+	int		i;
 
-	input = readline("minishell> ");
-	if (!input)
-		return ;
-	if (verify_spaces(input))
-		return (free(input), minishell());
-	if (ft_strncmp(input, "exit", 4) == 0 && ft_strlen(input) == 4)
-		return (free(input), free_all(NULL, -1));
-	process = fork();
-	if (process == -1)
-		exit_error_minishell("Error Fork\n", 1);
-	if (process == 0)
-		normal_comand(input);
-	else
+	while (1)
 	{
-		waitpid(process, &status, 0);
-		if (!WIFEXITED(status))
-			free_all(NULL, -1);
-		restart_shell(input);
+		set_std_sig();
+		input = readline("minishell> ");
+		if (!input)
+			continue ;
+		if (verify_spaces(input))
+			continue ;
+		if ((ft_strncmp(input, "exit", 4) == 0 && ft_strlen(input) == 4))
+			break ;
+		add_history(input);
+		normal_comand(input);
+		i = 1;
+		wait_last_status(get_t_min());
+		free_all(NULL, -1);
+		if (dup2(get_t_min()->in_fd, 0) == -1)
+			return ;
+		if (dup2(get_t_min()->out_fd, 1) == -1)
+			return ;
 	}
-}
-
-void	restart_shell(char *str)
-{
-	add_history(str);
-	free(str);
-	if (dup2(get_t_min()->in_fd, 0) == -1)
-		return ;
-	if (dup2(get_t_min()->out_fd, 1) == -1)
-		return ;
-	minishell();
 }
 
 int	main(int argc, char *argv[], char *env[])

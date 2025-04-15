@@ -6,7 +6,7 @@
 /*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:06:39 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/15 14:50:50 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:31:06 by msalaibb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,16 @@ void	free_split(char **split)
 
 void	free_all(char *str, int error_num)
 {
-	t_cmds	*cmds;
 	t_cmds	*cmds_copy;
 	t_flags	*flags_copy;
 	t_flags	*flags;
 
-	close_all(get_t_min()->in_fd, get_t_min()->out_fd);
-	cmds = get_t_min()->cmds;
-	while (cmds != NULL)
+	while (get_t_min()->cmds != NULL)
 	{
-		cmds_copy = cmds->next;
-		see_free(cmds->path);
-		see_free(cmds->cmd);
-		flags = cmds->flags;
+		cmds_copy = get_t_min()->cmds->next;
+		see_free(get_t_min()->cmds->path);
+		see_free(get_t_min()->cmds->cmd);
+		flags = get_t_min()->cmds->flags;
 		while (flags != NULL)
 		{
 			flags_copy = flags->next;
@@ -53,11 +50,14 @@ void	free_all(char *str, int error_num)
 			free(flags);
 			flags = flags_copy;
 		}
-		free(cmds);
-		cmds = cmds_copy;
+		free(get_t_min()->cmds);
+		get_t_min()->cmds = cmds_copy;
 	}
-	if (error_num != -1)
-		exit_error_minishell(str, error_num);
+	get_t_min()->cmds = NULL;
+	if (error_num == -1)
+		return ;
+	close_all(get_t_min()->in_fd, get_t_min()->out_fd);
+	exit_error_minishell(str, error_num);
 }
 
 void	exit_error_minishell(char *str, int error_num)
