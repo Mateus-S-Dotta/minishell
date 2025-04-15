@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/14 16:43:39 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:52:17 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,13 @@ void	std_cmd_back_slash(int sig);
 void	set_std_cmd(void);
 void	std_hd_sig(void);
 void	sigint_hd(int sig);
+
+// Builtins utils functions
+int		is_builtins(char *cmd);
+void	exec_builtins(t_cmds *cmds);
+
+// Builtins it self
+int	ft_echo(t_cmds *cmd);
 
 
 #endif

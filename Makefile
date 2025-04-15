@@ -20,7 +20,9 @@ SRCS = main.c \
 	   src/unify_.c \
 	   src/here_doc.c \
 	   src/signals.c \
-	   src/here_doc_utils.c
+	   src/here_doc_utils.c \
+	   builtins/builtins_utils.c \
+	   builtins/ft_echo.c
 
 OBJS = $(SRCS:.c=.o)
 

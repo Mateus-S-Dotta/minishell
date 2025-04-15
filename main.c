@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/14 16:39:35 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/15 19:55:19 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ void	minishell(void)
 		set_std_sig();
 		input = readline("minishell> ");
 		if (!input)
-			continue ;
+		{
+			ft_putstr_fd("exiting\n", 1);
+			break ;
+		}
 		if (verify_spaces(input))
 			continue ;
-		if ((ft_strncmp(input, "exit", 4) == 0 && ft_strlen(input) == 4))
+		if (ft_strncmp(input, "exit", 4) == 0)
 			break ;
 		add_history(input);
 		normal_comand(input);

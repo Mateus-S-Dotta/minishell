@@ -1,1 +1,1 @@
-triger
+return 0

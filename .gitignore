@@ -2,3 +2,4 @@
 .nfs*
 *.o
 debug.txt
+.*
