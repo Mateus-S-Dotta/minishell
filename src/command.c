@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/16 03:14:32 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:56:38 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 	else
 		if(execve(cmds->path, cmd_w, get_t_min()->env) == -1)
 			new_error(cmd_w);
+	exit (EXIT_SUCCESS);
 }
 
 static int	heredoc_counter(t_cmds *cmds)
