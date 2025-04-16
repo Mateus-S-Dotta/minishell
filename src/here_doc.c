@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 18:45:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/15 19:58:56 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/15 23:55:38 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ static void	open_node(t_flags *f2, int *p_fd)
 		input = readline("> ");
 		if (!input)
 		{
-			ft_putstr_fd("Minishell: warning: here-document at line
-				14 delimited by end-of-file (wanted `EOF')\n", 1);
+			ft_putstr_fd("Minishell: warning: here-document at line 14 delimited by end-of-file (wanted `EOF')\n", 1);
 			exit (EXIT_FAILURE);
 		}
 		if (ft_strncmp(f2->flag, input, ft_strlen(f2->flag)) == 0)

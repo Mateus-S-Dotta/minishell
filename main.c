@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/15 19:55:19 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/16 03:02:04 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_min	*get_t_min(void)
 void	minishell(void)
 {
 	char	*input;
-	int		i;
 
 	while (1)
 	{
@@ -47,7 +46,6 @@ void	minishell(void)
 			break ;
 		add_history(input);
 		normal_comand(input);
-		i = 1;
 		wait_last_status(get_t_min());
 		free_all(NULL, -1);
 		if (dup2(get_t_min()->in_fd, 0) == -1)

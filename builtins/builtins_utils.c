@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/15 19:05:56 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/16 03:02:18 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 void exec_builtins(t_cmds *cmds);
 int	is_builtins(char *cmd);
 
-
 static char	**builtins_arr(void)
 {
 	char	**btarr;
 
-	btarr = (char **)malloc(7 * sizeof(char *));
+	btarr = (char **)malloc(8 * sizeof(char *));
 	if (!btarr)
 		return (NULL);
 	btarr[0] = ft_strdup("echo");
@@ -30,6 +29,7 @@ static char	**builtins_arr(void)
 	btarr[4] = ft_strdup("unset");
 	btarr[5] = ft_strdup("env");
 	btarr[6] = ft_strdup("exit");
+	btarr[7] = NULL;
 	
 	return (btarr);
 }
@@ -54,9 +54,7 @@ int	is_builtins(char *cmd)
 
 	i = -1;
 	btarr = builtins_arr();
-	if (!btarr)
-		return (0);
-	while (++i < 7)
+	while (btarr[++i])
 	{
 		if (ft_strncmp(cmd, btarr[i], ft_strlen(btarr[i]) + 1) == 0)
 		{
@@ -72,18 +70,13 @@ void exec_builtins(t_cmds *cmds)
 {
 	char	**btarr;
 	t_min	*env;
-	int		i;
 
-	i = -1;
 	env  = get_t_min();
 	btarr = builtins_arr();
 	if (!cmds)
 		return ;
 	if (ft_strncmp(cmds->cmd, btarr[0], ft_strlen(cmds->cmd)) == 0)
-	{
-		printf("Found echo\n");
 		env->sig = ft_echo(cmds);
-	}
 	// else if (ft_strncmp(cmds->cmd, btarr[1], ft_strlen(btarr[1])))
 	// 	env->sig = ft_cd(cmds);
 	// else if (ft_strncmp(cmds->cmd, btarr[2], ft_strlen(btarr[2])))
