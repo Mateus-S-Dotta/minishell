@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 20:53:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/17 14:29:42 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/17 14:21:35 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/17 14:32:13 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_pwd(void)
+void	old_pwd(char *old_pwd, char **env)
 {
-	char	cwd[256];
+	
+}
 
-	if (getcwd(cwd, 256))
-	{
-		ft_putstr_fd(cwd, 1);
-		write(1, "\n", 1);
-		return (0);
-	}
-	return (2);
+int	fd_cd(t_cmds *cmd)
+{
+	t_min	*env;
+	char	crr_pd[256];
+
+	env = get_t_min();
+	if (!getcwd(crr_pd, 256))
+		return (1);
+	if (!chdir(cmd->flags->flag))
+		return (perror("cd"), 1);
+	return (0);
 }

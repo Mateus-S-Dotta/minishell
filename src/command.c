@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/16 16:56:38 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:37:17 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 	
 	if(is_builtins(cmds->cmd))
 		exec_builtins(cmds);
-	// else
-	// 	ft_putstr_fd("achou kario nenhum não\n", debug_fd());
-	// if (is_builtins(cmds->cmd) == 1)
-	// 	exec_builtins(cmds);
 	else
 		if(execve(cmds->path, cmd_w, get_t_min()->env) == -1)
 			new_error(cmd_w);

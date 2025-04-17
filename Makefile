@@ -25,6 +25,7 @@ SRCS = main.c \
 	   builtins/ft_echo.c \
 	   builtins/ft_pwd.c \
 	   builtins/ft_env.c \
+	   builtins/ft_cd.c \
 
 OBJS = $(SRCS:.c=.o)
 
