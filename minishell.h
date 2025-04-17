@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/17 14:24:28 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:27:35 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_min	*get_t_min(void);
 // Main_utils.c
 int		verify_spaces(char *input);
 void	new_error(char **cmd);
+char	**copy_env(char *env[]);
 
 // Error.c
 void	exit_error_minishell(char *str, int error_num);
