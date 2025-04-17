@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/16 21:16:51 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/16 21:42:00 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ int		is_builtins(char *cmd);
 void	exec_builtins(t_cmds *cmds);
 int		ft_echo(t_cmds *cmd);
 int		ft_pwd(void);
+int		ft_env(void);
 
 
 #endif

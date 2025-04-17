@@ -23,7 +23,8 @@ SRCS = main.c \
 	   src/here_doc_utils.c \
 	   builtins/builtins_utils.c \
 	   builtins/ft_echo.c \
-	   builtins/ft_pwd.c
+	   builtins/ft_pwd.c \
+	   builtins/ft_env.c \
 
 OBJS = $(SRCS:.c=.o)
 
