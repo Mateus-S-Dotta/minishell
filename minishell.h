@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/15 15:52:17 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/16 21:16:51 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # include <termios.h>            // tcsetattr, tcgetattr
 # include <termcap.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 # include <ttyent.h>             // ttyslot
-
 // valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
 
 # define HIS_ER "Historical Error"
@@ -138,12 +137,11 @@ void	set_std_cmd(void);
 void	std_hd_sig(void);
 void	sigint_hd(int sig);
 
-// Builtins utils functions
+// Builtins 
 int		is_builtins(char *cmd);
 void	exec_builtins(t_cmds *cmds);
-
-// Builtins it self
-int	ft_echo(t_cmds *cmd);
+int		ft_echo(t_cmds *cmd);
+int		ft_pwd(void);
 
 
 #endif

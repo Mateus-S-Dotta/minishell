@@ -22,7 +22,8 @@ SRCS = main.c \
 	   src/signals.c \
 	   src/here_doc_utils.c \
 	   builtins/builtins_utils.c \
-	   builtins/ft_echo.c
+	   builtins/ft_echo.c \
+	   builtins/ft_pwd.c
 
 OBJS = $(SRCS:.c=.o)
 
