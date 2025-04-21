@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/17 15:27:35 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:31:49 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_min {
 int		debug_fd(void);
 void	print_cmds(void);
 void	print_split(char **cmds);
+void	print_env(char **env);
 
 // Main
 t_min	*get_t_min(void);
@@ -144,7 +145,8 @@ void	exec_builtins(t_cmds *cmds);
 int		ft_echo(t_cmds *cmd);
 int		ft_pwd(void);
 int		ft_env(void);
-int		fd_cd(t_cmds *cmd);
+int		ft_cd(t_cmds *cmd);
+
 
 
 #endif

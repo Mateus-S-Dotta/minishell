@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/17 15:38:43 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:33:53 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static char	**builtins_arr(void)
 		return (NULL);
 	btarr[0] = ft_strdup("echo");
 	btarr[1] = ft_strdup("pwd");
-	btarr[3] = ft_strdup("env");
-	btarr[4] = ft_strdup("cd");
-	btarr[5] = ft_strdup("export");
-	btarr[6] = ft_strdup("unset");
-	btarr[7] = ft_strdup("exit");
-	btarr[8] = NULL;
+	btarr[2] = ft_strdup("env");
+	btarr[3] = ft_strdup("cd");
+	btarr[4] = ft_strdup("export");
+	btarr[5] = ft_strdup("unset");
+	btarr[6] = ft_strdup("exit");
+	btarr[7] = NULL;
 	
 	return (btarr);
 }
@@ -79,9 +79,9 @@ void exec_builtins(t_cmds *cmds)
 		env->sig = ft_echo(cmds);
 	else if (!ft_strncmp(cmds->cmd, btarr[1], ft_strlen(cmds->cmd)))
 		env->sig = ft_pwd();
-	else if (ft_strncmp(cmds->cmd, btarr[2], ft_strlen(btarr[2])))
+	else if (!ft_strncmp(cmds->cmd, btarr[2], ft_strlen(cmds->cmd)))
 		env->sig = ft_env();
-	// else if (ft_strncmp(cmds->cmd, btarr[3], ft_strlen(btarr[3])))
+	// else if (!ft_strncmp(cmds->cmd, btarr[3], ft_strlen(cmds->cmd)))
 	// 	env->sig = ft_cd(cmds);
 		// env->sig = ft_export(cmds);
 	// else if (ft_strncmp(cmds->cmd, btarr[4], ft_strlen(btarr[4])))

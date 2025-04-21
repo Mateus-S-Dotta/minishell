@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:01:07 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/16 20:40:36 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/19 20:03:29 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ static void	redo_env(char **cmd, int init, int *i, char *env)
 		new_cmd[j + index] = cmd[0][j + (*i - init)];
 	free(cmd[0]);
 	cmd[0] = new_cmd;
-
-	// if (ft_strncmp(env, "?", 1) == 0)
-	// {
-	// 	free (env);
-	// }
 }
 
 static void	money_copy(int *i, char **cmd, int i_initial, char *env_look)
@@ -59,7 +54,7 @@ void	verify_money(char **cmd, int *i)
 	sig_ati = NULL;
 	*i += 1;
 	if (ft_isalpha(cmd[0][*i]) == 0 && cmd[0][*i] != '?')
-	return (redo_env(cmd, i_initial, i, ""));
+		return (redo_env(cmd, i_initial, i, ""));
 	else if (cmd[0][*i] == '?')
 	{
 		sig_ati = ft_itoa(get_t_min()->sig);

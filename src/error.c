@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:06:39 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/26 20:31:06 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:41:02 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	free_all(char *str, int error_num)
 
 void	exit_error_minishell(char *str, int error_num)
 {
+	if (get_t_min()->env != NULL)
+		free_split(get_t_min()->env);
 	ft_putstr_fd(str, 2);
 	exit(error_num);
 }

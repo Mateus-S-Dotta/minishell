@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:21:51 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/17 15:27:21 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:40:32 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,11 @@ char	**copy_env(char *env[])
 	int		i;
 	char	**env_cpy;
 
-	i = 0;
-	while (env[i])
-		i++;
-	env_cpy = (char **)malloc(sizeof(char *) * (i + 1));
+	env_cpy = (char **)malloc(sizeof(char *) * 1024);
 	if (!env_cpy)
 		return (NULL);
 	i = 0;
-	while (env[i])
+	while (env[i] && i < 1023)
 	{
 		env_cpy[i] = strdup(env[i]);
 		if (!env_cpy[i])

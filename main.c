@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/17 15:27:24 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/19 20:03:31 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,19 @@ void	minishell(void)
 		input = readline("minishell> ");
 		if (!input)
 		{
+			ft_putstr_fd("free splited", debug_fd());
 			ft_putstr_fd("exiting\n", 1);
+			free_split(get_t_min()->env);
 			break ;
 		}
 		if (verify_spaces(input))
 			continue ;
 		if (ft_strncmp(input, "exit", 4) == 0)
+		{
+			ft_putstr_fd("free splited", debug_fd());
+			free_split(get_t_min()->env);
 			break ;
+		}
 		add_history(input);
 		normal_comand(input);
 		wait_last_status(get_t_min());

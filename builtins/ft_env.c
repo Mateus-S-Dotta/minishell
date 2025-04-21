@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 21:34:59 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/16 21:41:44 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:00:59 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int		ft_env(void)
 	if (!env)
 		return (1);
 	while (env[++i])
+	{
 		ft_putstr_fd(env[i], 1);
+		write(1, "\n", 1);
+	}
 	return (0);
 }
