@@ -27,6 +27,7 @@ SRCS = main.c \
 	   builtins/ft_env.c \
 	   builtins/ft_cd.c \
 	   builtins/ft_export.c \
+	   builtins/export_utils.c \
 	   builtins/ft_unset.c \
 
 OBJS = $(SRCS:.c=.o)

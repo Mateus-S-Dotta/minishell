@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 16:35:22 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:51:30 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	exec_builtins(t_cmds *cmds)
 	if (!cmds)
 		return ;
 	else if (!ft_strncmp(cmds->cmd, btarr[0], cmd_s))
-		env->sig = ft_export();
+		env->sig = ft_export(cmds);
 	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s))
 		env->sig = ft_unset();
 	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s))

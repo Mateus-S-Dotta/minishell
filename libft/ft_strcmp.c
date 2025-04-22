@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 16:20:25 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 17:18:40 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/22 17:19:33 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/22 17:19:54 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-int ft_export(t_cmds *cmds)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	if (!cmds->flags)
-		print_in_order(get_t_min()->env, get_t_min()->env_n);
-	return (0);
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
