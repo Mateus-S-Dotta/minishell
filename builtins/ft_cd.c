@@ -6,52 +6,104 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:37:18 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/19 20:04:22 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/22 00:14:00 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//TODO -> a single `cd` must go to the `~` dir
-
-void	old_pwd(char *old_pwd, char **env)
-{
-	if (!old_pwd || !env)
-		return ;
-	
-}
-
-static int	change_value(char **env, char *field, char *new_value_field)
+static int	ch_path(char **env, char *field, char *new_value_field)
 {
 	int		i;
-	char	*tmp_env;
+	int		s_field;
+	char	*tmp_str;
 	char	*new_str;
-	
+
 	i = -1;
-	if (!new_value_field || !env || !*env || field)
-		return (0);
+	s_field = ft_strlen(field);
 	while (env[++i])
 	{
-		if (strncmp(field, env[i], strlen(field)) == 0 && env[i][strlen(field)] == '=')
+		if (ft_strncmp(field, env[i], s_field) == 0 && env[i][s_field] == '=')
 		{
-			tmp_env = env[i];
-			new_str = ft_strdup(new_value_field);
-			if (!new_str)
-				return (0);
+			new_str = ft_strndup(env[i], s_field + 1);
+			tmp_str = new_str;
+			new_str = ft_strjoin(new_str, new_value_field);
+			free(env[i]);
 			env[i] = new_str;
-			free(tmp_env);
-			return (1);
+			return (free(tmp_str), 1);
 		}
 	}
+	return (0);
 }
 
-static int go_to_home()
+static char	*take_field_value(char **env, char *field)
 {
-	old_pwd();
+	int		i;
+	int		fl_s;
+	char	*f_val;
+
+	i = -1;
+	f_val = NULL;
+	fl_s = ft_strlen(field);
+	while (env[++i])
+	{
+		if (ft_strncmp(env[i], field, fl_s) == 0 && env[i][fl_s] == '=')
+		{
+			f_val = (char *)malloc(1 * ft_strlen(&env[i][fl_s + 1]) + 1);
+			if (!f_val)
+				return (NULL);
+			ft_strlcpy(f_val, &env[i][fl_s + 1], 1024);
+			return (f_val);
+		}
+	}
+	return (NULL);
 }
 
-int	fd_cd(t_cmds	*cmd)
+static int	go_home(char **env)
 {
-	if (!cmd->flags->flag)
-		go_to_home();
+	char	*crr_pwd;
+	char	*home_pwd;
+
+	crr_pwd = take_field_value(env, "PWD");
+	home_pwd = take_field_value(env, "HOME");
+	ch_path(env, "OLDPWD", crr_pwd);
+	ch_path(env, "PWD", home_pwd);
+	if (chdir(home_pwd) != 0)
+	{
+		printf ("bash: cd: %s: No such file or directory\n", home_pwd);
+		return (free(crr_pwd), free(home_pwd), 0);
+	}
+	return (free(crr_pwd), free(home_pwd), 1);
+}
+
+static int	go_to(char **env, char *path)
+{
+	char	*crr_pwd;
+	char	*new_pwd;
+
+	if (chdir(path) != 0)
+	{
+		printf ("bash: cd: %s: No such file or directory\n", path);
+		return (0);
+	}
+	new_pwd = (char *)malloc(sizeof(char) * 256);
+	getcwd(new_pwd, 256);
+	crr_pwd = take_field_value(env, "PWD");
+	ch_path(env, "OLDPWD", crr_pwd);
+	ch_path(env, "PWD", new_pwd);
+	return (free(crr_pwd), free(new_pwd), 0);
+}
+
+int	ft_cd(t_cmds *cmd)
+{
+	char	**env;
+
+	env = get_t_min()->env;
+	if (!cmd->flags)
+		return (go_home(env));
+	if (cmd->flags->next)
+		printf("minishell: cd: too many arguments\n");
+	if (!go_to(env, cmd->flags->flag))
+		return (1);
+	return (0);
 }

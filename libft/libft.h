@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:43:46 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/05 15:35:32 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:37:50 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int ch);
 int		ft_toupper(int ch);
+char	*ft_strndup(const char *s, size_t n);
+
 
 #endif
