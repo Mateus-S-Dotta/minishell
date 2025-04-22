@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/22 00:19:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:32:55 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 		redirect(get_t_min()->out_fd, 1, cmds);
 	close_all(p_fd[0], p_fd[1]);
 	cmd_w = unify_flags(cmds);
-	// if(is_builtins(cmds->cmd))
-	// 	exec_builtins(cmds);
-	// else
+	if(is_builtins(cmds->cmd, 7))
+		exec_builtins(cmds);
+	else
 		if(execve(cmds->path, cmd_w, get_t_min()->env) == -1)
 			new_error(cmd_w);
 	exit (EXIT_SUCCESS);
@@ -61,7 +61,7 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
-	if(is_builtins(cmds->cmd))
+	if(is_builtins(cmds->cmd, 3))
 	{
 		exec_builtins(cmds);
 		super_close(p_fd[0], p_fd[1], 0, qnd_hd);
@@ -160,7 +160,6 @@ void	normal_comand(char *cmd)
 	i = -1;
 	cmd_w = super_ft_split(cmd);
 	create_cmds(get_t_min()->cmds, cmd_w, 0);
-	// print_cmds();
 	free_split(cmd_w);
 	cmds = get_t_min()->cmds;
 	while (cmds != NULL)
