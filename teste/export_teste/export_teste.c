@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 00:34:54 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/23 02:53:06 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:53:42 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	open_file(char *file_name)
 {
 	int	fd;
 
-	fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(file_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 	{
 		perror("Error opening file");
@@ -195,7 +195,6 @@ void	add_or_update_env(char **values, char **env)
 		return;
 	}
 	write_in_file(fd_f, new_env);
-
 	free_splited(new_env);
 	free(new_entry);
 	close(fd_f);
@@ -218,7 +217,7 @@ void	ft_export(char *input, char **env)
 		return ;
 	}
 	s_input = ft_split(input + strlen("export "), '=');
-
+	add_or_update_env(s_input, env);
 }
 
 int main(int argc, char **argv, char **env)

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/22 17:18:33 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:23:47 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_min {
 	int		out_fd;
 	int		sig;
 	char	**env;
-	char	**env_n; //env not tracked
+	int		pipe_cnt;
 	int		error;
 	pid_t	prc_pid[1024];
 	t_cmds	*cmds;

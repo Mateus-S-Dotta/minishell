@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/22 16:32:55 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:24:03 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,22 @@ void	create_cmds(t_cmds *cmds, char **cmd_w, int d)
 	copy_verify(cmds, new_cmds, cmd_w, d + 1);
 }
 
+static void count_pipe() //!change this before
+{
+	int		cnt_pipe;
+	t_cmds	*cmd_tmp;
+
+	cnt_pipe = 1;
+	cmd_tmp = get_t_min()->cmds;
+	while (cmd_tmp->next)
+	{
+		if (cmd_tmp)
+			cnt_pipe++;
+		cmd_tmp = cmd_tmp->next;
+	}
+	get_t_min()->pipe_cnt = cnt_pipe;
+}
+
 void	normal_comand(char *cmd)
 {
 	char	**cmd_w;
@@ -161,6 +177,8 @@ void	normal_comand(char *cmd)
 	cmd_w = super_ft_split(cmd);
 	create_cmds(get_t_min()->cmds, cmd_w, 0);
 	free_split(cmd_w);
+	count_pipe();
+	ft_putnbr_fd(get_t_min()->pipe_cnt, debug_fd()); // ! ////
 	cmds = get_t_min()->cmds;
 	while (cmds != NULL)
 	{

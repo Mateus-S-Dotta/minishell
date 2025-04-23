@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:20:25 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 17:18:40 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:20:48 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int ft_export(t_cmds *cmds)
 {
 	if (!cmds->flags)
-		print_in_order(get_t_min()->env, get_t_min()->env_n);
+		print_in_order(get_t_min()->env, NULL);
 	return (0);
 }
