@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:39:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/24 03:04:32 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:24:39 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ char	**add_or_update_env(char **values, char **env, char *new_entry)
 	while (line_gnl)
 	{
 		line_gnl[strlen(line_gnl) - 1] = '\0';
-		if (!found && !strncmp(line_gnl, values[0], strlen(values[0])))
+		if (!found && (!strncmp(line_gnl, values[0], strlen(values[0])) && 
+    (line_gnl[strlen(values[0])] == '=' || line_gnl[strlen(values[0])] == '\0')))
 		{
 			new_env[i++] = ft_strdup(new_entry);
 			found = 1;
