@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 01:27:20 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/23 02:09:58 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/23 20:38:16 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,26 @@ static void	ft_bubble_sort(char **env, int count)
 
 static void	ft_print_sorted(char **env, int count)
 {
-	int	i;
+	int		i;
+	char	*key;
+	char	*value;
+	char	*equal_sign;
 
 	i = 0;
 	while (i < count)
 	{
-		printf("declare -x %s\n", env[i]);
+		equal_sign = strchr(env[i], '=');
+		if (equal_sign )
+		{
+			key = strndup(env[i], equal_sign - env[i]);
+			value = strdup(equal_sign + 1);
+			value[strlen(value) - 1] = '\0';
+			printf("declare -x %s=\"%s\"\n", key, value);
+			free(key);
+			free(value);
+		}
+		else
+			printf("declare -x %s=\"\"\n", env[i]);
 		i++;
 	}
 }
