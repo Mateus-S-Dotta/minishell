@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:47:33 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/24 16:57:23 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/24 21:19:13 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,35 @@
 
 #define FILE_NAME "env_tmp"
 
+/*INDEX ENV FUNCTIONS */
 int		open_file(char *file_name, int oflag);
 int		int_env_file(char **env);
 void	write_in_file(int fd_f, char **env);
-void	free_splited(char **splited);
 int		cnt_env(void);
+
+/*BUILTINS*/
+//export
+int		ft_export(char *input, char ***env);
+void	print_in_order(char **env);
+//env
+int		ft_env(char **env);
+//unset
+int	ft_unset(char *input, char **env);
+
+/*ENV FUNCTIONS */
+int		env_searcher(char *field, char **env);
+void	env_update(char ***env, char **mng_input, int i);
+void	env_delete(char ***env, int i);
+int		env_searcher(char *field, char **env);
+char	**env_create(char **env, char **mng_input);
+
+/* MANAGEMENT FUNCTIONS */
+char	**update_env(char ***env);
+
+/*LIB FUNCTIONS*/
+char	*ft_strdup(const char *s);
+void	free_splited(char ***splited);
+char	**ft_split(char const *s, char c);
+char	*ft_strndup(const char *s, size_t n);
 
 #endif /* HEADER */

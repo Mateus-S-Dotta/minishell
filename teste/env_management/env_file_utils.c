@@ -6,11 +6,17 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:46:47 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/24 16:58:54 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:13:47 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+int		cnt_env(void);
+int		open_file(char *file_name, int oflag);
+int		int_env_file(char **env);
+void	write_in_file(int fd_f, char **env);
+char	**update_env(char ***env);
 
 int	open_file(char *file_name, int oflag)
 {
@@ -45,26 +51,32 @@ void	write_in_file(int fd_f, char **env)
 	{
 		if (write(fd_f, env[i], strlen(env[i])) == -1)
 			break ;
-		if (write(fd_f, "\n", 1) == -1)
-			break ;
+		if (env[i][strlen(env[i]) - 1] != '\n')
+		{
+			if (write(fd_f, "\n", 1) == -1)
+				break ;
+		}
 	}
 }
 
-char	**update_env(char **env)
+char	**update_env(char ***env)
 {
-	int		i;
-	int		fd_f;
-	char	*line_gnl;
-	char	**new_env;
-
+	int i;
+	int fd_f;
+	char *line_gnl;
+	char **new_env;
+	
 	i = -1;
-	free_splited(env);
+	if (*env != NULL)
+		free_splited(env);
 	new_env = (char **)malloc(sizeof(char *) * (cnt_env() + 1));
 	if (!new_env)
-		return (perror ("Malloc env** error\n"), NULL);
+		return (perror("Malloc env** error\n"), NULL);
+	
 	fd_f = open_file(FILE_NAME, O_RDONLY);
 	if (fd_f == -1)
 		return (NULL);
+	
 	line_gnl = get_next_line(fd_f);
 	while (line_gnl)
 	{
@@ -74,5 +86,27 @@ char	**update_env(char **env)
 	}
 	new_env[++i] = NULL;
 	close(fd_f);
+	
 	return (new_env);
+}
+
+int	cnt_env(void)
+{
+	int		fd_f;
+	int		count;
+	char	*line_gnl;
+
+	count = 0;
+	fd_f = open_file(FILE_NAME, O_RDONLY);
+	if (fd_f == -1)
+		return (-1);
+	line_gnl = get_next_line(fd_f);
+	while (line_gnl)
+	{
+		count++;
+		free(line_gnl);
+		line_gnl = get_next_line(fd_f);
+	}
+	close(fd_f);
+	return (count);
 }
