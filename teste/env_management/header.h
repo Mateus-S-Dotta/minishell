@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:47:33 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/24 21:19:13 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:38:34 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	print_in_order(char **env);
 int		ft_env(char **env);
 //unset
 int	ft_unset(char *input, char **env);
+//cd
+int	ft_cd(char *input, char **env);
 
 /*ENV FUNCTIONS */
 int		env_searcher(char *field, char **env);
@@ -53,5 +55,6 @@ char	*ft_strdup(const char *s);
 void	free_splited(char ***splited);
 char	**ft_split(char const *s, char c);
 char	*ft_strndup(const char *s, size_t n);
+int		ft_isalpha(int c);
 
 #endif /* HEADER */

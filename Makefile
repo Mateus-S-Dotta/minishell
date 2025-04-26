@@ -7,6 +7,7 @@ RM = rm -rf
 SRCS = main.c \
 	   main_utils.c \
 	   debug.c \
+	   get_next_line.c \
 	   src/error.c \
 	   src/env.c \
 	   src/expand.c \
@@ -29,11 +30,17 @@ SRCS = main.c \
 	   builtins/ft_export.c \
 	   builtins/export_utils.c \
 	   builtins/ft_unset.c \
+	   env/env_file_utils.c \
+	   env/env_functions.c \
 
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
+
+# GNL_DIR = gnl
+# GNL_LIB = $(GNL_DIR)/gnl.a
+
 
 all: $(NAME)
 

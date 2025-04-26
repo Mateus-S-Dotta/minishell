@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:41:54 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/24 21:03:36 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:22:32 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int main(int argc, char **argv, char **env)
 			ft_env(env_cpy);
 		else if (!strncmp(input, "unset", strlen("unset")))
 			ft_unset(input, env_cpy);
+		else if (!strncmp(input, "cd", strlen("cd")))
+			ft_cd(input, env_cpy);
 		free(input);
 	}
 	if (input)

@@ -6,13 +6,27 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:17:42 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/23 16:20:51 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:03:18 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	ft_bubble_sort(char **combined, int count)
+void		print_in_order(char **env);
+static void	ft_bubble_sort(char **env, int count);
+static void	ft_print_sorted(char **env, int count);
+static int	ft_count_elems(char **arr);
+
+void	print_in_order(char **env)
+{
+	int	count;
+
+	count = ft_count_elems(env);
+	ft_bubble_sort(env, count);
+	ft_print_sorted(env, count);
+}
+
+static void	ft_bubble_sort(char **env, int count)
 {
 	int		i;
 	int		j;
@@ -24,11 +38,11 @@ static void	ft_bubble_sort(char **combined, int count)
 		j = 0;
 		while (j < count - i - 1)
 		{
-			if (ft_strcmp(combined[j], combined[j + 1]) > 0)
+			if (strcmp(env[j], env[j + 1]) > 0)
 			{
-				tmp = combined[j];
-				combined[j] = combined[j + 1];
-				combined[j + 1] = tmp;
+				tmp = env[j];
+				env[j] = env[j + 1];
+				env[j + 1] = tmp;
 			}
 			j++;
 		}
@@ -36,14 +50,28 @@ static void	ft_bubble_sort(char **combined, int count)
 	}
 }
 
-static void	ft_print_sorted(char **combined, int count)
+static void	ft_print_sorted(char **env, int count)
 {
-	int	i;
+	int		i;
+	char	*key;
+	char	*value;
+	char	*equal_sign;
 
 	i = 0;
 	while (i < count)
 	{
-		printf("declare -x %s\n", combined[i]);
+		equal_sign = strchr(env[i], '=');
+		if (equal_sign)
+		{
+			key = strndup(env[i], equal_sign - env[i]);
+			value = strdup(equal_sign + 1);
+			value[strlen(value) - 1] = '\0';
+			printf("declare -x %s=\"%s\"\n", key, value);
+			free(key);
+			free(value);
+		}
+		else
+			printf("declare -x %s", env[i]);
 		i++;
 	}
 }
@@ -58,30 +86,4 @@ static int	ft_count_elems(char **arr)
 	while (arr[count] != NULL)
 		count++;
 	return (count);
-}
-
-void	print_in_order(char **env, char **env_n)
-{
-	int		count1;
-	int		count2;
-	int		i;
-	int		index;
-	char	**combined;
-
-	count1 = ft_count_elems(env);
-	count2 = ft_count_elems(env_n);
-	combined = (char **)malloc(sizeof(char *) * (count1 + count2 + 1));
-	if (!combined)
-		return ;
-	index = 0;
-	i = 0;
-	while (env[i] != NULL)
-		combined[index++] = env[i++];
-	i = 0;
-	while (env_n[i] != NULL)
-		combined[index++] = env_n[i++];
-	combined[index] = NULL;
-	ft_bubble_sort(combined, count1 + count2);
-	ft_print_sorted(combined, count1 + count2);
-	free(combined);
 }

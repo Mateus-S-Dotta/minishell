@@ -6,11 +6,25 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/23 16:23:36 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:26:19 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	free_splited_env(char ***splited)
+{
+	int i;
+	
+	if (!*splited)
+		return;
+	
+	i = -1;
+	while ((*splited)[++i])
+		free((*splited)[i]);
+	
+	free(*splited);
+}
 
 static void	inicialize(char *env[])
 {
@@ -18,7 +32,8 @@ static void	inicialize(char *env[])
 	get_t_min()->out_fd = dup(1);
 	get_t_min()->sig = 0;
 	get_t_min()->pipe_cnt = 0;
-	get_t_min()->env = copy_env(env);
+	int_env_file(env);
+	get_t_min()->env = NULL;
 }
 
 t_min	*get_t_min(void)
@@ -45,6 +60,7 @@ void	minishell(void)
 	while (1)
 	{
 		set_std_sig();
+		get_t_min()->env = update_env(&get_t_min()->env);
 		input = readline("minishell> ");
 		if (!input)
 		{

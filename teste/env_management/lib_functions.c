@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:12:22 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/24 18:05:58 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:55:50 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,11 @@ char	*ft_strndup(const char *s, size_t n)
 	while (i--)
 		c[i] = s[i];
 	return (c);
+}
+
+int	ft_isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

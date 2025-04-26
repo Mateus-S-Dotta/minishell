@@ -5,16 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 16:46:47 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/25 16:47:31 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/25 15:37:58 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/25 16:31:02 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../minishell.h"
 
-int		cnt_env(void);
-int		open_file(char *file_name, int oflag);
 int		int_env_file(char **env);
+int		open_file(char *file_name, int oflag);
 void	write_in_file(int fd_f, char **env);
 char	**update_env(char ***env);
 
@@ -68,7 +67,7 @@ char	**update_env(char ***env)
 	
 	i = -1;
 	if (*env != NULL)
-		free_splited(env);
+		free_splited_env(env);
 	new_env = (char **)malloc(sizeof(char *) * (cnt_env() + 1));
 	if (!new_env)
 		return (perror("Malloc env** error\n"), NULL);
@@ -110,5 +109,3 @@ int	cnt_env(void)
 	close(fd_f);
 	return (count);
 }
-
-gcc -c {source_file}.c -o {output_file}.o && ar rcs {output_file}.a {output_file}.o	

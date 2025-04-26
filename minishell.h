@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/23 16:23:47 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:38:18 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 // valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
 
 # define HIS_ER "Historical Error"
+#define FILE_NAME "env_tmp"
+# define BUFFER_SIZE 50
 # define NORMAL_EXIT 1
 
 typedef struct s_flags
@@ -61,6 +63,23 @@ typedef struct s_min {
 	pid_t	prc_pid[1024];
 	t_cmds	*cmds;
 }	t_min;
+
+/*INDEX ENV FUNCTIONS */
+int		int_env_file(char **env);
+int		open_file(char *file_name, int oflag);
+void	write_in_file(int fd_f, char **env);
+char	**update_env(char ***env);
+
+/* ENV CRUD*/
+void	env_update(char ***env, char *mng_input, int i);
+void	env_delete(char ***env, int i);
+int		env_searcher(char *field, char **env);
+char	**env_create(char **env, char *mng_input);
+int		cnt_env(void);
+
+
+void	free_splited_env(char ***splited);
+
 
 // Debug.c
 int		debug_fd(void);
@@ -149,8 +168,8 @@ int		ft_env(void);
 int		ft_cd(t_cmds *cmd);
 int		ft_unset(void);
 
-int		ft_export(t_cmds *cmds);
-void	print_in_order(char **env, char **env_n);
+int		ft_export(t_cmds *cmds, char ***env);
+void	print_in_order(char **env);
 
 
 #endif

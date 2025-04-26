@@ -12,7 +12,7 @@ MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
 XMODIFIERS=@im=ibus
 DESKTOP_SESSION=ubuntu-xorg
 GTK_MODULES=gail:atk-bridge
-PWD=/home/ubuluc/minishell/teste/env_management
+PWD=/home/ubuluc/minishell
 XDG_SESSION_DESKTOP=ubuntu-xorg
 LOGNAME=ubuluc
 XDG_SESSION_TYPE=x11
@@ -60,4 +60,8 @@ ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 OMF_CONFIG=/home/ubuluc/.config/omf
 TERM_PROGRAM=vscode
-_=./main
+_=./minishell
+OLDPWD=/home/ubuluc/minishell/gnl
+ANOTHER
+OUTRO=
+MANGA=papel
