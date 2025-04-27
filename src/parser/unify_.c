@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 09:28:16 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:56:37 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:09:47 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ static int	max_count(int i, char **cmds)
 	return (count);
 }
 
-// [3] = i_copy;
-// [4] = max_initial_i;
 static void	real_unify(int i, char **cmd, char quote)
 {
 	int		num[5];

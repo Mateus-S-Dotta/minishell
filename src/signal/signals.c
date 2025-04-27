@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:59:39 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:48:21 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:10:01 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ void		set_std_sig(void);
 void		set_std_cmd(void);
 void		std_cmd_c(int sig);
 void		std_cmd_back_slash(int sig);
-
-
-//SHELL signal
 
 static void	sigint_sh(int sig)
 {
@@ -46,7 +43,6 @@ void	set_std_sig(void)
 	sigaction(SIGINT, &ctrl_c, NULL);
 	signal(SIGQUIT, SIG_IGN);
 }
-// CMD signal
 
 void	set_std_cmd(void)
 {
