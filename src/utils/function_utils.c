@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   function_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 20:53:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 20:21:58 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/27 17:15:23 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/27 20:13:12 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int	ft_pwd(void)
+char	*trim_spaces(char *str)
 {
-	char	cwd[256];
+	int		i;
 
-	if (getcwd(cwd, 256))
+	i = 0;
+	while (str[i] == ' ' ||  str[i] == '\t')
+		i++;
+	return (&str[i]);
+}
+
+//! maybe i have to change this function before
+void	count_pipe()
+{
+	int		cnt_pipe;
+	t_cmds	*cmd_tmp;
+
+	cnt_pipe = 1;
+	cmd_tmp = get_t_min()->cmds;
+	while (cmd_tmp->next)
 	{
-		ft_putstr_fd(cwd, 1);
-		write(1, "\n", 1);
-		return (0);
+		if (cmd_tmp)
+			cnt_pipe++;
+		cmd_tmp = cmd_tmp->next;
 	}
-	return (2);
+	get_t_min()->pipe_cnt = cnt_pipe;
 }

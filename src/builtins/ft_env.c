@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 21:34:59 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:54:55 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:22:27 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int		ft_env(void)
+int	ft_env(void)
 {
 	char	**env;
 	int		i;
@@ -23,8 +23,13 @@ int		ft_env(void)
 		return (1);
 	while (env[++i])
 	{
-		ft_putstr_fd(env[i], 1);
-		write(1, "\n", 1);
+		if (ft_strchr(env[i], '='))
+		{
+			ft_putstr_fd(env[i], 1);
+			write(1, "\n", 1);
+		}
+		else
+			continue ;
 	}
 	return (0);
 }

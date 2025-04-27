@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:56:19 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:13:27 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 		redirect(get_t_min()->out_fd, 1, cmds);
 	close_all(p_fd[0], p_fd[1]);
 	cmd_w = unify_flags(cmds);
-	if(is_builtins(cmds->cmd, 7))
+	if (is_builtins(cmds->cmd, 7))
 		exec_builtins(cmds);
 	else
-		if(execve(cmds->path, cmd_w, get_t_min()->env) == -1)
+		if (execve(cmds->path, cmd_w, get_t_min()->env) == -1)
 			new_error(cmd_w);
 	exit (EXIT_SUCCESS);
 }
@@ -61,11 +61,11 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
-	if(is_builtins(cmds->cmd, 1) == 1)
+	if (is_builtins(cmds->cmd, 1) == 1)
 	{
-		exec_builtins(cmds);
-		super_close(p_fd[0], p_fd[1], 0, qnd_hd);
-		return (0);
+		if (get_t_min()->pipe_cnt == 1)
+			exec_builtins(cmds);
+		return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
 	}
 	process = fork();
 	if (process == 0)
@@ -147,22 +147,6 @@ void	create_cmds(t_cmds *cmds, char **cmd_w, int d)
 	new_cmds->next = NULL;
 	new_cmds->flags = NULL;
 	copy_verify(cmds, new_cmds, cmd_w, d + 1);
-}
-
-static void count_pipe() //!change this before
-{
-	int		cnt_pipe;
-	t_cmds	*cmd_tmp;
-
-	cnt_pipe = 1;
-	cmd_tmp = get_t_min()->cmds;
-	while (cmd_tmp->next)
-	{
-		if (cmd_tmp)
-			cnt_pipe++;
-		cmd_tmp = cmd_tmp->next;
-	}
-	get_t_min()->pipe_cnt = cnt_pipe;
 }
 
 void	normal_comand(char *cmd)

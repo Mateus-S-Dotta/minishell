@@ -6,14 +6,16 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/26 21:38:37 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:13:21 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+//Includes
 # include "./libft/libft.h"
+# include "structure.h"
 # include <readline/readline.h>  // readline
 # include <readline/history.h>   // readline history
 # include <stdio.h>              // printf, perror, strerror
@@ -30,59 +32,17 @@
 # include <termios.h>            // tcsetattr, tcgetattr
 # include <termcap.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 # include <ttyent.h>             // ttyslot
+
 // valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
 
+// Define
 # define HIS_ER "Historical Error"
-#define FILE_NAME "env_tmp"
+# define FILE_NAME "env_tmp"
 # define BUFFER_SIZE 50
 # define NORMAL_EXIT 1
 
-typedef struct s_flags
-{
-	char			*flag;
-	int				quote;
-	struct s_flags	*next;
-}	t_flags;
-
-typedef struct s_cmds
-{
-	t_flags			*flags;
-	char			*path;
-	char			*cmd;
-	int				quote;
-	struct s_cmds	*next;
-}	t_cmds;
-
-typedef struct s_min {
-	int		in_fd;
-	int		out_fd;
-	int		sig;
-	char	**env;
-	char	*src_pwd;
-	int		pipe_cnt;
-	int		error;
-	pid_t	prc_pid[1024];
-	t_cmds	*cmds;
-}	t_min;
-
-/*INDEX ENV FUNCTIONS */
-int		int_env_file(char **env);
-int		open_file(char *file_name, int oflag);
-void	write_in_file(int fd_f, char **env);
-char	**update_env(char ***env);
+//Get_next_line.c
 char	*get_next_line(int fd);
-
-
-/* ENV CRUD*/
-void	env_update(char ***env, char *mng_input, int i);
-void	env_delete(char ***env, int i);
-int		env_searcher(char *field, char **env);
-char	**env_create(char **env, char *mng_input);
-int		cnt_env(void);
-
-
-void	free_splited_env(char ***splited);
-
 
 // Debug.c
 int		debug_fd(void);
@@ -96,6 +56,7 @@ t_min	*get_t_min(void);
 // Main_utils.c
 int		verify_spaces(char *input);
 void	new_error(char **cmd);
+void	wait_last_status(t_min *min);
 char	**copy_env(char *env[]);
 
 // Error.c
@@ -153,27 +114,57 @@ int		there_is_heredok(char **cmd, int i);
 void	open_here_doc(t_flags *f2);
 void	find_all_here_doc(t_cmds *cmd, int *c);
 
-// Signal
+// Here_doc_utils.c
+void	sig_int_hd(int sig);
+void	std_hd_sig(void);
+
+// Signal.c
 void	set_std_sig(void);
-void	wait_last_status(t_min *min);
 void	std_cmd_c(int sig);
 void	std_cmd_back_slash(int sig);
 void	set_std_cmd(void);
-void	std_hd_sig(void);
-void	sigint_hd(int sig);
 
-// Builtins 
+// Env_file_utils.c
+int		int_env_file(char **env);
+int		open_file(char *file_name, int oflag);
+void	write_in_file(int fd_f, char **env);
+char	**update_env(char ***env);
+int		cnt_env(void);
+
+// Env_function.c
+void	env_update(char ***env, char *mng_input, int i);
+void	env_delete(char ***env, int i);
+int		env_searcher(char *field, char **env);
+char	**env_create(char **env, char *mng_input);
+void	free_splited_env(char ***splited);
+
+// Function_utils.c
+char	*trim_spaces(char *str);
+void	count_pipe();
+
+// Builtins_utils.c
 int		is_builtins(char *cmd, int range);
 void	exec_builtins(t_cmds *cmds);
+
+// Ft_echo.c
 int		ft_echo(t_cmds *cmd);
+
+// Ft_pwd.c
 int		ft_pwd(void);
+
+// Ft_env.c
 int		ft_env(void);
+
+// Ft_cd.c
 int		ft_cd(t_cmds *cmds, char ***env);
+
+// Ft_unset.c
 int		ft_unset(t_cmds *cmds, char ***env);
 
-
+// Ft_export.c
 int		ft_export(t_cmds *cmds, char ***env);
-void	print_in_order(char **env);
 
+// Ft_export_utils.c
+void	print_in_order(char **env);
 
 #endif

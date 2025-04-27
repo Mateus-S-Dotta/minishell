@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:55:41 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:28:36 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	sigint_hd(int sig)
+void	sig_int_hd(int sig)
 {
 	t_min	*env;
 
@@ -27,5 +27,5 @@ void	sigint_hd(int sig)
 
 void	std_hd_sig(void)
 {
-	signal(SIGINT, sigint_hd);
+	signal(SIGINT, sig_int_hd);
 }

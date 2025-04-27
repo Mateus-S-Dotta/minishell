@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:54:13 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:23:29 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	exec_builtins(t_cmds *cmds)
 		return ;
 	else if (!ft_strncmp(cmds->cmd, btarr[0], cmd_s))
 		env->sig = ft_cd(cmds, &get_t_min()->env);
-	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s))
+	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s) && env->pipe_cnt == 1)
 		env->sig = ft_export(cmds, &get_t_min()->env);
-	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s))
+	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s) && env->pipe_cnt == 1)
 		env->sig = ft_unset(cmds, &get_t_min()->env);
 	else if (!ft_strncmp(cmds->cmd, btarr[3], cmd_s))
 		env->sig = ft_echo(cmds);

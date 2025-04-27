@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:02:29 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:55:30 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:20:46 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,18 @@ int	env_searcher(char *field, char **env)
 	}
 	free_splited_env(&tmp_field);
 	return (-1);
+}
+
+void	free_splited_env(char ***splited)
+{
+	int		i;
+	
+	if (!*splited)
+		return;
+	
+	i = -1;
+	while ((*splited)[++i])
+		free((*splited)[i]);
+	
+	free(*splited);
 }

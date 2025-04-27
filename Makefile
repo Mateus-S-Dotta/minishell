@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/27 17:03:25 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/04/27 17:05:42 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/04/27 17:17:15 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS_MAIN = main.c
 SRCS_UTILS = $(UTILS_DIR)/main_utils.c \
              $(UTILS_DIR)/debug.c \
              $(UTILS_DIR)/get_next_line.c \
-             $(UTILS_DIR)/error.c
+             $(UTILS_DIR)/error.c \
+             $(UTILS_DIR)/function_utils.c
 SRCS_ENV = $(ENV_DIR)/env.c \
            $(ENV_DIR)/env_file_utils.c \
            $(ENV_DIR)/env_functions.c
