@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc_utils.c                                   :+:      :+:    :+:   */
+/*   function_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 17:28:36 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/27 17:15:23 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/27 17:16:33 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	sig_int_hd(int sig)
+char	*trim_spaces(char *str)
 {
-	t_min	*env;
+	int		i;
 
-	if (sig == SIGINT)
-	{
-		env = get_t_min();
-		env->sig = 130;
-		write(1, "\n", 1);
-	}
-	exit(130);
-}
-
-void	std_hd_sig(void)
-{
-	signal(SIGINT, sig_int_hd);
+	i = 0;
+	while (str[i] == ' ' ||  str[i] == '\t')
+		i++;
+	return (&str[i]);
 }
