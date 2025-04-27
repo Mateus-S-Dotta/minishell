@@ -16,13 +16,13 @@ DESKTOP_SESSION=ubuntu
 FT_HOOK_NAME=login-user
 GTK_MODULES=gail:atk-bridge
 FT_HOOK_PATHNAME=login-user.d
-/nfs/homes/lsilva-x
+PWD=/nfs/homes/lsilva-x/minishell_all/minishell
 KRB5CCNAME=FILE:/tmp/krb5cc_1428541_JVhxaA
 LOGNAME=lsilva-x
 XDG_SESSION_DESKTOP=ubuntu
 XDG_SESSION_TYPE=x11
 GPG_AGENT_INFO=/run/user/1428541/gnupg/S.gpg-agent:0:1
-SYSTEMD_EXEC_PID=2041208
+SYSTEMD_EXEC_PID=2041696
 XAUTHORITY=/nfs/homes/lsilva-x/.Xauthority
 XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/lsilva-x
 HOME=/nfs/homes/lsilva-x
@@ -31,7 +31,7 @@ LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd
 XDG_CURRENT_DESKTOP=ubuntu:GNOME
 VTE_VERSION=6800
 XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
-GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/d51f5fb3_3d30_481a_b7da_65971cb4ff72
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/4deaa20d_653a_4ef1_8a45_c1ced314b147
 XDG_SESSION_CLASS=user
 ANDROID_HOME=//nfs/homes/lsilva-x/Android/Sdk
 TERM=xterm-256color
@@ -49,5 +49,5 @@ XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/nfs/homes/lsilva-x/.local/shar
 PATH=/nfs/homes/lsilva-x/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin://nfs/homes/lsilva-x/Android/Sdk/platform-tools:/opt/flutter/flutter/bin
 GDMSESSION=ubuntu
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1428541/bus
-/nfs/homes/lsilva-x/minishell_all/minishell
+OLDPWD=/nfs/homes/lsilva-x/minishell_all
 _=./minishell

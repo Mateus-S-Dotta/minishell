@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:37:58 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/26 21:33:27 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 22:09:00 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	int_env_file(char **env)
 	char	*str_tmp;
 
 	str_tmp = ft_strjoin(get_t_min()->src_pwd, "/" FILE_NAME);
-	fd_f = open_file(str_tmp, O_WRONLY | O_TRUNC | O_CREAT);
+	fd_f = open_file(FILE_NAME, O_WRONLY | O_TRUNC | O_CREAT);
 	if (fd_f == -1)
 		return (perror ("Failed in open file"), -1);
 	write_in_file(fd_f, env);
