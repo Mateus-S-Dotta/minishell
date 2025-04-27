@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/25 15:34:50 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 21:49:16 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,13 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
+	if(is_builtins(cmds->cmd, 1) == 1)
+	{
+		exec_builtins(cmds);
+		super_close(p_fd[0], p_fd[1], 0, qnd_hd);
+		return (0);
+	}
 	process = fork();
-	if (process == -1)
-		return (-1);
 	if (process == 0)
 		pipe_node(cmds, cmds2, p_fd);
 	else
@@ -172,7 +176,6 @@ void	normal_comand(char *cmd)
 	create_cmds(get_t_min()->cmds, cmd_w, 0);
 	free_split(cmd_w);
 	count_pipe();
-	ft_putnbr_fd(get_t_min()->pipe_cnt, debug_fd()); // ! ////
 	cmds = get_t_min()->cmds;
 	while (cmds != NULL)
 	{

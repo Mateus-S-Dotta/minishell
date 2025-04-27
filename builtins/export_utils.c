@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:17:42 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/25 16:03:18 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 18:22:38 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	ft_print_sorted(char **env, int count)
 			free(value);
 		}
 		else
-			printf("declare -x %s", env[i]);
+			printf("declare -x %s\n", env[i]);
 		i++;
 	}
 }

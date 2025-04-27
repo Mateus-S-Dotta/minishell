@@ -6,15 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/25 16:00:57 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 21:49:58 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 void	exec_builtins(t_cmds *cmds);
-// int		is_builtins_out(char *cmd);
-// int		is_builtins_in(char *cmd);
 
 static char	**builtins_arr(void)
 {
@@ -23,9 +21,9 @@ static char	**builtins_arr(void)
 	btarr = (char **)malloc(8 * sizeof(char *));
 	if (!btarr)
 		return (NULL);
-	btarr[0] = ft_strdup("export");
-	btarr[1] = ft_strdup("unset");
-	btarr[2] = ft_strdup("cd");
+	btarr[0] = ft_strdup("cd");
+	btarr[1] = ft_strdup("export");
+	btarr[2] = ft_strdup("unset");
 	btarr[3] = ft_strdup("echo");
 	btarr[4] = ft_strdup("pwd");
 	btarr[5] = ft_strdup("env");
@@ -71,18 +69,18 @@ void	exec_builtins(t_cmds *cmds)
 	if (!cmds)
 		return ;
 	else if (!ft_strncmp(cmds->cmd, btarr[0], cmd_s))
-		env->sig = ft_export(cmds, &get_t_min()->env);
+		env->sig = ft_cd(cmds, &get_t_min()->env);
 	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s))
-		env->sig = ft_unset();
+		env->sig = ft_export(cmds, &get_t_min()->env);
 	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s))
-		env->sig = ft_cd(cmds);
+		env->sig = ft_unset(cmds, &get_t_min()->env);
 	else if (!ft_strncmp(cmds->cmd, btarr[3], cmd_s))
 		env->sig = ft_echo(cmds);
 	else if (!ft_strncmp(cmds->cmd, btarr[4], cmd_s))
 		env->sig = ft_pwd();
 	else if (!ft_strncmp(cmds->cmd, btarr[5], cmd_s))
 		env->sig = ft_env();
-	else if (ft_strncmp(cmds->cmd, btarr[6], cmd_s))
-		env->sig = 0;
+	else if (!ft_strncmp(cmds->cmd, btarr[5], cmd_s))
+		return ;
 	builtins_free(btarr);
 }

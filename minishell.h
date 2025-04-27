@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/25 16:38:18 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 21:38:37 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_min {
 	int		out_fd;
 	int		sig;
 	char	**env;
+	char	*src_pwd;
 	int		pipe_cnt;
 	int		error;
 	pid_t	prc_pid[1024];
@@ -69,6 +70,8 @@ int		int_env_file(char **env);
 int		open_file(char *file_name, int oflag);
 void	write_in_file(int fd_f, char **env);
 char	**update_env(char ***env);
+char	*get_next_line(int fd);
+
 
 /* ENV CRUD*/
 void	env_update(char ***env, char *mng_input, int i);
@@ -165,8 +168,9 @@ void	exec_builtins(t_cmds *cmds);
 int		ft_echo(t_cmds *cmd);
 int		ft_pwd(void);
 int		ft_env(void);
-int		ft_cd(t_cmds *cmd);
-int		ft_unset(void);
+int		ft_cd(t_cmds *cmds, char ***env);
+int		ft_unset(t_cmds *cmds, char ***env);
+
 
 int		ft_export(t_cmds *cmds, char ***env);
 void	print_in_order(char **env);

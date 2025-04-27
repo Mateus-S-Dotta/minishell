@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:37:18 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 00:14:00 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 21:49:07 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static int	go_home(char **env)
 		printf ("bash: cd: %s: No such file or directory\n", home_pwd);
 		return (free(crr_pwd), free(home_pwd), 0);
 	}
+	
 	return (free(crr_pwd), free(home_pwd), 1);
 }
 
@@ -94,16 +95,21 @@ static int	go_to(char **env, char *path)
 	return (free(crr_pwd), free(new_pwd), 0);
 }
 
-int	ft_cd(t_cmds *cmd)
+int	ft_cd(t_cmds *cmds, char ***env)
 {
-	char	**env;
+	int		cod;
 
-	env = get_t_min()->env;
-	if (!cmd->flags)
-		return (go_home(env));
-	if (cmd->flags->next)
+	if (!cmds->flags)
+	{
+		cod = go_home(*env);
+		int_env_file(*env);
+		return (cod);
+	}
+	if (cmds->flags->next)
 		printf("minishell: cd: too many arguments\n");
-	if (!go_to(env, cmd->flags->flag))
+	cod = go_to(*env, cmds->flags->flag);
+	int_env_file(*env);
+	if (!cod)
 		return (1);
 	return (0);
 }
