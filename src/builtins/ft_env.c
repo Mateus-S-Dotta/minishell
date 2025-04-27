@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 21:34:59 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 18:12:13 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:22:27 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int		ft_env(void)
+int	ft_env(void)
 {
 	char	**env;
 	int		i;

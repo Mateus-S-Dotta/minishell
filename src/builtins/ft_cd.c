@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:37:18 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:54:30 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:22:14 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static int	go_home(char **env)
 		printf ("bash: cd: %s: No such file or directory\n", home_pwd);
 		return (free(crr_pwd), free(home_pwd), 0);
 	}
-	
 	return (free(crr_pwd), free(home_pwd), 1);
 }
 

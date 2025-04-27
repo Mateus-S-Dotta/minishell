@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:21:03 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:55:16 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:22:39 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int ft_unset(t_cmds *cmds, char ***env)
+int	ft_unset(t_cmds *cmds, char ***env)
 {
 	char	*str;
 	int		env_sts;

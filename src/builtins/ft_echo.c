@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:49:37 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:54:47 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:21:39 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_echo(t_cmds *cmd)
 {
 	int		flag_opt;
+	int		res;
 	t_flags	*flag_tmp;
 
 	flag_opt = 0;
@@ -29,7 +30,8 @@ int	ft_echo(t_cmds *cmd)
 		while (flag_tmp)
 		{
 			ft_putstr_fd(flag_tmp->flag, 1);
-			if (flag_tmp->next && ft_strncmp(flag_tmp->next->flag, "\0", 1) != 0)
+			res = ft_strncmp(flag_tmp->next->flag, "\0", 1);
+			if (flag_tmp->next && res != 0)
 				write(1, " ", 1);
 			flag_tmp = flag_tmp->next;
 		}

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:20:25 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:55:06 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:22:55 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	check_input(char *str)
 	return (ft_isalpha(str[i]));
 }
 
-int ft_export(t_cmds *cmds, char ***env)
+int	ft_export(t_cmds *cmds, char ***env)
 {
 	int		env_sts;
 	char	*i_hate_norm;

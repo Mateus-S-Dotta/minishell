@@ -6,14 +6,14 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:23:24 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 17:24:27 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:43:28 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
 
-#include "minishell.h"
+# include "minishell.h"
 
 typedef struct s_flags
 {
@@ -31,7 +31,8 @@ typedef struct s_cmds
 	struct s_cmds	*next;
 }	t_cmds;
 
-typedef struct s_min {
+typedef struct s_min
+{
 	int		in_fd;
 	int		out_fd;
 	int		sig;

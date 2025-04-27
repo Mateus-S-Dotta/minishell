@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 17:35:53 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:13:21 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void	free_splited_env(char ***splited);
 
 // Function_utils.c
 char	*trim_spaces(char *str);
+void	count_pipe();
 
 // Builtins_utils.c
 int		is_builtins(char *cmd, int range);
