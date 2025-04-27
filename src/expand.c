@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:01:07 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/14 19:32:41 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/19 20:03:29 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,20 @@ void	verify_money(char **cmd, int *i)
 	char	*env_look;
 	char	*env;
 	int		i_initial;
+	char	*sig_ati;
 
 	i_initial = *i;
+	sig_ati = NULL;
 	*i += 1;
-	if (ft_isalpha(cmd[0][*i]) == 0)
+	if (ft_isalpha(cmd[0][*i]) == 0 && cmd[0][*i] != '?')
 		return (redo_env(cmd, i_initial, i, ""));
+	else if (cmd[0][*i] == '?')
+	{
+		sig_ati = ft_itoa(get_t_min()->sig);
+		*i += 1;
+		redo_env(cmd, i_initial, i, sig_ati);
+		return (free(sig_ati));
+	}
 	while ((ft_isalnum(cmd[0][*i]) || cmd[0][*i] == '_'))
 		*i += 1;
 	env_look = (char *)ft_calloc((*i - i_initial), sizeof(char));

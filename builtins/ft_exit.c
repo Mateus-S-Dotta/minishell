@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc_utils.c                                   :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 00:21:43 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/22 14:57:20 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/22 15:51:05 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	sigint_hd(int sig)
+void	ft_exit(void)
 {
-	t_min	*env;
-
-	if (sig == SIGINT)
-	{
-		env = get_t_min();
-		env->sig = 130;
-		write(1, "\n", 1);
-	}
-	exit(130);
-}
-
-void	std_hd_sig(void)
-{
-	signal(SIGINT, sigint_hd);
+	ft_putstr_fd("exit\n", 1);
+	exit(0);
 }

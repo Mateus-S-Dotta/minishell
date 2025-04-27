@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:09:04 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/13 20:09:03 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:05:16 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,13 @@ void	print_cmds(void)
 		ft_putstr_fd("\n\n", debug_fd());
 		new_cmds = new_cmds->next;
 	}
+}
+
+void	print_env(char **env)
+{
+	int		i;
+
+	i = -1;
+	while (env[++i])
+		printf("[i]: %d | [ENV]: %s\n", i, env[i]);
 }

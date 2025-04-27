@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   super_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msalaibb <msalaibb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/03/26 21:00:33 by msalaibb         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:59:02 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	count_s_s(char *cmd)
 	int		i;
 	int		count;
 	int		find;
-	char	quote;
 
 	i = 0;
 	count = 0;
@@ -26,7 +25,6 @@ static int	count_s_s(char *cmd)
 	while (cmd[i] != '\0')
 	{
 		find = 0;
-		quote = '\0';
 		if (is_word(cmd, i))
 		{
 			find = 1;

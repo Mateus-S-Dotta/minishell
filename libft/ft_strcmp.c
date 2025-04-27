@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc_utils.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 00:21:43 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/22 17:19:33 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/22 17:19:54 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-void	sigint_hd(int sig)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	t_min	*env;
-
-	if (sig == SIGINT)
+	while (*s1 && (*s1 == *s2))
 	{
-		env = get_t_min();
-		env->sig = 130;
-		write(1, "\n", 1);
+		s1++;
+		s2++;
 	}
-	exit(130);
-}
-
-void	std_hd_sig(void)
-{
-	signal(SIGINT, sigint_hd);
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/14 19:33:31 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 22:05:30 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 		redirect(get_t_min()->out_fd, 1, cmds);
 	close_all(p_fd[0], p_fd[1]);
 	cmd_w = unify_flags(cmds);
-	if (cmds->path != NULL)
-		execve(cmds->path, cmd_w, get_t_min()->env);
-	new_error(cmd_w);
+	if(is_builtins(cmds->cmd, 7))
+		exec_builtins(cmds);
+	else
+		if(execve(cmds->path, cmd_w, get_t_min()->env) == -1)
+			new_error(cmd_w);
+	exit (EXIT_SUCCESS);
 }
 
 static int	heredoc_counter(t_cmds *cmds)
@@ -58,9 +61,13 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
+	if(is_builtins(cmds->cmd, 1) == 1)
+	{
+		exec_builtins(cmds);
+		super_close(p_fd[0], p_fd[1], 0, qnd_hd);
+		return (0);
+	}
 	process = fork();
-	if (process == -1)
-		return (-1);
 	if (process == 0)
 		pipe_node(cmds, cmds2, p_fd);
 	else
@@ -98,14 +105,12 @@ static void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
 void	free_normal_comand(t_cmds *new_cmds, char **cmd_w)
 {
 	t_flags	*flags;
-	t_flags	*temp;
 
 	if (new_cmds == NULL)
 		return ;
 	flags = new_cmds->flags;
 	while (flags != NULL)
 	{
-		temp = flags->next;
 		if (flags->flag != NULL)
 			free(flags->flag);
 		free(flags);
@@ -144,6 +149,22 @@ void	create_cmds(t_cmds *cmds, char **cmd_w, int d)
 	copy_verify(cmds, new_cmds, cmd_w, d + 1);
 }
 
+static void count_pipe() //!change this before
+{
+	int		cnt_pipe;
+	t_cmds	*cmd_tmp;
+
+	cnt_pipe = 1;
+	cmd_tmp = get_t_min()->cmds;
+	while (cmd_tmp->next)
+	{
+		if (cmd_tmp)
+			cnt_pipe++;
+		cmd_tmp = cmd_tmp->next;
+	}
+	get_t_min()->pipe_cnt = cnt_pipe;
+}
+
 void	normal_comand(char *cmd)
 {
 	char	**cmd_w;
@@ -154,6 +175,7 @@ void	normal_comand(char *cmd)
 	cmd_w = super_ft_split(cmd);
 	create_cmds(get_t_min()->cmds, cmd_w, 0);
 	free_split(cmd_w);
+	count_pipe();
 	cmds = get_t_min()->cmds;
 	while (cmds != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/14 16:43:39 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/26 21:38:37 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@
 # include <termios.h>            // tcsetattr, tcgetattr
 # include <termcap.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 # include <ttyent.h>             // ttyslot
-
 // valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
 
 # define HIS_ER "Historical Error"
+#define FILE_NAME "env_tmp"
+# define BUFFER_SIZE 50
 # define NORMAL_EXIT 1
 
 typedef struct s_flags
@@ -57,15 +58,37 @@ typedef struct s_min {
 	int		out_fd;
 	int		sig;
 	char	**env;
+	char	*src_pwd;
+	int		pipe_cnt;
 	int		error;
 	pid_t	prc_pid[1024];
 	t_cmds	*cmds;
 }	t_min;
 
+/*INDEX ENV FUNCTIONS */
+int		int_env_file(char **env);
+int		open_file(char *file_name, int oflag);
+void	write_in_file(int fd_f, char **env);
+char	**update_env(char ***env);
+char	*get_next_line(int fd);
+
+
+/* ENV CRUD*/
+void	env_update(char ***env, char *mng_input, int i);
+void	env_delete(char ***env, int i);
+int		env_searcher(char *field, char **env);
+char	**env_create(char **env, char *mng_input);
+int		cnt_env(void);
+
+
+void	free_splited_env(char ***splited);
+
+
 // Debug.c
 int		debug_fd(void);
 void	print_cmds(void);
 void	print_split(char **cmds);
+void	print_env(char **env);
 
 // Main
 t_min	*get_t_min(void);
@@ -73,6 +96,7 @@ t_min	*get_t_min(void);
 // Main_utils.c
 int		verify_spaces(char *input);
 void	new_error(char **cmd);
+char	**copy_env(char *env[]);
 
 // Error.c
 void	exit_error_minishell(char *str, int error_num);
@@ -137,6 +161,19 @@ void	std_cmd_back_slash(int sig);
 void	set_std_cmd(void);
 void	std_hd_sig(void);
 void	sigint_hd(int sig);
+
+// Builtins 
+int		is_builtins(char *cmd, int range);
+void	exec_builtins(t_cmds *cmds);
+int		ft_echo(t_cmds *cmd);
+int		ft_pwd(void);
+int		ft_env(void);
+int		ft_cd(t_cmds *cmds, char ***env);
+int		ft_unset(t_cmds *cmds, char ***env);
+
+
+int		ft_export(t_cmds *cmds, char ***env);
+void	print_in_order(char **env);
 
 
 #endif

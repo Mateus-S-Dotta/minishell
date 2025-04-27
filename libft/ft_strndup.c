@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc_utils.c                                   :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 00:21:43 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/21 21:37:22 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/21 21:38:04 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
-void	sigint_hd(int sig)
+char	*ft_strndup(const char *s, size_t n)
 {
-	t_min	*env;
+	size_t	i;
+	char	*c;
 
-	if (sig == SIGINT)
-	{
-		env = get_t_min();
-		env->sig = 130;
-		write(1, "\n", 1);
-	}
-	exit(130);
-}
-
-void	std_hd_sig(void)
-{
-	signal(SIGINT, sigint_hd);
+	i = 0;
+	while (s[i] && i < n)
+		i++;
+	c = (char *)malloc((i + 1) * sizeof(char));
+	if (c == NULL)
+		return (NULL);
+	c[i] = '\0';
+	while (i--)
+		c[i] = s[i];
+	return (c);
 }

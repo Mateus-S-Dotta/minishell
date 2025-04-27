@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc_utils.c                                   :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/22 00:21:43 by lsilva-x         ###   ########.fr       */
+/*   Created: 2025/04/22 16:21:03 by lsilva-x          #+#    #+#             */
+/*   Updated: 2025/04/26 17:46:41 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	sigint_hd(int sig)
+int ft_unset(t_cmds *cmds, char ***env)
 {
-	t_min	*env;
+	char	*str;
+	int		env_sts;
 
-	if (sig == SIGINT)
-	{
-		env = get_t_min();
-		env->sig = 130;
-		write(1, "\n", 1);
-	}
-	exit(130);
-}
-
-void	std_hd_sig(void)
-{
-	signal(SIGINT, sigint_hd);
+	if (!cmds->flags)
+		return (0);
+	str = cmds->flags->flag;
+	env_sts = env_searcher(str, *env);
+	if (env_sts == -1)
+		return (0);
+	env_delete(env, env_sts);
+	int_env_file(*env);
+	return (0);
 }
