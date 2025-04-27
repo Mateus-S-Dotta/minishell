@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:54:13 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:38:53 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,20 @@ void	exec_builtins(t_cmds *cmds)
 {
 	char	**btarr;
 	int		cmd_s;
+	int		s_pipe;
 	t_min	*env;
 
 	env = get_t_min();
+	s_pipe = env->pipe_cnt;
 	cmd_s = ft_strlen(cmds->cmd);
 	btarr = builtins_arr();
 	if (!cmds)
 		return ;
 	else if (!ft_strncmp(cmds->cmd, btarr[0], cmd_s))
 		env->sig = ft_cd(cmds, &get_t_min()->env);
-	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s))
+	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s) && s_pipe == 1)
 		env->sig = ft_export(cmds, &get_t_min()->env);
-	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s))
+	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s) && s_pipe == 1)
 		env->sig = ft_unset(cmds, &get_t_min()->env);
 	else if (!ft_strncmp(cmds->cmd, btarr[3], cmd_s))
 		env->sig = ft_echo(cmds);

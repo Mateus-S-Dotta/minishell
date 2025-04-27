@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:56:19 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:36:19 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		return (-1);
 	if(is_builtins(cmds->cmd, 1) == 1)
 	{
-		exec_builtins(cmds);
-		super_close(p_fd[0], p_fd[1], 0, qnd_hd);
-		return (0);
+		if (get_t_min()->pipe_cnt == 1)
+			exec_builtins(cmds);
+		return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
 	}
 	process = fork();
 	if (process == 0)

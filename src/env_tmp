@@ -11,7 +11,7 @@ MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
 XMODIFIERS=@im=ibus
 DESKTOP_SESSION=ubuntu-xorg
 GTK_MODULES=gail:atk-bridge
-PWD=/home/ubuluc/minishell
+PWD=/home/ubuluc/minishell/src
 LOGNAME=ubuluc
 XDG_SESSION_DESKTOP=ubuntu-xorg
 XDG_SESSION_TYPE=x11
@@ -26,7 +26,7 @@ LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd
 XDG_CURRENT_DESKTOP=ubuntu:GNOME
 MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure
 VTE_VERSION=7600
-GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/118c2d02_991a_4f7a_b82f_36b41a9d4fd5
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/7589a0b2_8e39_446a_add9_5732bafe37a4
 LESSCLOSE=/usr/bin/lesspipe %s %s
 XDG_SESSION_CLASS=user
 TERM=xterm-256color
@@ -39,9 +39,9 @@ GSM_SKIP_SSH_AGENT_WORKAROUND=true
 QT_IM_MODULE=ibus
 XDG_RUNTIME_DIR=/run/user/1000
 DEBUGINFOD_URLS=https://debuginfod.ubuntu.com 
-ANOTHERMANGA=
 XDG_DATA_DIRS=/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 PATH=/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/ubuluc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/ubuluc/.local/bin:/opt/nvim-linux64/bin:/home/ubuluc/.local/bin
 GDMSESSION=ubuntu-xorg
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 _=./minishell
+ANOTHER
