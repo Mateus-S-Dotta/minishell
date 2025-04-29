@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:07:20 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/28 22:39:07 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:24:10 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	complete_array(t_cmds *cmds, char **new_cmds)
 			new_cmds[i++] = flags_copy->flag;
 		flags_copy = flags_copy->next;
 	}
-	cmds->path = find_paths(new_cmds[0]);
+	if (!is_builtins(cmds->cmd, 7))
+		cmds->path = find_paths(new_cmds[0]);
 }
 
 char	**unify_flags(t_cmds *cmds)

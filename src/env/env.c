@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:01:12 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/28 22:13:50 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:24:23 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char	*find_paths(char *cmd)
 	paths = ft_split(get_env("PATH"), ':');
 	if (paths == NULL)
 		exit_error_minishell("Not Find Env\n", 1);
+	if (is_builtins(cmd, 7))
+		return (free_split(paths), NULL);
 	cmd_bar = ft_strjoin("/", cmd);
 	aux = -1;
 	while (paths[++aux])
