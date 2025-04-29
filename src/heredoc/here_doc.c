@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 18:45:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:55:46 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:30:34 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,18 @@ void	find_all_here_doc(t_cmds *cmd, int *c)
 static void	open_node(t_flags *f2, int *p_fd)
 {
 	char	*input;
+	char	*hate_norm;
 
 	input = NULL;
+	hate_norm = "at line 14 delimited by end-of-file (wanted `EOF')\n";
 	while (1)
 	{
 		std_hd_sig();
 		input = readline("> ");
 		if (!input)
 		{
-			ft_putstr_fd("Minishell: warning: here-document at line 14 delimited by end-of-file (wanted `EOF')\n", 1);
+			ft_putstr_fd("Minishell: warning: here-document ", 1);
+			ft_putstr_fd(hate_norm, 1);
 			exit (EXIT_FAILURE);
 		}
 		if (ft_strncmp(f2->flag, input, ft_strlen(f2->flag)) == 0)
@@ -93,20 +96,4 @@ void	open_here_doc(t_flags *f2)
 	dup_func(p_fd[0], 0, -1, -1);
 	close_all(p_fd[0], p_fd[1]);
 	free_flag(f2);
-}
-
-int	there_is_heredok(char **cmd, int i)
-{
-	if (i == 0)
-		return (1);
-	i--;
-	while (i >= 0 && (cmd[0][i] == '\"' || cmd[0][i] == '\''))
-		i--;
-	while (i >= 0 && is_word(cmd[0], i))
-		i--;
-	while (i >= 0 && cmd[0][i] == ' ')
-		i--;
-	if (i >= 0 && cmd[0][i] == '<' && i - 1 >= 0 && cmd[0][i - 1] == '<')
-		return (1);
-	return (0);
 }

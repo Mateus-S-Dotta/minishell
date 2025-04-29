@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:37:58 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 16:55:24 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:28:55 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**update_env(char ***env);
 
 int	open_file(char *file_name, int oflag)
 {
-	int	fd;
+	int		fd;
 
 	fd = open(file_name, oflag, 0644);
 	if (fd == -1)
@@ -62,22 +62,20 @@ void	write_in_file(int fd_f, char **env)
 
 char	**update_env(char ***env)
 {
-	int i;
-	int fd_f;
-	char *line_gnl;
-	char **new_env;
-	
+	int		i;
+	int		fd_f;
+	char	*line_gnl;
+	char	**new_env;
+
 	i = -1;
 	if (*env != NULL)
 		free_splited_env(env);
 	new_env = (char **)malloc(sizeof(char *) * (cnt_env() + 1));
 	if (!new_env)
 		return (perror("Malloc env** error\n"), NULL);
-	
 	fd_f = open_file(FILE_NAME, O_RDONLY);
 	if (fd_f == -1)
 		return (NULL);
-	
 	line_gnl = get_next_line(fd_f);
 	while (line_gnl)
 	{
@@ -88,7 +86,6 @@ char	**update_env(char ***env)
 	}
 	new_env[++i] = NULL;
 	close(fd_f);
-	
 	return (new_env);
 }
 

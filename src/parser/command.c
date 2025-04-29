@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/28 23:24:15 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:51:47 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 	return (process);
 }
 
-static void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
+void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
 {
 	int	i;
 	int	type;
@@ -100,53 +100,6 @@ static void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
 		create_cmds(new_cmds, cmd_w, d + i + 1);
 	else if (cmd_w[i + d] != NULL && ft_strncmp(cmd_w[i + d], "|", 1) == 0)
 		free_all("Palindromo\n", 1);
-}
-
-void	free_normal_comand(t_cmds *new_cmds, char **cmd_w)
-{
-	t_flags	*flags;
-
-	if (new_cmds == NULL)
-		return ;
-	flags = new_cmds->flags;
-	while (flags != NULL)
-	{
-		if (flags->flag != NULL)
-			free(flags->flag);
-		free(flags);
-	}
-	if (new_cmds->cmd != NULL)
-		free(new_cmds->cmd);
-	if (new_cmds->path != NULL)
-		free(new_cmds->path);
-	free_split(cmd_w);
-	free_all("Comand Not Found\n", 1);
-}
-
-void	create_cmds(t_cmds *cmds, char **cmd_w, int d)
-{
-	int		i;
-	t_cmds	*new_cmds;
-
-	if (ft_strncmp(cmd_w[d], "|", 1) == 0)
-	{
-		free_split(cmd_w);
-		free_all("Start Pipe\n", 1);
-	}
-	i = 0;
-	while (cmd_w[i + d] != NULL && ft_strncmp(cmd_w[i + d], "|", 1) != 0)
-		i++;
-	new_cmds = (t_cmds *)malloc(sizeof(t_cmds));
-	if (new_cmds == NULL)
-		exit_error_minishell("Malloc Error\n", 1);
-	new_cmds->quote = unify(d - 1, cmd_w);
-	new_cmds->cmd = ft_strdup(cmd_w[d]);
-	if (new_cmds->cmd == NULL)
-		free_normal_comand(new_cmds, cmd_w);
-	new_cmds->path = NULL;
-	new_cmds->next = NULL;
-	new_cmds->flags = NULL;
-	copy_verify(cmds, new_cmds, cmd_w, d + 1);
 }
 
 void	normal_comand(char *cmd)
