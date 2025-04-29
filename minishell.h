@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 20:13:21 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/28 23:24:34 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_min	*get_t_min(void);
 // Main_utils.c
 int		verify_spaces(char *input);
 void	new_error(char **cmd);
-void	wait_last_status(t_min *min);
+void	wait_last_status(void);
 char	**copy_env(char *env[]);
 
 // Error.c
@@ -148,6 +148,9 @@ void	exec_builtins(t_cmds *cmds);
 
 // Ft_echo.c
 int		ft_echo(t_cmds *cmd);
+
+// Ft_exit.c
+int	ft_exit(t_cmds *cmds);
 
 // Ft_pwd.c
 int		ft_pwd(void);

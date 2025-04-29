@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/27 17:03:25 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/04/27 17:17:15 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/04/28 23:37:08 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ SRCS_BUILTINS = $(BUILTINS_DIR)/builtins_utils.c \
                 $(BUILTINS_DIR)/ft_cd.c \
                 $(BUILTINS_DIR)/ft_export.c \
                 $(BUILTINS_DIR)/export_utils.c \
-                $(BUILTINS_DIR)/ft_unset.c
+                $(BUILTINS_DIR)/ft_unset.c \
+                $(BUILTINS_DIR)/ft_exit.c
 
 SRCS = $(SRCS_MAIN) \
        $(SRCS_UTILS) \
