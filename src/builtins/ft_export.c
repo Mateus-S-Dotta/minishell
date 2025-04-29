@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:20:25 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 20:22:55 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/28 21:50:56 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 static int	check_input(char *str)
 {
 	int		i;
+	char	*equal_sign;
 
 	i = -1;
 	while (str[++i] == ' ' || str[i] == '\t')
 		continue ;
+	equal_sign = ft_strchr(str, '=');
+	if (equal_sign && ft_strchr(equal_sign + 1, '-'))
+		return (1);
+	if (ft_strchr(str, '-'))
+		return (0);
 	return (ft_isalpha(str[i]));
 }
 
@@ -34,8 +40,8 @@ int	ft_export(t_cmds *cmds, char ***env)
 	i_hate_norm = ": not a valid identifier\n";
 	if (!check_input(cmds->flags->flag))
 	{
-		printf("minishell: export: `%s`%s", str, i_hate_norm);
-		return (1);
+		ft_putstr_fd("minishell: export: `", 2);
+		return (ft_putstr_fd(str, 2), ft_putstr_fd(i_hate_norm, 2), 1);
 	}
 	env_sts = env_searcher(str, *env);
 	if (env_sts != -1)
