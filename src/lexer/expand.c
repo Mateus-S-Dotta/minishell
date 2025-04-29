@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:01:07 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/29 00:46:41 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:43:38 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ void	verify_money_start(char **cmd, int *i, int *in_quote, int *count)
 {
 	if (there_is_heredok(cmd, *i))
 		return ;
-	verify_money(cmd, i);
+	if (ft_isalpha(cmd[0][*i + 1]) || cmd[0][*i + 1] == '?')
+		verify_money(cmd, i);
+	else
+		return ;
 	*in_quote = 0;
 	*i = -1;
 	count[0] = 0;
