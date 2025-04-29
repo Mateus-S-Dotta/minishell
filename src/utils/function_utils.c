@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:15:23 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 20:13:12 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:48:26 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ char	*trim_spaces(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i] == ' ' ||  str[i] == '\t')
+	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	return (&str[i]);
 }
 
-//! maybe i have to change this function before
-void	count_pipe()
+void	count_pipe(void)
 {
 	int		cnt_pipe;
 	t_cmds	*cmd_tmp;

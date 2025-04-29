@@ -6,35 +6,46 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:49:37 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/28 21:31:03 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:15:32 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+static int	ft_strisonly(const char *str, char c)
+{
+	while (*str)
+	{
+		if (*str != c)
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
 int	ft_echo(t_cmds *cmd)
 {
-	int		flag_opt;
-	t_flags	*f_tmp;
+	int		flag_n;
+	t_flags	*flag_ptr;
 
-	flag_opt = 0;
-	if (cmd->flags)
+	flag_n = 0;
+	flag_ptr = cmd->flags;
+	while (flag_ptr && flag_ptr->flag
+		&& ft_strncmp(flag_ptr->flag, "-n", 2) == 0
+		&& ft_strisonly(flag_ptr->flag + 1, 'n'))
 	{
-		f_tmp = cmd->flags;
-		while (ft_strncmp(f_tmp->flag, "-n", 2) == 0)
-		{
-			flag_opt = 1;
-			f_tmp = f_tmp->next;
-		}
-		while (f_tmp)
-		{
-			ft_putstr_fd(f_tmp->flag, 1);
-			if (f_tmp->next && ft_strncmp(f_tmp->next->flag, "\0", 1) != 0)
-				write(1, " ", 1);
-			f_tmp = f_tmp->next;
-		}
+		flag_n = 1;
+		flag_ptr = flag_ptr->next;
 	}
-	if (flag_opt == 0)
-		write (1, "\n", 1);
+	while (flag_ptr)
+	{
+		if (flag_ptr->flag)
+			ft_putstr_fd(flag_ptr->flag, 1);
+		if (flag_ptr->next)
+			write(1, " ", 1);
+		flag_ptr = flag_ptr->next;
+	}
+	if (!flag_n)
+		write(1, "\n", 1);
 	return (0);
 }

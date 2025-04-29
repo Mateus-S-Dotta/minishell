@@ -6,11 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:01:07 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:55:51 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:46:41 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+static void	verify_money_node(char *env_l, char **cmd, int i_init, int *i);
 
 static void	redo_env(char **cmd, int init, int *i, char *env)
 {
@@ -46,7 +48,6 @@ static void	money_copy(int *i, char **cmd, int i_initial, char *env_look)
 void	verify_money(char **cmd, int *i)
 {
 	char	*env_look;
-	char	*env;
 	int		i_initial;
 	char	*sig_ati;
 
@@ -58,23 +59,26 @@ void	verify_money(char **cmd, int *i)
 	else if (cmd[0][*i] == '?')
 	{
 		sig_ati = ft_itoa(get_t_min()->sig);
-		*i += 1;
-		redo_env(cmd, i_initial, i, sig_ati);
-		return (free(sig_ati));
+		return (*i += 1, redo_env(cmd, i_initial, i, sig_ati), free(sig_ati));
 	}
 	while ((ft_isalnum(cmd[0][*i]) || cmd[0][*i] == '_'))
 		*i += 1;
 	env_look = (char *)ft_calloc((*i - i_initial), sizeof(char));
-	if (env_look == NULL)
-		exit_error_minishell("Malloc Error", 1);
 	*i = i_initial + 1;
 	while ((ft_isalnum(cmd[0][*i]) || cmd[0][*i] == '_'))
 		money_copy(i, cmd, i_initial, env_look);
-	env = get_env(env_look);
-	free(env_look);
+	verify_money_node(env_look, cmd, i_initial, i);
+}
+
+static void	verify_money_node(char *env_l, char **cmd, int i_init, int *i)
+{
+	char	*env;
+
+	env = get_env(env_l);
+	free(env_l);
 	if (env == NULL)
-		return (redo_env(cmd, i_initial, i, ""));
-	redo_env(cmd, i_initial, i, &env[*i - i_initial]);
+		return (redo_env(cmd, i_init, i, ""));
+	redo_env(cmd, i_init, i, &env[*i - i_init]);
 	*i = 0;
 }
 

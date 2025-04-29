@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:02:29 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 17:20:46 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:27:40 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,28 @@ void	env_delete(char ***env, int i);
 int		env_searcher(char *field, char **env);
 char	**env_create(char **env, char *mng_input);
 
-void env_update(char ***env, char *mng_input, int i)
+void	env_update(char ***env, char *mng_input, int i)
 {
-	char *tmp_env;
-	
+	char	*tmp_env;
+
 	tmp_env = (*env)[i];
 	(*env)[i] = ft_strdup(mng_input);
 	free(tmp_env);
 }
 
-void env_delete(char ***env, int i)
+void	env_delete(char ***env, int i)
 {
 	char	**new_env;
-	int		j = 0;
-	int		k = 0;
+	int		j;
+	int		k;
 
+	k = 0;
+	j = 0;
 	while ((*env)[j])
 		j++;
 	new_env = (char **)malloc(sizeof(char *) * j);
 	if (!new_env)
-		return;
+		return ;
 	j = 0;
 	while ((*env)[j])
 	{
@@ -49,14 +51,14 @@ void env_delete(char ***env, int i)
 	*env = new_env;
 }
 
-char **env_create(char **env, char *mng_input)
+char	**env_create(char **env, char *mng_input)
 {
-	char **new_env;
-	int i;
-	
+	char	**new_env;
+	int		i;
+
 	i = -1;
 	while (env[++i])
-		continue;
+		continue ;
 	new_env = (char **)malloc(sizeof(char *) * (i + 2));
 	i = -1;
 	while (env[++i])
@@ -70,8 +72,8 @@ char **env_create(char **env, char *mng_input)
 int	env_searcher(char *field, char **env)
 {
 	char	**tmp_field;
-	int i;
-	
+	int		i;
+
 	if (!field || !env)
 		return (-1);
 	tmp_field = ft_split(field, '=');
@@ -88,13 +90,11 @@ int	env_searcher(char *field, char **env)
 void	free_splited_env(char ***splited)
 {
 	int		i;
-	
+
 	if (!*splited)
-		return;
-	
+		return ;
 	i = -1;
 	while ((*splited)[++i])
 		free((*splited)[i]);
-	
 	free(*splited);
 }

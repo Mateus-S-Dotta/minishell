@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/27 17:03:25 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/04/28 23:37:08 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/04/29 00:50:09 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS_LEXER = $(LEXER_DIR)/expand.c \
 SRCS_PARSER = $(PARSER_DIR)/redirect.c \
               $(PARSER_DIR)/redirect_utils.c \
               $(PARSER_DIR)/command.c \
+              $(PARSER_DIR)/command_node.c \
               $(PARSER_DIR)/command_utils.c \
               $(PARSER_DIR)/unify_.c
 SRCS_HEREDOC = $(HEREDOC_DIR)/here_doc.c \

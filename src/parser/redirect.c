@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:42:43 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:56:28 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:11:47 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	def_red(t_flags *cmd, int flags, int to_fd, char *arq)
 	else
 		fd = open(arq, flags, 0777);
 	if (fd == -1)
-		free_all("Not Found Archive\n", 1);
+		free_all("No such file or directory\n", 1);
 	if (dup2(fd, to_fd) == -1)
 		free_all("Dup2 Error\n", 1);
 	close(fd);

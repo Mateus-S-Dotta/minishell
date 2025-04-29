@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/28 23:24:34 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 00:51:22 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,22 @@
 //Includes
 # include "./libft/libft.h"
 # include "structure.h"
-# include <readline/readline.h>  // readline
-# include <readline/history.h>   // readline history
-# include <stdio.h>              // printf, perror, strerror
-# include <stdlib.h>             // malloc, free, getenv
-# include <unistd.h>             // read, write, fork, execve, access, getcwd, chdir, isatty, ttyname, ttyslot
-# include <fcntl.h>              // open
-# include <sys/types.h>          // waitpid, wait3, wait4
-# include <sys/wait.h>           // wait, waitpid, wait3, wait4
-# include <signal.h>             // signal, sigaction, sigemptyset, sigaddset, kill
-# include <sys/stat.h>           // stat, lstat, fstat, unlink
-# include <sys/ioctl.h>          // ioctl
-# include <string.h>             // strerror
-# include <dirent.h>             // opendir, readdir, closedir
-# include <termios.h>            // tcsetattr, tcgetattr
-# include <termcap.h>            // tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
-# include <ttyent.h>             // ttyslot
-
-// valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <sys/stat.h>
+# include <sys/ioctl.h>
+# include <string.h>
+# include <dirent.h>
+# include <termios.h>
+# include <termcap.h>
+# include <ttyent.h>
 
 // Define
 # define HIS_ER "Historical Error"
@@ -72,6 +70,7 @@ char	*find_paths(char *cmd);
 void	normal_comand(char *cmd);
 void	create_cmds(t_cmds *cmds, char **cmd_words, int d);
 void	free_normal_comand(t_cmds *new_cmds, char **cmd_w);
+void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d);
 
 //Normal_comand_utils.c
 int		new_flag(t_cmds *new_cmds, char *cmd, int type);
@@ -140,7 +139,7 @@ void	free_splited_env(char ***splited);
 
 // Function_utils.c
 char	*trim_spaces(char *str);
-void	count_pipe();
+void	count_pipe(void);
 
 // Builtins_utils.c
 int		is_builtins(char *cmd, int range);
@@ -150,7 +149,7 @@ void	exec_builtins(t_cmds *cmds);
 int		ft_echo(t_cmds *cmd);
 
 // Ft_exit.c
-int	ft_exit(t_cmds *cmds);
+int		ft_exit(t_cmds *cmds);
 
 // Ft_pwd.c
 int		ft_pwd(void);
