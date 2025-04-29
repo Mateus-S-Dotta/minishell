@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:49:37 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/29 00:15:32 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:12:35 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ int	ft_echo(t_cmds *cmd)
 	}
 	while (flag_ptr)
 	{
-		if (flag_ptr->flag)
+		if (flag_ptr->flag && *(flag_ptr->flag))
+		{
 			ft_putstr_fd(flag_ptr->flag, 1);
-		if (flag_ptr->next)
-			write(1, " ", 1);
+			if (flag_ptr->next)
+				write(1, " ", 1);
+		}
 		flag_ptr = flag_ptr->next;
 	}
 	if (!flag_n)

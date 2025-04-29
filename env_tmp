@@ -49,8 +49,9 @@ QT_IM_MODULE=ibus
 XDG_RUNTIME_DIR=/run/user/1428541
 DOCKER_HOST=unix:///run/user/1428541/docker.sock
 XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/nfs/homes/lsilva-x/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/nfs/homes/lsilva-x/bin/nvim:/nfs/homes/lsilva-x/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin://nfs/homes/lsilva-x/Android/Sdk/platform-tools:/opt/flutter/flutter/bin
 GDMSESSION=ubuntu
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1428541/bus
 OMF_CONFIG=/nfs/homes/lsilva-x/.config/omf
-OLDPWD=/nfs/homes/lsilva-x
+OLDPWD=/nfs/homes/lsilva-x/minishell_all/little_bolsonaro/minishell_tester
 _=./minishell
