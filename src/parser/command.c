@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/28 21:41:49 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/28 23:24:15 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
-	if (is_builtins(cmds->cmd, 1) == 1)
+	if (is_builtins(cmds->cmd, 2) == 1)
 	{
 		if (get_t_min()->pipe_cnt == 1)
 			exec_builtins(cmds);

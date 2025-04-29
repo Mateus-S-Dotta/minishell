@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 17:21:32 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/28 23:42:34 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,9 @@ void	minishell(void)
 		}
 		if (verify_spaces(input))
 			continue ;
-		if (!ft_strcmp(trim_spaces(input), "exit"))
-		{
-			free_split(get_t_min()->env);
-			close_all(get_t_min()->in_fd, get_t_min()->out_fd);
-			break ;
-		}
 		add_history(input);
 		normal_comand(input);
-		wait_last_status(get_t_min());
+		wait_last_status();
 		free_all(NULL, -1);
 		if (dup2(get_t_min()->in_fd, 0) == -1)
 			return ;

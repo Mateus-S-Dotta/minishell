@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:37:18 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 20:22:14 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:34:12 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ static int	go_home(char **env)
 	ch_path(env, "PWD", home_pwd);
 	if (chdir(home_pwd) != 0)
 	{
-		printf ("bash: cd: %s: No such file or directory\n", home_pwd);
+		ft_putstr_fd("minishell: cd: ", 2);
+		ft_putstr_fd(home_pwd, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
 		return (free(crr_pwd), free(home_pwd), 0);
 	}
 	return (free(crr_pwd), free(home_pwd), 1);
@@ -83,7 +85,9 @@ static int	go_to(char **env, char *path)
 
 	if (chdir(path) != 0)
 	{
-		printf ("bash: cd: %s: No such file or directory\n", path);
+		ft_putstr_fd("minishell: cd: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
 		return (0);
 	}
 	new_pwd = (char *)malloc(sizeof(char) * 256);
@@ -91,7 +95,7 @@ static int	go_to(char **env, char *path)
 	crr_pwd = take_field_value(env, "PWD");
 	ch_path(env, "OLDPWD", crr_pwd);
 	ch_path(env, "PWD", new_pwd);
-	return (free(crr_pwd), free(new_pwd), 0);
+	return (free(crr_pwd), free(new_pwd), 1);
 }
 
 int	ft_cd(t_cmds *cmds, char ***env)
@@ -105,7 +109,10 @@ int	ft_cd(t_cmds *cmds, char ***env)
 		return (cod);
 	}
 	if (cmds->flags->next)
-		printf("minishell: cd: too many arguments\n");
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
+		return (1);
+	}
 	cod = go_to(*env, cmds->flags->flag);
 	int_env_file(*env);
 	if (!cod)

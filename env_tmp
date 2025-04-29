@@ -12,8 +12,8 @@ XMODIFIERS=@im=ibus
 DESKTOP_SESSION=ubuntu-xorg
 GTK_MODULES=gail:atk-bridge
 PWD=/home/ubuluc/minishell
-LOGNAME=ubuluc
 XDG_SESSION_DESKTOP=ubuntu-xorg
+LOGNAME=ubuluc
 XDG_SESSION_TYPE=x11
 GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
 SYSTEMD_EXEC_PID=4079
@@ -26,7 +26,7 @@ LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd
 XDG_CURRENT_DESKTOP=ubuntu:GNOME
 MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure
 VTE_VERSION=7600
-GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/cd1311ee_65c5_4d09_9650_07ec5901ec89
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/2ac19628_94c5_49f5_9bc8_67dc91c19b65
 LESSCLOSE=/usr/bin/lesspipe %s %s
 XDG_SESSION_CLASS=user
 TERM=xterm-256color
@@ -34,14 +34,14 @@ LESSOPEN=| /usr/bin/lesspipe %s
 USER=ubuluc
 GNOME_TERMINAL_SERVICE=:1.1605
 DISPLAY=:0
-SHLVL=1
+SHLVL=2
 GSM_SKIP_SSH_AGENT_WORKAROUND=true
 QT_IM_MODULE=ibus
 XDG_RUNTIME_DIR=/run/user/1000
 DEBUGINFOD_URLS=https://debuginfod.ubuntu.com 
 XDG_DATA_DIRS=/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
-PATH=/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/ubuluc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/ubuluc/.local/bin:/opt/nvim-linux64/bin:/home/ubuluc/.local/bin
+PATH=/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/linuxbrew/.linuxbrew/opt/node@22/bin:/home/ubuluc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/ubuluc/.local/bin:/opt/nvim-linux64/bin:/home/ubuluc/.local/bin:/opt/nvim-linux64/bin:/home/ubuluc/.local/bin
 GDMSESSION=ubuntu-xorg
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 _=./minishell
-OLDPWD=/home/ubuluc
+OLDPWD=/home/ubuluc/minishell/minishell_tester

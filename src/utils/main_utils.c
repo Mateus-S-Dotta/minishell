@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:21:51 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:57:07 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:11:49 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,22 @@ int	verify_spaces(char *input)
 	return (0);
 }
 
-void	wait_last_status(t_min *min)
+void	wait_last_status(void)
 {
 	int		i;
+	t_min	*env;
 	int		status;
 
 	i = -1;
-	while (min->prc_pid[++i])
+	env = get_t_min();
+	while (env->prc_pid[++i])
 	{
-		waitpid (min->prc_pid[i], &status, 0);
+		waitpid (env->prc_pid[i], &status, 0);
 		if (WIFEXITED(status))
-			min->sig = WEXITSTATUS(status);
+			env->sig = WEXITSTATUS(status);
 	}
 	while (i--)
-		min->prc_pid[i] = 0;
+		env->prc_pid[i] = 0;
 }
 
 char	**copy_env(char *env[])
