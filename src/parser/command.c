@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/29 21:23:16 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:22:45 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 		exec_builtins(cmds);
 	else
 		if (execve(cmds->path, cmd_w, get_t_min()->env) == -1)
+		{
+			free_split(get_t_min()->env);
 			new_error(cmd_w);
-	exit (get_t_min()->sig);
+		}
+	free_all(NULL, get_t_min()->sig);
+	// exit (get_t_min()->sig);
 }
 
 static int	heredoc_counter(t_cmds *cmds)
@@ -101,7 +105,7 @@ void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
 		&& ft_strncmp(cmd_w[i + d + 1], "|", 1) != 0)
 		create_cmds(new_cmds, cmd_w, d + i + 1);
 	else if (cmd_w[i + d] != NULL && ft_strncmp(cmd_w[i + d], "|", 1) == 0)
-		free_all("Palindromo\n", 1);
+		free_all("Invalid pipe compare\n", 1);
 }
 
 void	normal_comand(char *cmd)

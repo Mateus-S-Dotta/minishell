@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/29 19:17:41 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:33:09 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,5 +169,12 @@ int		ft_export(t_cmds *cmds, char ***env);
 
 // Ft_export_utils.c
 void	print_in_order(char **env);
+
+// gc.c
+t_gc_state	*gc_get_h(void);
+void	gc_init(void);
+void	*gc_malloc(unsigned long size, const char *tag);
+int		gc_collect(void);
+
 
 #endif

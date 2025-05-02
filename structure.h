@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:23:24 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 18:43:28 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:06:32 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,28 @@ typedef struct s_min
 	int		out_fd;
 	int		sig;
 	char	**env;
-	char	*src_pwd;
 	int		pipe_cnt;
 	int		error;
 	pid_t	prc_pid[1024];
 	t_cmds	*cmds;
 }	t_min;
+
+typedef struct gc_block
+{
+	void				*ptr;
+	unsigned long		size;
+	char				*tag;
+	struct gc_block		*next;
+}	t_gc_block;
+
+typedef struct gc_state
+{
+	t_gc_block		*allocations;
+	unsigned long	total_size;
+	unsigned long	num_allocations;
+}	t_gc_state;
+
+
+
 
 #endif

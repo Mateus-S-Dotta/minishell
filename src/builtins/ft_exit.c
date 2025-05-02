@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:57:20 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/28 23:40:19 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:56:41 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,21 @@ int	ft_exit(t_cmds *cmds)
 	exit_code = 0;
 	ft_putstr_fd("exit\n", 1);
 	if (!cmds->flags)
-		exit (0);
+		free_all(NULL, 0);
 	if (!is_num(cmds->flags->flag))
 	{
 		ft_putstr_fd("minishell: exit: ", 2);
 		ft_putstr_fd(cmds->flags->flag, 2);
 		ft_putstr_fd(": numeric argument required\n", 2);
-		exit (2);
+		free_all(NULL, 2);
 	}
 	if (cmds->flags->next)
 	{
 		ft_putstr_fd("minishell: exit: ", 2);
 		ft_putstr_fd("too many arguments\n", 2);
-		exit (1);
+		free_all(NULL, 1);
 	}
 	exit_code = ft_atoi(cmds->flags->flag) % 256;
-	exit(exit_code);
+	free_all(NULL, exit_code);
+	return (0);
 }
