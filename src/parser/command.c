@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/29 16:13:37 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 21:23:16 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 		redirect(get_t_min()->out_fd, 1, cmds);
 	close_all(p_fd[0], p_fd[1]);
 	cmd_w = unify_flags(cmds);
+	if (!cmds->cmd)
+		exit (get_t_min()->sig);
 	if (is_builtins(cmds->cmd, 7))
 		exec_builtins(cmds);
 	else

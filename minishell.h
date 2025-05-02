@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/29 00:51:22 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:17:41 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <string.h>
 # include <dirent.h>
 # include <termios.h>
+# include <errno.h>
 # include <termcap.h>
 # include <ttyent.h>
 
