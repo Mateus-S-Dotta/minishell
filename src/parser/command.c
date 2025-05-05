@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/02 19:22:45 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:49:34 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 	if (!cmds->cmd)
 		exit (get_t_min()->sig);
 	if (is_builtins(cmds->cmd, 7))
-		exec_builtins(cmds);
+		exec_builtins(cmds, p_fd);
 	else
 		if (execve(cmds->path, cmd_w, get_t_min()->env) == -1)
 		{
@@ -70,7 +70,7 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 	if (is_builtins(cmds->cmd, 2) == 1)
 	{
 		if (get_t_min()->pipe_cnt == 1)
-			exec_builtins(cmds);
+			exec_builtins(cmds, p_fd);
 		return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
 	}
 	process = fork();

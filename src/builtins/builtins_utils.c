@@ -6,13 +6,14 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/02 18:41:02 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:01:49 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	exec_builtins(t_cmds *cmds);
+void	exec_builtins(t_cmds *cmds, int *fd);
+
 
 static char	**builtins_arr(void)
 {
@@ -32,16 +33,17 @@ static char	**builtins_arr(void)
 	return (btarr);
 }
 
-static void	builtins_free(char **arr_builtins)
+static void	builtins_free(char ***arr_builtins)
 {
 	int		i;
 
-	i = -1;
-	if (!arr_builtins)
+	if (!arr_builtins || !*arr_builtins)
 		return ;
-	while (arr_builtins[++i])
-		free (arr_builtins[i]);
-	free(arr_builtins);
+	i = -1;
+	while ((*arr_builtins)[++i])
+		free((*arr_builtins)[i]);
+	free(*arr_builtins);
+	*arr_builtins = NULL;
 }
 
 int	is_builtins(char *cmd, int range)
@@ -53,11 +55,11 @@ int	is_builtins(char *cmd, int range)
 	btarr = builtins_arr();
 	while (++i < range)
 		if (ft_strncmp(cmd, btarr[i], ft_strlen(btarr[i]) + 1) == 0)
-			return (builtins_free(btarr), 1);
-	return (builtins_free(btarr), 0);
+			return (builtins_free(&btarr), 1);
+	return (builtins_free(&btarr), 0);
 }
 
-void	exec_builtins(t_cmds *cmds)
+void	exec_builtins(t_cmds *cmds, int *fd)
 {
 	char	**btarr;
 	int		cmd_s;
@@ -72,8 +74,9 @@ void	exec_builtins(t_cmds *cmds)
 		env->sig = ft_cd(cmds, &get_t_min()->env);
 	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s) && env->pipe_cnt == 1)
 	{
-		builtins_free(btarr);
-		env->sig = ft_exit(cmds);
+
+		builtins_free(&btarr);
+		env->sig = ft_exit(cmds, fd);
 	}
 	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s) && env->pipe_cnt == 1)
 		env->sig = ft_export(cmds, &get_t_min()->env);
@@ -85,5 +88,6 @@ void	exec_builtins(t_cmds *cmds)
 		env->sig = ft_pwd();
 	else if (!ft_strncmp(cmds->cmd, btarr[6], cmd_s))
 		env->sig = ft_env();
-	builtins_free(btarr);
+	if (btarr)
+		builtins_free(&btarr);
 }

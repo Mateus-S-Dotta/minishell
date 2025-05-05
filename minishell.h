@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/02 18:33:09 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:44:23 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,13 +144,14 @@ void	count_pipe(void);
 
 // Builtins_utils.c
 int		is_builtins(char *cmd, int range);
-void	exec_builtins(t_cmds *cmds);
+void	exec_builtins(t_cmds *cmds, int *fd);
+
 
 // Ft_echo.c
 int		ft_echo(t_cmds *cmd);
 
 // Ft_exit.c
-int		ft_exit(t_cmds *cmds);
+int		ft_exit(t_cmds *cmds, int *fd);
 
 // Ft_pwd.c
 int		ft_pwd(void);

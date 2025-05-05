@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/02 19:06:43 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:16:22 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	sig_quit_behavior()
 {
 	ft_putstr_fd("exit\n", 1);
 	free_split(get_t_min()->env);
+	close_all(get_t_min()->in_fd, get_t_min()->out_fd);
+	exit (0);
 }
 
 void	minishell(void)
@@ -61,10 +63,7 @@ void	minishell(void)
 		get_t_min()->env = update_env(&get_t_min()->env);
 		input = readline("minishell> ");
 		if (!input)
-		{
 			sig_quit_behavior();
-			break ;
-		}
 		if (verify_spaces(input))
 			continue ;
 		add_history(input);
