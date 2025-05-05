@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/27 17:03:25 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/04/29 00:50:09 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/05/05 16:23:07 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBS = -lreadline $(LIBFT_LIB)
 
 # Directories
 SRC_DIR = src
+GC_DIR = $(SRC_DIR)/gc
 UTILS_DIR = $(SRC_DIR)/utils
 LEXER_DIR = $(SRC_DIR)/lexer
 PARSER_DIR = $(SRC_DIR)/parser
@@ -69,7 +70,7 @@ SRCS = $(SRCS_MAIN) \
        $(SRCS_PARSER) \
        $(SRCS_HEREDOC) \
        $(SRCS_SIGNAL) \
-       $(SRCS_BUILTINS)
+       $(SRCS_BUILTINS) 
 
 OBJS = $(SRCS:.c=.o)
 

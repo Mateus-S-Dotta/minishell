@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/29 00:22:55 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:22:40 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 // valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
 
-static char	*get_crr_pwd(void)
-{
-	char	*cwd;
+// static char	*get_crr_pwd(void)
+// {
+// 	char	*cwd;
 
-	cwd = getcwd(NULL, 0);
-	if (!cwd)
-	{
-		perror("getcwd");
-		return (NULL);
-	}
-	return (cwd);
-}
+// 	cwd = getcwd(NULL, 0);
+// 	if (!cwd)
+// 	{
+// 		perror("getcwd");
+// 		return (NULL);
+// 	}
+// 	return (cwd);
+// }
 
 static void	inicialize(char **env)
 {
@@ -33,7 +33,6 @@ static void	inicialize(char **env)
 	get_t_min()->out_fd = dup(1);
 	get_t_min()->sig = 0;
 	get_t_min()->pipe_cnt = 0;
-	get_t_min()->src_pwd = get_crr_pwd();
 	int_env_file(env);
 	get_t_min()->env = NULL;
 }
@@ -43,6 +42,14 @@ t_min	*get_t_min(void)
 	static t_min	min;
 
 	return (&min);
+}
+
+static void	sig_quit_behavior()
+{
+	ft_putstr_fd("exit\n", 1);
+	free_split(get_t_min()->env);
+	close_all(get_t_min()->in_fd, get_t_min()->out_fd);
+	exit (0);
 }
 
 void	minishell(void)
@@ -55,11 +62,7 @@ void	minishell(void)
 		get_t_min()->env = update_env(&get_t_min()->env);
 		input = readline("minishell> ");
 		if (!input)
-		{
-			ft_putstr_fd("exiting\n", 1);
-			free_split(get_t_min()->env);
-			break ;
-		}
+			sig_quit_behavior();
 		if (verify_spaces(input))
 			continue ;
 		add_history(input);

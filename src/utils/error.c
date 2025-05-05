@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:06:39 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:56:54 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:21:35 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	free_split(char **split)
 	int	i;
 
 	i = -1;
+	if (!split || !*split)
+		return ;
 	while (split[++i] != NULL)
 		free(split[i]);
 	free(split);
@@ -64,6 +66,7 @@ void	exit_error_minishell(char *str, int error_num)
 {
 	if (get_t_min()->env != NULL)
 		free_split(get_t_min()->env);
-	ft_putstr_fd(str, 2);
+	if(str)
+		ft_putstr_fd(str, 2);
 	exit(error_num);
 }

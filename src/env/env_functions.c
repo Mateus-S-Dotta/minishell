@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 17:02:29 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/29 00:27:40 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:19:55 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,11 @@ void	free_splited_env(char ***splited)
 {
 	int		i;
 
-	if (!*splited)
+	if (!splited || !*splited)
 		return ;
 	i = -1;
 	while ((*splited)[++i])
 		free((*splited)[i]);
 	free(*splited);
+	*splited = NULL;
 }
