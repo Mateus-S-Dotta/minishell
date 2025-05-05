@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/27 17:03:25 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/05/02 18:38:48 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/05/05 16:23:07 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,6 @@ SRCS_BUILTINS = $(BUILTINS_DIR)/builtins_utils.c \
                 $(BUILTINS_DIR)/export_utils.c \
                 $(BUILTINS_DIR)/ft_unset.c \
                 $(BUILTINS_DIR)/ft_exit.c
-SRCS_GC = $(GC_DIR)/gc.c
 
 SRCS = $(SRCS_MAIN) \
        $(SRCS_UTILS) \
@@ -71,8 +70,7 @@ SRCS = $(SRCS_MAIN) \
        $(SRCS_PARSER) \
        $(SRCS_HEREDOC) \
        $(SRCS_SIGNAL) \
-       $(SRCS_BUILTINS) \
-       $(SRCS_GC)
+       $(SRCS_BUILTINS) 
 
 OBJS = $(SRCS:.c=.o)
 

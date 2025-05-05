@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/05 16:16:22 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:22:40 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	inicialize(char **env)
 	get_t_min()->pipe_cnt = 0;
 	int_env_file(env);
 	get_t_min()->env = NULL;
-	gc_init();
 }
 
 t_min	*get_t_min(void)
@@ -83,6 +82,5 @@ int	main(int argc, char *argv[], char *env[])
 	(void)argv;
 	inicialize(env);
 	minishell();
-	gc_collect();
 	return (0);
 }
