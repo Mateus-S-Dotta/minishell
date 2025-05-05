@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/05 16:23:15 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:57:57 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	print_env(char **env);
 
 // Main
 t_min	*get_t_min(void);
+void	minishell(void);
 
 // Main_utils.c
 int		verify_spaces(char *input);

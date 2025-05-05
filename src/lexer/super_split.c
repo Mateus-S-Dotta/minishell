@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:56:06 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:02:34 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ static void	find_quote(char **cmd)
 			count_quote(count, &in_quotes, 1, 0);
 	}
 	if (count[0] % 2 != 0 || count[1] % 2 != 0)
-		exit_error_minishell("No Closed quote\n", 1);
+	{
+		ft_putstr_fd("No Closed quote\n", 2);
+		minishell();
+	}
 }
 
 char	**super_ft_split(char *cmd)
