@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/06 17:02:03 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:52:55 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,15 @@ char	**super_ft_split(char *cmd)
 	int		i;
 	char	**cmds_w;
 
-	find_quote(&cmd); //verify if every single and double quoute is closed
+	find_quote(&cmd); //verify if every single and double quoute is closed and expand under N conditions
 	i = 0;
 	while (cmd[i] != '\0' && (cmd[i] == 32 || cmd[i] == '\''
 			|| cmd[i] == '\"'))
 		i++;
-	if (cmd[i] == '\0')
+	if (cmd[i] == '\0') // expand nothing
 	{
 		free(cmd);
-		exit_error_minishell("", 1);
+		minishell();
 	}
 	cmds_w = super_split(cmd);
 	free(cmd);

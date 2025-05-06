@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/06 17:14:10 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:18:33 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	there_is_heredok(char **cmd, int i)
 	*/
 	if (i == 0)
 	{
-	if (cmd[0][0] == '$' && is_word(cmd[0], 1))
-		return (0); // Allow expansion for the first argument if it's an env variable
-	return (1);
+		if (cmd[0][0] == '$' && is_word(cmd[0], 1))
+			return (0); // Allow expansion for the first argument if it's an env variable
+		return (1);
 	}
 	i--;
 	while (i >= 0 && (cmd[0][i] == '\"' || cmd[0][i] == '\''))
