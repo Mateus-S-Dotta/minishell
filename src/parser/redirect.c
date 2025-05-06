@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:42:43 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/29 19:31:50 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:18:57 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static void	def_red(t_flags *cmd, int flags, int to_fd, char *arq)
 	if (fd == -1)
 	{
 		if (errno == ENOENT)
+		{
 			error_msg = "Error: No such file or directory\n";
+			ft_putstr_fd("foundfound\n", debug_fd());
+		}
 		else if (errno == EACCES)
 			error_msg = "Error: Permission denied\n";
 		else

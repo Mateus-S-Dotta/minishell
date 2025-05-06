@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/05 16:22:40 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:57:16 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,18 @@ void	minishell(void)
 
 	while (1)
 	{
-		set_std_sig();
-		get_t_min()->env = update_env(&get_t_min()->env);
+		set_std_sig(); //update signal
+		get_t_min()->env = update_env(&get_t_min()->env); //update env based on env_tmp file
 		input = readline("minishell> ");
 		if (!input)
-			sig_quit_behavior();
-		if (verify_spaces(input))
+			sig_quit_behavior(); //qui the program if no input (as CTRL + D = EOF)
+		if (verify_spaces(input)) //input based in only spaces or tab
 			continue ;
-		add_history(input);
+		add_history(input); //standart add history
+
 		normal_comand(input);
 		wait_last_status();
+		
 		free_all(NULL, -1);
 		if (dup2(get_t_min()->in_fd, 0) == -1)
 			return ;

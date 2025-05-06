@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/05 18:02:34 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:02:03 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,23 +77,23 @@ static void	find_quote(char **cmd)
 	int	in_quotes;
 
 	i = -1;
-	count[0] = 0;
-	count[1] = 0;
+	count[0] = 0; // single quoute
+	count[1] = 0; //double quoute
 	in_quotes = 0;
 	while (cmd[0][++i] != '\0')
 	{
 		if (cmd[0][i] == '$' && in_quotes != 1)
 			verify_money_start(cmd, &i, &in_quotes, count);
 		else if (cmd[0][i] == '\"' && in_quotes == 0)
-			count_quote(count, &in_quotes, 1, 2);
+			count_quote(count, &in_quotes, 1, 2); //find " = 2
 		else if (cmd[0][i] == '\'' && in_quotes == 0)
-			count_quote(count, &in_quotes, 0, 1);
+			count_quote(count, &in_quotes, 0, 1); //find ' = 1
 		else if (cmd[0][i] == '\'' && in_quotes == 1)
-			count_quote(count, &in_quotes, 0, 0);
+			count_quote(count, &in_quotes, 0, 0); //close ' = 0
 		else if (cmd[0][i] == '\"' && in_quotes == 2)
-			count_quote(count, &in_quotes, 1, 0);
+			count_quote(count, &in_quotes, 1, 0); //cloe " = 0
 	}
-	if (count[0] % 2 != 0 || count[1] % 2 != 0)
+	if (count[0] % 2 != 0 || count[1] % 2 != 0) // no closed quoute
 	{
 		ft_putstr_fd("No Closed quote\n", 2);
 		minishell();
@@ -105,7 +105,7 @@ char	**super_ft_split(char *cmd)
 	int		i;
 	char	**cmds_w;
 
-	find_quote(&cmd);
+	find_quote(&cmd); //verify if every single and double quoute is closed
 	i = 0;
 	while (cmd[i] != '\0' && (cmd[i] == 32 || cmd[i] == '\''
 			|| cmd[i] == '\"'))

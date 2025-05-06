@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 00:49:01 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/02 18:47:09 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:29:10 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ void	free_normal_comand(t_cmds *new_cmds, char **cmd_w)
 	if (new_cmds->path != NULL)
 		free(new_cmds->path);
 	free_split(cmd_w);
-	free_all("Comand Not Found\n", 1);
+	free_all("Command Not Found\n", 1);
 }

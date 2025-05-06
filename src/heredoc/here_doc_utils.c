@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/29 00:30:41 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:14:10 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,21 @@ void	std_hd_sig(void)
 
 int	there_is_heredok(char **cmd, int i)
 {
+	/*
+	Normal: command << delimitador
+	as: cat << EOF
+	but the heredoc(<<) don't depend anything to happend, so the
+	verification covers the follow case:
+	$HOME << EOF -> the $HOME don't must expand also as bash
+	but this fall in cases where is passed a single env as
+	> $HOME -> it will not expand and the correct behavior is expand
+	*/
 	if (i == 0)
-		return (1);
+	{
+	if (cmd[0][0] == '$' && is_word(cmd[0], 1))
+		return (0); // Allow expansion for the first argument if it's an env variable
+	return (1);
+	}
 	i--;
 	while (i >= 0 && (cmd[0][i] == '\"' || cmd[0][i] == '\''))
 		i--;

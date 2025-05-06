@@ -1,0 +1,460 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00      324     0.00     0.00  get_next_line
+  0.00      0.00     0.00      324     0.00     0.00  gnl_content
+  0.00      0.00     0.00      324     0.00     0.00  gnl_line
+  0.00      0.00     0.00      324     0.00     0.00  gnl_rest
+  0.00      0.00     0.00       71     0.00     0.00  get_t_min
+  0.00      0.00     0.00       49     0.00     0.00  is_word
+  0.00      0.00     0.00        7     0.00     0.00  copy_quotes_copy
+  0.00      0.00     0.00        7     0.00     0.00  open_file
+  0.00      0.00     0.00        7     0.00     0.00  see_free
+  0.00      0.00     0.00        4     0.00     0.00  builtins_arr
+  0.00      0.00     0.00        4     0.00     0.00  builtins_free
+  0.00      0.00     0.00        4     0.00     0.00  close_all
+  0.00      0.00     0.00        4     0.00     0.00  copy_quotes
+  0.00      0.00     0.00        4     0.00     0.00  copy_str
+  0.00      0.00     0.00        4     0.00     0.00  count_letter
+  0.00      0.00     0.00        4     0.00     0.00  free_split
+  0.00      0.00     0.00        4     0.00     0.00  jump_all
+  0.00      0.00     0.00        4     0.00     0.00  jump_quotes
+  0.00      0.00     0.00        4     0.00     0.00  unify
+  0.00      0.00     0.00        3     0.00     0.00  cnt_env
+  0.00      0.00     0.00        3     0.00     0.00  copy_verify
+  0.00      0.00     0.00        3     0.00     0.00  count_pipe
+  0.00      0.00     0.00        3     0.00     0.00  count_s_s
+  0.00      0.00     0.00        3     0.00     0.00  create_cmds
+  0.00      0.00     0.00        3     0.00     0.00  find_quote
+  0.00      0.00     0.00        3     0.00     0.00  free_all
+  0.00      0.00     0.00        3     0.00     0.00  heredoc_counter
+  0.00      0.00     0.00        3     0.00     0.00  is_builtins
+  0.00      0.00     0.00        3     0.00     0.00  normal_comand
+  0.00      0.00     0.00        3     0.00     0.00  pipe_comand
+  0.00      0.00     0.00        3     0.00     0.00  set_std_cmd
+  0.00      0.00     0.00        3     0.00     0.00  set_std_sig
+  0.00      0.00     0.00        3     0.00     0.00  super_ft_split
+  0.00      0.00     0.00        3     0.00     0.00  super_split
+  0.00      0.00     0.00        3     0.00     0.00  update_env
+  0.00      0.00     0.00        3     0.00     0.00  verify_spaces
+  0.00      0.00     0.00        2     0.00     0.00  count_quote
+  0.00      0.00     0.00        2     0.00     0.00  free_splited_env
+  0.00      0.00     0.00        2     0.00     0.00  super_close
+  0.00      0.00     0.00        2     0.00     0.00  wait_last_status
+  0.00      0.00     0.00        1     0.00     0.00  count_unify
+  0.00      0.00     0.00        1     0.00     0.00  exec_builtins
+  0.00      0.00     0.00        1     0.00     0.00  exit_error_minishell
+  0.00      0.00     0.00        1     0.00     0.00  ft_exit
+  0.00      0.00     0.00        1     0.00     0.00  inicialize
+  0.00      0.00     0.00        1     0.00     0.00  int_env_file
+  0.00      0.00     0.00        1     0.00     0.00  max_count
+  0.00      0.00     0.00        1     0.00     0.00  minishell
+  0.00      0.00     0.00        1     0.00     0.00  new_flag
+  0.00      0.00     0.00        1     0.00     0.00  real_unify
+  0.00      0.00     0.00        1     0.00     0.00  redefiny_split_unify
+  0.00      0.00     0.00        1     0.00     0.00  write_in_file
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00     162/324         update_env [35]
+                0.00    0.00     162/324         cnt_env [20]
+[1]      0.0    0.00    0.00     324         get_next_line [1]
+                0.00    0.00     324/324         gnl_content [2]
+                0.00    0.00     324/324         gnl_line [3]
+                0.00    0.00     324/324         gnl_rest [4]
+-----------------------------------------------
+                0.00    0.00     324/324         get_next_line [1]
+[2]      0.0    0.00    0.00     324         gnl_content [2]
+-----------------------------------------------
+                0.00    0.00     324/324         get_next_line [1]
+[3]      0.0    0.00    0.00     324         gnl_line [3]
+-----------------------------------------------
+                0.00    0.00     324/324         get_next_line [1]
+[4]      0.0    0.00    0.00     324         gnl_rest [4]
+-----------------------------------------------
+                0.00    0.00       1/71          pipe_comand [30]
+                0.00    0.00       1/71          exec_builtins [42]
+                0.00    0.00       2/71          wait_last_status [40]
+                0.00    0.00       2/71          exit_error_minishell [43]
+                0.00    0.00       5/71          inicialize [45]
+                0.00    0.00       6/71          count_pipe [22]
+                0.00    0.00       6/71          copy_verify [21]
+                0.00    0.00       9/71          normal_comand [29]
+                0.00    0.00      10/71          minishell [48]
+                0.00    0.00      29/71          free_all [26]
+[5]      0.0    0.00    0.00      71         get_t_min [5]
+-----------------------------------------------
+                0.00    0.00       1/49          copy_quotes [13]
+                0.00    0.00       1/49          jump_quotes [18]
+                0.00    0.00      14/49          copy_str [14]
+                0.00    0.00      15/49          count_letter [15]
+                0.00    0.00      18/49          count_s_s [23]
+[6]      0.0    0.00    0.00      49         is_word [6]
+-----------------------------------------------
+                0.00    0.00       7/7           copy_quotes [13]
+[7]      0.0    0.00    0.00       7         copy_quotes_copy [7]
+-----------------------------------------------
+                0.00    0.00       1/7           int_env_file [46]
+                0.00    0.00       3/7           update_env [35]
+                0.00    0.00       3/7           cnt_env [20]
+[8]      0.0    0.00    0.00       7         open_file [8]
+-----------------------------------------------
+                0.00    0.00       7/7           free_all [26]
+[9]      0.0    0.00    0.00       7         see_free [9]
+-----------------------------------------------
+                0.00    0.00       1/4           exec_builtins [42]
+                0.00    0.00       3/4           is_builtins [28]
+[10]     0.0    0.00    0.00       4         builtins_arr [10]
+-----------------------------------------------
+                0.00    0.00       1/4           exec_builtins [42]
+                0.00    0.00       3/4           is_builtins [28]
+[11]     0.0    0.00    0.00       4         builtins_free [11]
+-----------------------------------------------
+                0.00    0.00       1/4           free_all [26]
+                0.00    0.00       1/4           ft_exit [44]
+                0.00    0.00       2/4           super_close [39]
+[12]     0.0    0.00    0.00       4         close_all [12]
+-----------------------------------------------
+                0.00    0.00       4/4           copy_str [14]
+[13]     0.0    0.00    0.00       4         copy_quotes [13]
+                0.00    0.00       7/7           copy_quotes_copy [7]
+                0.00    0.00       1/49          is_word [6]
+-----------------------------------------------
+                0.00    0.00       4/4           super_split [34]
+[14]     0.0    0.00    0.00       4         copy_str [14]
+                0.00    0.00      14/49          is_word [6]
+                0.00    0.00       4/4           copy_quotes [13]
+-----------------------------------------------
+                0.00    0.00       4/4           super_split [34]
+[15]     0.0    0.00    0.00       4         count_letter [15]
+                0.00    0.00      15/49          is_word [6]
+-----------------------------------------------
+                0.00    0.00       1/4           exit_error_minishell [43]
+                0.00    0.00       3/4           normal_comand [29]
+[16]     0.0    0.00    0.00       4         free_split [16]
+-----------------------------------------------
+                0.00    0.00       4/4           count_s_s [23]
+[17]     0.0    0.00    0.00       4         jump_all [17]
+-----------------------------------------------
+                0.00    0.00       4/4           count_s_s [23]
+[18]     0.0    0.00    0.00       4         jump_quotes [18]
+                0.00    0.00       1/49          is_word [6]
+-----------------------------------------------
+                0.00    0.00       1/4           copy_verify [21]
+                0.00    0.00       3/4           create_cmds [24]
+[19]     0.0    0.00    0.00       4         unify [19]
+                0.00    0.00       1/1           real_unify [50]
+-----------------------------------------------
+                0.00    0.00       3/3           update_env [35]
+[20]     0.0    0.00    0.00       3         cnt_env [20]
+                0.00    0.00     162/324         get_next_line [1]
+                0.00    0.00       3/7           open_file [8]
+-----------------------------------------------
+                0.00    0.00       3/3           create_cmds [24]
+[21]     0.0    0.00    0.00       3         copy_verify [21]
+                0.00    0.00       6/71          get_t_min [5]
+                0.00    0.00       1/4           unify [19]
+                0.00    0.00       1/1           new_flag [49]
+-----------------------------------------------
+                0.00    0.00       3/3           normal_comand [29]
+[22]     0.0    0.00    0.00       3         count_pipe [22]
+                0.00    0.00       6/71          get_t_min [5]
+-----------------------------------------------
+                0.00    0.00       3/3           super_split [34]
+[23]     0.0    0.00    0.00       3         count_s_s [23]
+                0.00    0.00      18/49          is_word [6]
+                0.00    0.00       4/4           jump_quotes [18]
+                0.00    0.00       4/4           jump_all [17]
+-----------------------------------------------
+                0.00    0.00       3/3           normal_comand [29]
+[24]     0.0    0.00    0.00       3         create_cmds [24]
+                0.00    0.00       3/4           unify [19]
+                0.00    0.00       3/3           copy_verify [21]
+-----------------------------------------------
+                0.00    0.00       3/3           super_ft_split [33]
+[25]     0.0    0.00    0.00       3         find_quote [25]
+                0.00    0.00       2/2           count_quote [37]
+-----------------------------------------------
+                0.00    0.00       1/3           ft_exit [44]
+                0.00    0.00       2/3           minishell [48]
+[26]     0.0    0.00    0.00       3         free_all [26]
+                0.00    0.00      29/71          get_t_min [5]
+                0.00    0.00       7/7           see_free [9]
+                0.00    0.00       1/4           close_all [12]
+                0.00    0.00       1/1           exit_error_minishell [43]
+-----------------------------------------------
+                0.00    0.00       3/3           pipe_comand [30]
+[27]     0.0    0.00    0.00       3         heredoc_counter [27]
+-----------------------------------------------
+                0.00    0.00       3/3           pipe_comand [30]
+[28]     0.0    0.00    0.00       3         is_builtins [28]
+                0.00    0.00       3/4           builtins_arr [10]
+                0.00    0.00       3/4           builtins_free [11]
+-----------------------------------------------
+                0.00    0.00       3/3           minishell [48]
+[29]     0.0    0.00    0.00       3         normal_comand [29]
+                0.00    0.00       9/71          get_t_min [5]
+                0.00    0.00       3/3           super_ft_split [33]
+                0.00    0.00       3/4           free_split [16]
+                0.00    0.00       3/3           create_cmds [24]
+                0.00    0.00       3/3           count_pipe [22]
+                0.00    0.00       3/3           pipe_comand [30]
+-----------------------------------------------
+                0.00    0.00       3/3           normal_comand [29]
+[30]     0.0    0.00    0.00       3         pipe_comand [30]
+                0.00    0.00       3/3           heredoc_counter [27]
+                0.00    0.00       3/3           set_std_cmd [31]
+                0.00    0.00       3/3           is_builtins [28]
+                0.00    0.00       2/2           super_close [39]
+                0.00    0.00       1/71          get_t_min [5]
+                0.00    0.00       1/1           exec_builtins [42]
+-----------------------------------------------
+                0.00    0.00       3/3           pipe_comand [30]
+[31]     0.0    0.00    0.00       3         set_std_cmd [31]
+-----------------------------------------------
+                0.00    0.00       3/3           minishell [48]
+[32]     0.0    0.00    0.00       3         set_std_sig [32]
+-----------------------------------------------
+                0.00    0.00       3/3           normal_comand [29]
+[33]     0.0    0.00    0.00       3         super_ft_split [33]
+                0.00    0.00       3/3           find_quote [25]
+                0.00    0.00       3/3           super_split [34]
+-----------------------------------------------
+                0.00    0.00       3/3           super_ft_split [33]
+[34]     0.0    0.00    0.00       3         super_split [34]
+                0.00    0.00       4/4           count_letter [15]
+                0.00    0.00       4/4           copy_str [14]
+                0.00    0.00       3/3           count_s_s [23]
+-----------------------------------------------
+                0.00    0.00       3/3           minishell [48]
+[35]     0.0    0.00    0.00       3         update_env [35]
+                0.00    0.00     162/324         get_next_line [1]
+                0.00    0.00       3/3           cnt_env [20]
+                0.00    0.00       3/7           open_file [8]
+                0.00    0.00       2/2           free_splited_env [38]
+-----------------------------------------------
+                0.00    0.00       3/3           minishell [48]
+[36]     0.0    0.00    0.00       3         verify_spaces [36]
+-----------------------------------------------
+                0.00    0.00       2/2           find_quote [25]
+[37]     0.0    0.00    0.00       2         count_quote [37]
+-----------------------------------------------
+                0.00    0.00       2/2           update_env [35]
+[38]     0.0    0.00    0.00       2         free_splited_env [38]
+-----------------------------------------------
+                0.00    0.00       2/2           pipe_comand [30]
+[39]     0.0    0.00    0.00       2         super_close [39]
+                0.00    0.00       2/4           close_all [12]
+-----------------------------------------------
+                0.00    0.00       2/2           minishell [48]
+[40]     0.0    0.00    0.00       2         wait_last_status [40]
+                0.00    0.00       2/71          get_t_min [5]
+-----------------------------------------------
+                0.00    0.00       1/1           real_unify [50]
+[41]     0.0    0.00    0.00       1         count_unify [41]
+-----------------------------------------------
+                0.00    0.00       1/1           pipe_comand [30]
+[42]     0.0    0.00    0.00       1         exec_builtins [42]
+                0.00    0.00       1/71          get_t_min [5]
+                0.00    0.00       1/4           builtins_arr [10]
+                0.00    0.00       1/4           builtins_free [11]
+                0.00    0.00       1/1           ft_exit [44]
+-----------------------------------------------
+                0.00    0.00       1/1           free_all [26]
+[43]     0.0    0.00    0.00       1         exit_error_minishell [43]
+                0.00    0.00       2/71          get_t_min [5]
+                0.00    0.00       1/4           free_split [16]
+-----------------------------------------------
+                0.00    0.00       1/1           exec_builtins [42]
+[44]     0.0    0.00    0.00       1         ft_exit [44]
+                0.00    0.00       1/4           close_all [12]
+                0.00    0.00       1/3           free_all [26]
+-----------------------------------------------
+                0.00    0.00       1/1           main [116]
+[45]     0.0    0.00    0.00       1         inicialize [45]
+                0.00    0.00       5/71          get_t_min [5]
+                0.00    0.00       1/1           int_env_file [46]
+-----------------------------------------------
+                0.00    0.00       1/1           inicialize [45]
+[46]     0.0    0.00    0.00       1         int_env_file [46]
+                0.00    0.00       1/7           open_file [8]
+                0.00    0.00       1/1           write_in_file [52]
+-----------------------------------------------
+                0.00    0.00       1/1           real_unify [50]
+[47]     0.0    0.00    0.00       1         max_count [47]
+-----------------------------------------------
+                0.00    0.00       1/1           main [116]
+[48]     0.0    0.00    0.00       1         minishell [48]
+                0.00    0.00      10/71          get_t_min [5]
+                0.00    0.00       3/3           set_std_sig [32]
+                0.00    0.00       3/3           update_env [35]
+                0.00    0.00       3/3           verify_spaces [36]
+                0.00    0.00       3/3           normal_comand [29]
+                0.00    0.00       2/2           wait_last_status [40]
+                0.00    0.00       2/3           free_all [26]
+-----------------------------------------------
+                0.00    0.00       1/1           copy_verify [21]
+[49]     0.0    0.00    0.00       1         new_flag [49]
+-----------------------------------------------
+                0.00    0.00       1/1           unify [19]
+[50]     0.0    0.00    0.00       1         real_unify [50]
+                0.00    0.00       1/1           max_count [47]
+                0.00    0.00       1/1           count_unify [41]
+                0.00    0.00       1/1           redefiny_split_unify [51]
+-----------------------------------------------
+                0.00    0.00       1/1           real_unify [50]
+[51]     0.0    0.00    0.00       1         redefiny_split_unify [51]
+-----------------------------------------------
+                0.00    0.00       1/1           int_env_file [46]
+[52]     0.0    0.00    0.00       1         write_in_file [52]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [10] builtins_arr (builtins_utils.c) [16] free_split    [29] normal_comand
+  [11] builtins_free (builtins_utils.c) [38] free_splited_env [8] open_file
+  [12] close_all              [44] ft_exit                [30] pipe_comand (command.c)
+  [20] cnt_env                 [1] get_next_line          [50] real_unify (unify_.c)
+  [13] copy_quotes (super_split_utils.c) [5] get_t_min    [51] redefiny_split_unify (unify_.c)
+   [7] copy_quotes_copy (super_split_utils.c) [2] gnl_content (get_next_line.c) [9] see_free
+  [14] copy_str                [3] gnl_line (get_next_line.c) [31] set_std_cmd
+  [21] copy_verify             [4] gnl_rest (get_next_line.c) [32] set_std_sig
+  [15] count_letter           [27] heredoc_counter (command.c) [39] super_close
+  [22] count_pipe             [45] inicialize (main.c)    [33] super_ft_split
+  [37] count_quote (super_split.c) [46] int_env_file      [34] super_split (super_split.c)
+  [23] count_s_s (super_split.c) [28] is_builtins         [19] unify
+  [41] count_unify (unify_.c)  [6] is_word                [35] update_env
+  [24] create_cmds            [17] jump_all               [36] verify_spaces
+  [42] exec_builtins          [18] jump_quotes            [40] wait_last_status
+  [43] exit_error_minishell   [47] max_count (unify_.c)   [52] write_in_file
+  [25] find_quote (super_split.c) [48] minishell
+  [26] free_all               [49] new_flag

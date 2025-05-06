@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/05 17:47:34 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:58:18 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,27 @@ static int	heredoc_counter(t_cmds *cmds)
 	return (i);
 }
 
+// static int	pipe_node_node(t_cmds *cmds, int *p_fd, int qnd_hd)
+// {
+// 	if (is_builtins(cmds->cmd, 2) == 1)
+// 	{
+// 		if (get_t_min()->pipe_cnt == 1)
+// 			exec_builtins(cmds, p_fd);
+// 		return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
+// 	}
+// 	if (cmds->cmd[0] == '$')
+// 	{
+// 		if (ft_strcmp(cmds->cmd, "$EMPTY") == 0)
+// 			return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
+// 		else
+// 		{
+// 			ft_putstr_fd("Error: is a directory\n", 2);
+// 			return (super_close(p_fd[0], p_fd[1], 1, qnd_hd), -1);
+// 		}
+// 	}
+// 	return (0);
+// }
+
 static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 {
 	int		p_fd[2];
@@ -69,12 +90,6 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
-	if (is_builtins(cmds->cmd, 2) == 1)
-	{
-		if (get_t_min()->pipe_cnt == 1)
-			exec_builtins(cmds, p_fd);
-		return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
-	}
 	process = fork();
 	if (process == 0)
 		pipe_node(cmds, cmds2, p_fd);
@@ -117,7 +132,7 @@ void	normal_comand(char *cmd)
 	int		i;
 
 	i = -1;
-	cmd_w = super_ft_split(cmd);
+	cmd_w = super_ft_split(cmd); // Recive the input captured by readline and split into a char**
 	create_cmds(get_t_min()->cmds, cmd_w, 0);
 	free_split(cmd_w);
 	count_pipe();
