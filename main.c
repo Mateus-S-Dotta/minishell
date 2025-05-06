@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/06 16:57:16 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:22:23 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	minishell(void)
 
 	while (1)
 	{
-		set_std_sig(); //update signal
+		set_std_sig(); //update si	gnal
 		get_t_min()->env = update_env(&get_t_min()->env); //update env based on env_tmp file
 		input = readline("minishell> ");
 		if (!input)

@@ -22,7 +22,7 @@ LOGNAME=lsilva-x
 XDG_SESSION_DESKTOP=ubuntu
 XDG_SESSION_TYPE=x11
 GPG_AGENT_INFO=/run/user/1428541/gnupg/S.gpg-agent:0:1
-SYSTEMD_EXEC_PID=148262
+SYSTEMD_EXEC_PID=144797
 XAUTHORITY=/nfs/homes/lsilva-x/.Xauthority
 XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/lsilva-x
 HOME=/nfs/homes/lsilva-x
@@ -31,7 +31,7 @@ LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd
 XDG_CURRENT_DESKTOP=ubuntu:GNOME
 VTE_VERSION=6800
 XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
-GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/cfe40c3f_c667_412c_acef_bc18283d3913
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/87672e54_a3fd_49d5_af47_79724c566335
 XDG_SESSION_CLASS=user
 ANDROID_HOME=//nfs/homes/lsilva-x/Android/Sdk
 TERM=xterm-256color
