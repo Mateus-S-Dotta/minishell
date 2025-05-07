@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/06 18:58:05 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:40:51 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char	**super_ft_split(char *cmd)
 	if (cmd[i] == '\0') // expand nothing
 	{
 		free(cmd);
-		minishell();
+		// minishell();
 	}
 	cmds_w = super_split(cmd);
 	free(cmd);

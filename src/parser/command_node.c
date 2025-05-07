@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 00:49:01 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/05 18:29:10 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:47:06 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	create_cmds(t_cmds *cmds, char **cmd_w, int d)
 	if (ft_strncmp(cmd_w[d], "|", 1) == 0)
 	{
 		free_split(cmd_w);
-		free_all("Start Pipe\n", 1);
+		ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+		minishell();
 	}
 	i = 0;
 	while (cmd_w[i + d] != NULL && ft_strncmp(cmd_w[i + d], "|", 1) != 0)
