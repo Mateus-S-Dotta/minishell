@@ -6,26 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/06 20:22:23 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:15:16 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // valgrind --leak-check=full --track-fds=yes --track-origins=yes --show-leak-kinds=all --suppressions=supp.supp ./minishell
-
-// static char	*get_crr_pwd(void)
-// {
-// 	char	*cwd;
-
-// 	cwd = getcwd(NULL, 0);
-// 	if (!cwd)
-// 	{
-// 		perror("getcwd");
-// 		return (NULL);
-// 	}
-// 	return (cwd);
-// }
 
 static void	inicialize(char **env)
 {
@@ -58,7 +45,7 @@ void	minishell(void)
 
 	while (1)
 	{
-		set_std_sig(); //update si	gnal
+		set_std_sig(); //update signal
 		get_t_min()->env = update_env(&get_t_min()->env); //update env based on env_tmp file
 		input = readline("minishell> ");
 		if (!input)

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:42:43 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/06 21:03:59 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:51:04 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	def_red(t_flags *cmd, int flags, int to_fd, char *arq)
 	char	*error_msg;
 
 	if (arq == NULL)
-		fd = open(cmd->flag, flags, 0777);
+		fd = open(cmd->flag, flags, 0644);
 	else
-		fd = open(arq, flags, 0777);
+		fd = open(arq, flags, 0644);
 	if (fd == -1)
 	{
 		if (errno == ENOENT)
@@ -65,7 +65,7 @@ static int	if_redirect_c(t_cmds *f1, t_flags *f2)
 			def_red(f2, O_WRONLY | O_CREAT | O_APPEND, 1, NULL);
 		else if (f1->cmd[0] == '>' && f1->cmd[1] == '>' && f1->cmd[2] != '\0')
 			def_red(NULL, O_WRONLY | O_CREAT | O_APPEND, 1, &f1->cmd[2]);
-		else if (f1->cmd[0] == '>' && f1->cmd[1] != '\0')
+		else if (f1->cmd[0] == '>' && f1->cmd[1] != '\0') // caso onde o redirect esta junto com o token ">output echo "random"
 			def_red(NULL, O_TRUNC | O_WRONLY | O_CREAT, 1, &f1->cmd[1]);
 		free_cmd(f1);
 		return (1);
@@ -76,7 +76,7 @@ static void	redirect_c(t_cmds *c, int *controller)
 {
 	t_flags	*flags_copy;
 
-	if (c->quote == 0 && c->cmd && (c->cmd[0] == '>' || c->cmd[0] == '<'))
+	if (c->quote == 0 && c->cmd && (c->cmd[0] == '>' || c->cmd[0] == '<')) //case where the redirect is the cmd "> saida.txt echo "hello""
 	{
 		flags_copy = c->flags;
 		controller[if_redirect_c(c, flags_copy)] = 1;
@@ -119,7 +119,7 @@ void	redirect(int fd, int to_fd, t_cmds *c)
 	controller[1] = 0;
 	redirect_c(c, controller);
 	handle_more(c, '>', controller);
-	handle_more(c, '<', controller);
+	// handle_more(c, '<', controller);
 	if (controller[to_fd] == 0)
 		if (dup2(fd, to_fd) == -1)
 			exit_error_minishell("Dup2 Error\n", 1);

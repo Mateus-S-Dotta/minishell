@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:42:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/04/27 16:56:23 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:14:48 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	handle_more(t_cmds *cmds, char more, int *controller)
+void	handle_more(t_cmds *cmds, int *controller)
 {
 	t_flags	*flags_copy;
 	t_flags	*flags_next;
@@ -21,7 +21,7 @@ void	handle_more(t_cmds *cmds, char more, int *controller)
 	while (flags_copy != NULL)
 	{
 		if (flags_copy->quote == 0 && flags_copy->flag
-			&& flags_copy->flag[0] == more)
+			&& (flags_copy->flag[0] == '>' || flags_copy->flag[0] == '<'))
 		{
 			flags_next = flags_copy->next;
 			controller[if_redirect(flags_copy, flags_next)] = 1;

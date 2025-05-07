@@ -5,57 +5,64 @@ Each sample counts as 0.01 seconds.
 
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  Ts/call  Ts/call  name    
-  0.00      0.00     0.00      324     0.00     0.00  get_next_line
-  0.00      0.00     0.00      324     0.00     0.00  gnl_content
-  0.00      0.00     0.00      324     0.00     0.00  gnl_line
-  0.00      0.00     0.00      324     0.00     0.00  gnl_rest
-  0.00      0.00     0.00       71     0.00     0.00  get_t_min
-  0.00      0.00     0.00       49     0.00     0.00  is_word
-  0.00      0.00     0.00        7     0.00     0.00  copy_quotes_copy
-  0.00      0.00     0.00        7     0.00     0.00  open_file
-  0.00      0.00     0.00        7     0.00     0.00  see_free
-  0.00      0.00     0.00        4     0.00     0.00  builtins_arr
-  0.00      0.00     0.00        4     0.00     0.00  builtins_free
-  0.00      0.00     0.00        4     0.00     0.00  close_all
-  0.00      0.00     0.00        4     0.00     0.00  copy_quotes
-  0.00      0.00     0.00        4     0.00     0.00  copy_str
-  0.00      0.00     0.00        4     0.00     0.00  count_letter
-  0.00      0.00     0.00        4     0.00     0.00  free_split
-  0.00      0.00     0.00        4     0.00     0.00  jump_all
-  0.00      0.00     0.00        4     0.00     0.00  jump_quotes
-  0.00      0.00     0.00        4     0.00     0.00  unify
-  0.00      0.00     0.00        3     0.00     0.00  cnt_env
-  0.00      0.00     0.00        3     0.00     0.00  copy_verify
-  0.00      0.00     0.00        3     0.00     0.00  count_pipe
-  0.00      0.00     0.00        3     0.00     0.00  count_s_s
-  0.00      0.00     0.00        3     0.00     0.00  create_cmds
-  0.00      0.00     0.00        3     0.00     0.00  find_quote
-  0.00      0.00     0.00        3     0.00     0.00  free_all
-  0.00      0.00     0.00        3     0.00     0.00  heredoc_counter
-  0.00      0.00     0.00        3     0.00     0.00  is_builtins
-  0.00      0.00     0.00        3     0.00     0.00  normal_comand
-  0.00      0.00     0.00        3     0.00     0.00  pipe_comand
-  0.00      0.00     0.00        3     0.00     0.00  set_std_cmd
-  0.00      0.00     0.00        3     0.00     0.00  set_std_sig
-  0.00      0.00     0.00        3     0.00     0.00  super_ft_split
-  0.00      0.00     0.00        3     0.00     0.00  super_split
-  0.00      0.00     0.00        3     0.00     0.00  update_env
-  0.00      0.00     0.00        3     0.00     0.00  verify_spaces
-  0.00      0.00     0.00        2     0.00     0.00  count_quote
-  0.00      0.00     0.00        2     0.00     0.00  free_splited_env
-  0.00      0.00     0.00        2     0.00     0.00  super_close
-  0.00      0.00     0.00        2     0.00     0.00  wait_last_status
-  0.00      0.00     0.00        1     0.00     0.00  count_unify
-  0.00      0.00     0.00        1     0.00     0.00  exec_builtins
-  0.00      0.00     0.00        1     0.00     0.00  exit_error_minishell
-  0.00      0.00     0.00        1     0.00     0.00  ft_exit
+  0.00      0.00     0.00      448     0.00     0.00  get_next_line
+  0.00      0.00     0.00      448     0.00     0.00  gnl_content
+  0.00      0.00     0.00      448     0.00     0.00  gnl_line
+  0.00      0.00     0.00      448     0.00     0.00  gnl_rest
+  0.00      0.00     0.00       93     0.00     0.00  get_t_min
+  0.00      0.00     0.00       78     0.00     0.00  is_word
+  0.00      0.00     0.00       15     0.00     0.00  copy_quotes_copy
+  0.00      0.00     0.00       10     0.00     0.00  see_free
+  0.00      0.00     0.00        9     0.00     0.00  open_file
+  0.00      0.00     0.00        7     0.00     0.00  builtins_arr
+  0.00      0.00     0.00        7     0.00     0.00  builtins_free
+  0.00      0.00     0.00        7     0.00     0.00  is_builtins
+  0.00      0.00     0.00        6     0.00     0.00  copy_quotes
+  0.00      0.00     0.00        6     0.00     0.00  copy_str
+  0.00      0.00     0.00        6     0.00     0.00  count_letter
+  0.00      0.00     0.00        6     0.00     0.00  free_split
+  0.00      0.00     0.00        6     0.00     0.00  jump_all
+  0.00      0.00     0.00        6     0.00     0.00  jump_quotes
+  0.00      0.00     0.00        6     0.00     0.00  unify
+  0.00      0.00     0.00        5     0.00     0.00  close_all
+  0.00      0.00     0.00        4     0.00     0.00  cnt_env
+  0.00      0.00     0.00        4     0.00     0.00  copy_verify
+  0.00      0.00     0.00        4     0.00     0.00  count_pipe
+  0.00      0.00     0.00        4     0.00     0.00  count_quote
+  0.00      0.00     0.00        4     0.00     0.00  count_s_s
+  0.00      0.00     0.00        4     0.00     0.00  create_cmds
+  0.00      0.00     0.00        4     0.00     0.00  find_quote
+  0.00      0.00     0.00        4     0.00     0.00  free_all
+  0.00      0.00     0.00        4     0.00     0.00  heredoc_counter
+  0.00      0.00     0.00        4     0.00     0.00  normal_comand
+  0.00      0.00     0.00        4     0.00     0.00  pipe_comand
+  0.00      0.00     0.00        4     0.00     0.00  set_std_cmd
+  0.00      0.00     0.00        4     0.00     0.00  set_std_sig
+  0.00      0.00     0.00        4     0.00     0.00  super_ft_split
+  0.00      0.00     0.00        4     0.00     0.00  super_split
+  0.00      0.00     0.00        4     0.00     0.00  update_env
+  0.00      0.00     0.00        4     0.00     0.00  verify_spaces
+  0.00      0.00     0.00        3     0.00     0.00  free_splited_env
+  0.00      0.00     0.00        3     0.00     0.00  super_close
+  0.00      0.00     0.00        3     0.00     0.00  wait_last_status
+  0.00      0.00     0.00        2     0.00     0.00  count_unify
+  0.00      0.00     0.00        2     0.00     0.00  handle_more
+  0.00      0.00     0.00        2     0.00     0.00  max_count
+  0.00      0.00     0.00        2     0.00     0.00  new_flag
+  0.00      0.00     0.00        2     0.00     0.00  real_unify
+  0.00      0.00     0.00        2     0.00     0.00  redefiny_split_unify
+  0.00      0.00     0.00        1     0.00     0.00  complete_array
+  0.00      0.00     0.00        1     0.00     0.00  find_paths
+  0.00      0.00     0.00        1     0.00     0.00  get_env
   0.00      0.00     0.00        1     0.00     0.00  inicialize
   0.00      0.00     0.00        1     0.00     0.00  int_env_file
-  0.00      0.00     0.00        1     0.00     0.00  max_count
   0.00      0.00     0.00        1     0.00     0.00  minishell
-  0.00      0.00     0.00        1     0.00     0.00  new_flag
-  0.00      0.00     0.00        1     0.00     0.00  real_unify
-  0.00      0.00     0.00        1     0.00     0.00  redefiny_split_unify
+  0.00      0.00     0.00        1     0.00     0.00  new_error
+  0.00      0.00     0.00        1     0.00     0.00  pipe_node
+  0.00      0.00     0.00        1     0.00     0.00  print_new_error
+  0.00      0.00     0.00        1     0.00     0.00  redirect
+  0.00      0.00     0.00        1     0.00     0.00  redirect_c
+  0.00      0.00     0.00        1     0.00     0.00  unify_flags
   0.00      0.00     0.00        1     0.00     0.00  write_in_file
 
  %         the percentage of the total running time of the
@@ -97,257 +104,289 @@ notice and this notice are preserved.
 granularity: each sample hit covers 4 byte(s) no time propagated
 
 index % time    self  children    called     name
-                0.00    0.00     162/324         update_env [35]
-                0.00    0.00     162/324         cnt_env [20]
-[1]      0.0    0.00    0.00     324         get_next_line [1]
-                0.00    0.00     324/324         gnl_content [2]
-                0.00    0.00     324/324         gnl_line [3]
-                0.00    0.00     324/324         gnl_rest [4]
+                0.00    0.00     224/448         update_env [36]
+                0.00    0.00     224/448         cnt_env [21]
+[1]      0.0    0.00    0.00     448         get_next_line [1]
+                0.00    0.00     448/448         gnl_content [2]
+                0.00    0.00     448/448         gnl_line [3]
+                0.00    0.00     448/448         gnl_rest [4]
 -----------------------------------------------
-                0.00    0.00     324/324         get_next_line [1]
-[2]      0.0    0.00    0.00     324         gnl_content [2]
+                0.00    0.00     448/448         get_next_line [1]
+[2]      0.0    0.00    0.00     448         gnl_content [2]
 -----------------------------------------------
-                0.00    0.00     324/324         get_next_line [1]
-[3]      0.0    0.00    0.00     324         gnl_line [3]
+                0.00    0.00     448/448         get_next_line [1]
+[3]      0.0    0.00    0.00     448         gnl_line [3]
 -----------------------------------------------
-                0.00    0.00     324/324         get_next_line [1]
-[4]      0.0    0.00    0.00     324         gnl_rest [4]
+                0.00    0.00     448/448         get_next_line [1]
+[4]      0.0    0.00    0.00     448         gnl_rest [4]
 -----------------------------------------------
-                0.00    0.00       1/71          pipe_comand [30]
-                0.00    0.00       1/71          exec_builtins [42]
-                0.00    0.00       2/71          wait_last_status [40]
-                0.00    0.00       2/71          exit_error_minishell [43]
-                0.00    0.00       5/71          inicialize [45]
-                0.00    0.00       6/71          count_pipe [22]
-                0.00    0.00       6/71          copy_verify [21]
-                0.00    0.00       9/71          normal_comand [29]
-                0.00    0.00      10/71          minishell [48]
-                0.00    0.00      29/71          free_all [26]
-[5]      0.0    0.00    0.00      71         get_t_min [5]
+                0.00    0.00       1/93          get_env [49]
+                0.00    0.00       3/93          print_new_error [55]
+                0.00    0.00       3/93          wait_last_status [40]
+                0.00    0.00       3/93          pipe_node [54]
+                0.00    0.00       5/93          inicialize [50]
+                0.00    0.00       8/93          count_pipe [23]
+                0.00    0.00       8/93          copy_verify [22]
+                0.00    0.00      12/93          normal_comand [30]
+                0.00    0.00      14/93          minishell [52]
+                0.00    0.00      36/93          free_all [28]
+[5]      0.0    0.00    0.00      93         get_t_min [5]
 -----------------------------------------------
-                0.00    0.00       1/49          copy_quotes [13]
-                0.00    0.00       1/49          jump_quotes [18]
-                0.00    0.00      14/49          copy_str [14]
-                0.00    0.00      15/49          count_letter [15]
-                0.00    0.00      18/49          count_s_s [23]
-[6]      0.0    0.00    0.00      49         is_word [6]
+                0.00    0.00       2/78          copy_quotes [13]
+                0.00    0.00       2/78          jump_quotes [18]
+                0.00    0.00      22/78          copy_str [14]
+                0.00    0.00      24/78          count_letter [15]
+                0.00    0.00      28/78          count_s_s [25]
+[6]      0.0    0.00    0.00      78         is_word [6]
 -----------------------------------------------
-                0.00    0.00       7/7           copy_quotes [13]
-[7]      0.0    0.00    0.00       7         copy_quotes_copy [7]
+                0.00    0.00      15/15          copy_quotes [13]
+[7]      0.0    0.00    0.00      15         copy_quotes_copy [7]
 -----------------------------------------------
-                0.00    0.00       1/7           int_env_file [46]
-                0.00    0.00       3/7           update_env [35]
-                0.00    0.00       3/7           cnt_env [20]
-[8]      0.0    0.00    0.00       7         open_file [8]
+                0.00    0.00      10/10          free_all [28]
+[8]      0.0    0.00    0.00      10         see_free [8]
 -----------------------------------------------
-                0.00    0.00       7/7           free_all [26]
-[9]      0.0    0.00    0.00       7         see_free [9]
+                0.00    0.00       1/9           int_env_file [51]
+                0.00    0.00       4/9           update_env [36]
+                0.00    0.00       4/9           cnt_env [21]
+[9]      0.0    0.00    0.00       9         open_file [9]
 -----------------------------------------------
-                0.00    0.00       1/4           exec_builtins [42]
-                0.00    0.00       3/4           is_builtins [28]
-[10]     0.0    0.00    0.00       4         builtins_arr [10]
+                0.00    0.00       7/7           is_builtins [12]
+[10]     0.0    0.00    0.00       7         builtins_arr [10]
 -----------------------------------------------
-                0.00    0.00       1/4           exec_builtins [42]
-                0.00    0.00       3/4           is_builtins [28]
-[11]     0.0    0.00    0.00       4         builtins_free [11]
+                0.00    0.00       7/7           is_builtins [12]
+[11]     0.0    0.00    0.00       7         builtins_free [11]
 -----------------------------------------------
-                0.00    0.00       1/4           free_all [26]
-                0.00    0.00       1/4           ft_exit [44]
-                0.00    0.00       2/4           super_close [39]
-[12]     0.0    0.00    0.00       4         close_all [12]
+                0.00    0.00       1/7           find_paths [48]
+                0.00    0.00       1/7           pipe_node [54]
+                0.00    0.00       1/7           complete_array [47]
+                0.00    0.00       4/7           pipe_comand [31]
+[12]     0.0    0.00    0.00       7         is_builtins [12]
+                0.00    0.00       7/7           builtins_arr [10]
+                0.00    0.00       7/7           builtins_free [11]
 -----------------------------------------------
-                0.00    0.00       4/4           copy_str [14]
-[13]     0.0    0.00    0.00       4         copy_quotes [13]
-                0.00    0.00       7/7           copy_quotes_copy [7]
-                0.00    0.00       1/49          is_word [6]
+                0.00    0.00       6/6           copy_str [14]
+[13]     0.0    0.00    0.00       6         copy_quotes [13]
+                0.00    0.00      15/15          copy_quotes_copy [7]
+                0.00    0.00       2/78          is_word [6]
 -----------------------------------------------
-                0.00    0.00       4/4           super_split [34]
-[14]     0.0    0.00    0.00       4         copy_str [14]
-                0.00    0.00      14/49          is_word [6]
-                0.00    0.00       4/4           copy_quotes [13]
+                0.00    0.00       6/6           super_split [35]
+[14]     0.0    0.00    0.00       6         copy_str [14]
+                0.00    0.00      22/78          is_word [6]
+                0.00    0.00       6/6           copy_quotes [13]
 -----------------------------------------------
-                0.00    0.00       4/4           super_split [34]
-[15]     0.0    0.00    0.00       4         count_letter [15]
-                0.00    0.00      15/49          is_word [6]
+                0.00    0.00       6/6           super_split [35]
+[15]     0.0    0.00    0.00       6         count_letter [15]
+                0.00    0.00      24/78          is_word [6]
 -----------------------------------------------
-                0.00    0.00       1/4           exit_error_minishell [43]
-                0.00    0.00       3/4           normal_comand [29]
-[16]     0.0    0.00    0.00       4         free_split [16]
+                0.00    0.00       1/6           find_paths [48]
+                0.00    0.00       1/6           pipe_node [54]
+                0.00    0.00       4/6           normal_comand [30]
+[16]     0.0    0.00    0.00       6         free_split [16]
 -----------------------------------------------
-                0.00    0.00       4/4           count_s_s [23]
-[17]     0.0    0.00    0.00       4         jump_all [17]
+                0.00    0.00       6/6           count_s_s [25]
+[17]     0.0    0.00    0.00       6         jump_all [17]
 -----------------------------------------------
-                0.00    0.00       4/4           count_s_s [23]
-[18]     0.0    0.00    0.00       4         jump_quotes [18]
-                0.00    0.00       1/49          is_word [6]
+                0.00    0.00       6/6           count_s_s [25]
+[18]     0.0    0.00    0.00       6         jump_quotes [18]
+                0.00    0.00       2/78          is_word [6]
 -----------------------------------------------
-                0.00    0.00       1/4           copy_verify [21]
-                0.00    0.00       3/4           create_cmds [24]
-[19]     0.0    0.00    0.00       4         unify [19]
-                0.00    0.00       1/1           real_unify [50]
+                0.00    0.00       2/6           copy_verify [22]
+                0.00    0.00       4/6           create_cmds [26]
+[19]     0.0    0.00    0.00       6         unify [19]
+                0.00    0.00       2/2           real_unify [45]
 -----------------------------------------------
-                0.00    0.00       3/3           update_env [35]
-[20]     0.0    0.00    0.00       3         cnt_env [20]
-                0.00    0.00     162/324         get_next_line [1]
-                0.00    0.00       3/7           open_file [8]
+                0.00    0.00       1/5           print_new_error [55]
+                0.00    0.00       1/5           pipe_node [54]
+                0.00    0.00       3/5           super_close [39]
+[20]     0.0    0.00    0.00       5         close_all [20]
 -----------------------------------------------
-                0.00    0.00       3/3           create_cmds [24]
-[21]     0.0    0.00    0.00       3         copy_verify [21]
-                0.00    0.00       6/71          get_t_min [5]
-                0.00    0.00       1/4           unify [19]
-                0.00    0.00       1/1           new_flag [49]
+                0.00    0.00       4/4           update_env [36]
+[21]     0.0    0.00    0.00       4         cnt_env [21]
+                0.00    0.00     224/448         get_next_line [1]
+                0.00    0.00       4/9           open_file [9]
 -----------------------------------------------
-                0.00    0.00       3/3           normal_comand [29]
-[22]     0.0    0.00    0.00       3         count_pipe [22]
-                0.00    0.00       6/71          get_t_min [5]
+                0.00    0.00       4/4           create_cmds [26]
+[22]     0.0    0.00    0.00       4         copy_verify [22]
+                0.00    0.00       8/93          get_t_min [5]
+                0.00    0.00       2/6           unify [19]
+                0.00    0.00       2/2           new_flag [44]
 -----------------------------------------------
-                0.00    0.00       3/3           super_split [34]
-[23]     0.0    0.00    0.00       3         count_s_s [23]
-                0.00    0.00      18/49          is_word [6]
-                0.00    0.00       4/4           jump_quotes [18]
-                0.00    0.00       4/4           jump_all [17]
+                0.00    0.00       4/4           normal_comand [30]
+[23]     0.0    0.00    0.00       4         count_pipe [23]
+                0.00    0.00       8/93          get_t_min [5]
 -----------------------------------------------
-                0.00    0.00       3/3           normal_comand [29]
-[24]     0.0    0.00    0.00       3         create_cmds [24]
-                0.00    0.00       3/4           unify [19]
-                0.00    0.00       3/3           copy_verify [21]
+                0.00    0.00       4/4           find_quote [27]
+[24]     0.0    0.00    0.00       4         count_quote [24]
 -----------------------------------------------
-                0.00    0.00       3/3           super_ft_split [33]
-[25]     0.0    0.00    0.00       3         find_quote [25]
-                0.00    0.00       2/2           count_quote [37]
+                0.00    0.00       4/4           super_split [35]
+[25]     0.0    0.00    0.00       4         count_s_s [25]
+                0.00    0.00      28/78          is_word [6]
+                0.00    0.00       6/6           jump_quotes [18]
+                0.00    0.00       6/6           jump_all [17]
 -----------------------------------------------
-                0.00    0.00       1/3           ft_exit [44]
-                0.00    0.00       2/3           minishell [48]
-[26]     0.0    0.00    0.00       3         free_all [26]
-                0.00    0.00      29/71          get_t_min [5]
-                0.00    0.00       7/7           see_free [9]
-                0.00    0.00       1/4           close_all [12]
-                0.00    0.00       1/1           exit_error_minishell [43]
+                0.00    0.00       4/4           normal_comand [30]
+[26]     0.0    0.00    0.00       4         create_cmds [26]
+                0.00    0.00       4/6           unify [19]
+                0.00    0.00       4/4           copy_verify [22]
 -----------------------------------------------
-                0.00    0.00       3/3           pipe_comand [30]
-[27]     0.0    0.00    0.00       3         heredoc_counter [27]
+                0.00    0.00       4/4           super_ft_split [34]
+[27]     0.0    0.00    0.00       4         find_quote [27]
+                0.00    0.00       4/4           count_quote [24]
 -----------------------------------------------
-                0.00    0.00       3/3           pipe_comand [30]
-[28]     0.0    0.00    0.00       3         is_builtins [28]
-                0.00    0.00       3/4           builtins_arr [10]
-                0.00    0.00       3/4           builtins_free [11]
+                0.00    0.00       1/4           print_new_error [55]
+                0.00    0.00       3/4           minishell [52]
+[28]     0.0    0.00    0.00       4         free_all [28]
+                0.00    0.00      36/93          get_t_min [5]
+                0.00    0.00      10/10          see_free [8]
 -----------------------------------------------
-                0.00    0.00       3/3           minishell [48]
-[29]     0.0    0.00    0.00       3         normal_comand [29]
-                0.00    0.00       9/71          get_t_min [5]
-                0.00    0.00       3/3           super_ft_split [33]
-                0.00    0.00       3/4           free_split [16]
-                0.00    0.00       3/3           create_cmds [24]
-                0.00    0.00       3/3           count_pipe [22]
-                0.00    0.00       3/3           pipe_comand [30]
+                0.00    0.00       4/4           pipe_comand [31]
+[29]     0.0    0.00    0.00       4         heredoc_counter [29]
 -----------------------------------------------
-                0.00    0.00       3/3           normal_comand [29]
-[30]     0.0    0.00    0.00       3         pipe_comand [30]
-                0.00    0.00       3/3           heredoc_counter [27]
-                0.00    0.00       3/3           set_std_cmd [31]
-                0.00    0.00       3/3           is_builtins [28]
-                0.00    0.00       2/2           super_close [39]
-                0.00    0.00       1/71          get_t_min [5]
-                0.00    0.00       1/1           exec_builtins [42]
+                0.00    0.00       4/4           minishell [52]
+[30]     0.0    0.00    0.00       4         normal_comand [30]
+                0.00    0.00      12/93          get_t_min [5]
+                0.00    0.00       4/4           super_ft_split [34]
+                0.00    0.00       4/4           create_cmds [26]
+                0.00    0.00       4/4           count_pipe [23]
+                0.00    0.00       4/6           free_split [16]
+                0.00    0.00       4/4           pipe_comand [31]
 -----------------------------------------------
-                0.00    0.00       3/3           pipe_comand [30]
-[31]     0.0    0.00    0.00       3         set_std_cmd [31]
+                0.00    0.00       4/4           normal_comand [30]
+[31]     0.0    0.00    0.00       4         pipe_comand [31]
+                0.00    0.00       4/4           heredoc_counter [29]
+                0.00    0.00       4/4           set_std_cmd [32]
+                0.00    0.00       4/7           is_builtins [12]
+                0.00    0.00       3/3           super_close [39]
+                0.00    0.00       1/1           pipe_node [54]
 -----------------------------------------------
-                0.00    0.00       3/3           minishell [48]
-[32]     0.0    0.00    0.00       3         set_std_sig [32]
+                0.00    0.00       4/4           pipe_comand [31]
+[32]     0.0    0.00    0.00       4         set_std_cmd [32]
 -----------------------------------------------
-                0.00    0.00       3/3           normal_comand [29]
-[33]     0.0    0.00    0.00       3         super_ft_split [33]
-                0.00    0.00       3/3           find_quote [25]
-                0.00    0.00       3/3           super_split [34]
+                0.00    0.00       4/4           minishell [52]
+[33]     0.0    0.00    0.00       4         set_std_sig [33]
 -----------------------------------------------
-                0.00    0.00       3/3           super_ft_split [33]
-[34]     0.0    0.00    0.00       3         super_split [34]
-                0.00    0.00       4/4           count_letter [15]
-                0.00    0.00       4/4           copy_str [14]
-                0.00    0.00       3/3           count_s_s [23]
+                0.00    0.00       4/4           normal_comand [30]
+[34]     0.0    0.00    0.00       4         super_ft_split [34]
+                0.00    0.00       4/4           find_quote [27]
+                0.00    0.00       4/4           super_split [35]
 -----------------------------------------------
-                0.00    0.00       3/3           minishell [48]
-[35]     0.0    0.00    0.00       3         update_env [35]
-                0.00    0.00     162/324         get_next_line [1]
-                0.00    0.00       3/3           cnt_env [20]
-                0.00    0.00       3/7           open_file [8]
-                0.00    0.00       2/2           free_splited_env [38]
+                0.00    0.00       4/4           super_ft_split [34]
+[35]     0.0    0.00    0.00       4         super_split [35]
+                0.00    0.00       6/6           count_letter [15]
+                0.00    0.00       6/6           copy_str [14]
+                0.00    0.00       4/4           count_s_s [25]
 -----------------------------------------------
-                0.00    0.00       3/3           minishell [48]
-[36]     0.0    0.00    0.00       3         verify_spaces [36]
+                0.00    0.00       4/4           minishell [52]
+[36]     0.0    0.00    0.00       4         update_env [36]
+                0.00    0.00     224/448         get_next_line [1]
+                0.00    0.00       4/4           cnt_env [21]
+                0.00    0.00       4/9           open_file [9]
+                0.00    0.00       3/3           free_splited_env [38]
 -----------------------------------------------
-                0.00    0.00       2/2           find_quote [25]
-[37]     0.0    0.00    0.00       2         count_quote [37]
+                0.00    0.00       4/4           minishell [52]
+[37]     0.0    0.00    0.00       4         verify_spaces [37]
 -----------------------------------------------
-                0.00    0.00       2/2           update_env [35]
-[38]     0.0    0.00    0.00       2         free_splited_env [38]
+                0.00    0.00       3/3           update_env [36]
+[38]     0.0    0.00    0.00       3         free_splited_env [38]
 -----------------------------------------------
-                0.00    0.00       2/2           pipe_comand [30]
-[39]     0.0    0.00    0.00       2         super_close [39]
-                0.00    0.00       2/4           close_all [12]
+                0.00    0.00       3/3           pipe_comand [31]
+[39]     0.0    0.00    0.00       3         super_close [39]
+                0.00    0.00       3/5           close_all [20]
 -----------------------------------------------
-                0.00    0.00       2/2           minishell [48]
-[40]     0.0    0.00    0.00       2         wait_last_status [40]
-                0.00    0.00       2/71          get_t_min [5]
+                0.00    0.00       3/3           minishell [52]
+[40]     0.0    0.00    0.00       3         wait_last_status [40]
+                0.00    0.00       3/93          get_t_min [5]
 -----------------------------------------------
-                0.00    0.00       1/1           real_unify [50]
-[41]     0.0    0.00    0.00       1         count_unify [41]
+                0.00    0.00       2/2           real_unify [45]
+[41]     0.0    0.00    0.00       2         count_unify [41]
 -----------------------------------------------
-                0.00    0.00       1/1           pipe_comand [30]
-[42]     0.0    0.00    0.00       1         exec_builtins [42]
-                0.00    0.00       1/71          get_t_min [5]
-                0.00    0.00       1/4           builtins_arr [10]
-                0.00    0.00       1/4           builtins_free [11]
-                0.00    0.00       1/1           ft_exit [44]
+                0.00    0.00       2/2           redirect [56]
+[42]     0.0    0.00    0.00       2         handle_more [42]
 -----------------------------------------------
-                0.00    0.00       1/1           free_all [26]
-[43]     0.0    0.00    0.00       1         exit_error_minishell [43]
-                0.00    0.00       2/71          get_t_min [5]
-                0.00    0.00       1/4           free_split [16]
+                0.00    0.00       2/2           real_unify [45]
+[43]     0.0    0.00    0.00       2         max_count [43]
 -----------------------------------------------
-                0.00    0.00       1/1           exec_builtins [42]
-[44]     0.0    0.00    0.00       1         ft_exit [44]
-                0.00    0.00       1/4           close_all [12]
-                0.00    0.00       1/3           free_all [26]
+                0.00    0.00       2/2           copy_verify [22]
+[44]     0.0    0.00    0.00       2         new_flag [44]
 -----------------------------------------------
-                0.00    0.00       1/1           main [116]
-[45]     0.0    0.00    0.00       1         inicialize [45]
-                0.00    0.00       5/71          get_t_min [5]
-                0.00    0.00       1/1           int_env_file [46]
+                0.00    0.00       2/2           unify [19]
+[45]     0.0    0.00    0.00       2         real_unify [45]
+                0.00    0.00       2/2           max_count [43]
+                0.00    0.00       2/2           count_unify [41]
+                0.00    0.00       2/2           redefiny_split_unify [46]
 -----------------------------------------------
-                0.00    0.00       1/1           inicialize [45]
-[46]     0.0    0.00    0.00       1         int_env_file [46]
-                0.00    0.00       1/7           open_file [8]
-                0.00    0.00       1/1           write_in_file [52]
+                0.00    0.00       2/2           real_unify [45]
+[46]     0.0    0.00    0.00       2         redefiny_split_unify [46]
 -----------------------------------------------
-                0.00    0.00       1/1           real_unify [50]
-[47]     0.0    0.00    0.00       1         max_count [47]
+                0.00    0.00       1/1           unify_flags [58]
+[47]     0.0    0.00    0.00       1         complete_array [47]
+                0.00    0.00       1/7           is_builtins [12]
+                0.00    0.00       1/1           find_paths [48]
 -----------------------------------------------
-                0.00    0.00       1/1           main [116]
-[48]     0.0    0.00    0.00       1         minishell [48]
-                0.00    0.00      10/71          get_t_min [5]
-                0.00    0.00       3/3           set_std_sig [32]
-                0.00    0.00       3/3           update_env [35]
-                0.00    0.00       3/3           verify_spaces [36]
-                0.00    0.00       3/3           normal_comand [29]
-                0.00    0.00       2/2           wait_last_status [40]
-                0.00    0.00       2/3           free_all [26]
+                0.00    0.00       1/1           complete_array [47]
+[48]     0.0    0.00    0.00       1         find_paths [48]
+                0.00    0.00       1/1           get_env [49]
+                0.00    0.00       1/7           is_builtins [12]
+                0.00    0.00       1/6           free_split [16]
 -----------------------------------------------
-                0.00    0.00       1/1           copy_verify [21]
-[49]     0.0    0.00    0.00       1         new_flag [49]
+                0.00    0.00       1/1           find_paths [48]
+[49]     0.0    0.00    0.00       1         get_env [49]
+                0.00    0.00       1/93          get_t_min [5]
 -----------------------------------------------
-                0.00    0.00       1/1           unify [19]
-[50]     0.0    0.00    0.00       1         real_unify [50]
-                0.00    0.00       1/1           max_count [47]
-                0.00    0.00       1/1           count_unify [41]
-                0.00    0.00       1/1           redefiny_split_unify [51]
+                0.00    0.00       1/1           main [122]
+[50]     0.0    0.00    0.00       1         inicialize [50]
+                0.00    0.00       5/93          get_t_min [5]
+                0.00    0.00       1/1           int_env_file [51]
 -----------------------------------------------
-                0.00    0.00       1/1           real_unify [50]
-[51]     0.0    0.00    0.00       1         redefiny_split_unify [51]
+                0.00    0.00       1/1           inicialize [50]
+[51]     0.0    0.00    0.00       1         int_env_file [51]
+                0.00    0.00       1/9           open_file [9]
+                0.00    0.00       1/1           write_in_file [59]
 -----------------------------------------------
-                0.00    0.00       1/1           int_env_file [46]
-[52]     0.0    0.00    0.00       1         write_in_file [52]
+                0.00    0.00       1/1           main [122]
+[52]     0.0    0.00    0.00       1         minishell [52]
+                0.00    0.00      14/93          get_t_min [5]
+                0.00    0.00       4/4           set_std_sig [33]
+                0.00    0.00       4/4           update_env [36]
+                0.00    0.00       4/4           verify_spaces [37]
+                0.00    0.00       4/4           normal_comand [30]
+                0.00    0.00       3/3           wait_last_status [40]
+                0.00    0.00       3/4           free_all [28]
+-----------------------------------------------
+                0.00    0.00       1/1           pipe_node [54]
+[53]     0.0    0.00    0.00       1         new_error [53]
+                0.00    0.00       1/1           print_new_error [55]
+-----------------------------------------------
+                0.00    0.00       1/1           pipe_comand [31]
+[54]     0.0    0.00    0.00       1         pipe_node [54]
+                0.00    0.00       3/93          get_t_min [5]
+                0.00    0.00       1/1           redirect [56]
+                0.00    0.00       1/5           close_all [20]
+                0.00    0.00       1/7           is_builtins [12]
+                0.00    0.00       1/1           unify_flags [58]
+                0.00    0.00       1/1           new_error [53]
+                0.00    0.00       1/6           free_split [16]
+-----------------------------------------------
+                0.00    0.00       1/1           new_error [53]
+[55]     0.0    0.00    0.00       1         print_new_error [55]
+                0.00    0.00       3/93          get_t_min [5]
+                0.00    0.00       1/4           free_all [28]
+                0.00    0.00       1/5           close_all [20]
+-----------------------------------------------
+                0.00    0.00       1/1           pipe_node [54]
+[56]     0.0    0.00    0.00       1         redirect [56]
+                0.00    0.00       2/2           handle_more [42]
+                0.00    0.00       1/1           redirect_c [57]
+-----------------------------------------------
+                0.00    0.00       1/1           redirect [56]
+[57]     0.0    0.00    0.00       1         redirect_c [57]
+-----------------------------------------------
+                0.00    0.00       1/1           pipe_node [54]
+[58]     0.0    0.00    0.00       1         unify_flags [58]
+                0.00    0.00       1/1           complete_array [47]
+-----------------------------------------------
+                0.00    0.00       1/1           int_env_file [51]
+[59]     0.0    0.00    0.00       1         write_in_file [59]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -440,21 +479,23 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [10] builtins_arr (builtins_utils.c) [16] free_split    [29] normal_comand
-  [11] builtins_free (builtins_utils.c) [38] free_splited_env [8] open_file
-  [12] close_all              [44] ft_exit                [30] pipe_comand (command.c)
-  [20] cnt_env                 [1] get_next_line          [50] real_unify (unify_.c)
-  [13] copy_quotes (super_split_utils.c) [5] get_t_min    [51] redefiny_split_unify (unify_.c)
-   [7] copy_quotes_copy (super_split_utils.c) [2] gnl_content (get_next_line.c) [9] see_free
-  [14] copy_str                [3] gnl_line (get_next_line.c) [31] set_std_cmd
-  [21] copy_verify             [4] gnl_rest (get_next_line.c) [32] set_std_sig
-  [15] count_letter           [27] heredoc_counter (command.c) [39] super_close
-  [22] count_pipe             [45] inicialize (main.c)    [33] super_ft_split
-  [37] count_quote (super_split.c) [46] int_env_file      [34] super_split (super_split.c)
-  [23] count_s_s (super_split.c) [28] is_builtins         [19] unify
-  [41] count_unify (unify_.c)  [6] is_word                [35] update_env
-  [24] create_cmds            [17] jump_all               [36] verify_spaces
-  [42] exec_builtins          [18] jump_quotes            [40] wait_last_status
-  [43] exit_error_minishell   [47] max_count (unify_.c)   [52] write_in_file
-  [25] find_quote (super_split.c) [48] minishell
-  [26] free_all               [49] new_flag
+  [10] builtins_arr (builtins_utils.c) [49] get_env       [31] pipe_comand (command.c)
+  [11] builtins_free (builtins_utils.c) [1] get_next_line [54] pipe_node (command.c)
+  [20] close_all               [5] get_t_min              [55] print_new_error (main_utils.c)
+  [21] cnt_env                 [2] gnl_content (get_next_line.c) [45] real_unify (unify_.c)
+  [47] complete_array (command_utils.c) [3] gnl_line (get_next_line.c) [46] redefiny_split_unify (unify_.c)
+  [13] copy_quotes (super_split_utils.c) [4] gnl_rest (get_next_line.c) [56] redirect
+   [7] copy_quotes_copy (super_split_utils.c) [42] handle_more [57] redirect_c (redirect.c)
+  [14] copy_str               [29] heredoc_counter (command.c) [8] see_free
+  [22] copy_verify            [50] inicialize (main.c)    [32] set_std_cmd
+  [15] count_letter           [51] int_env_file           [33] set_std_sig
+  [23] count_pipe             [12] is_builtins            [39] super_close
+  [24] count_quote (super_split.c) [6] is_word            [34] super_ft_split
+  [25] count_s_s (super_split.c) [17] jump_all            [35] super_split (super_split.c)
+  [41] count_unify (unify_.c) [18] jump_quotes            [19] unify
+  [26] create_cmds            [43] max_count (unify_.c)   [58] unify_flags
+  [48] find_paths             [52] minishell              [36] update_env
+  [27] find_quote (super_split.c) [53] new_error          [37] verify_spaces
+  [28] free_all               [44] new_flag               [40] wait_last_status
+  [16] free_split             [30] normal_comand          [59] write_in_file
+  [38] free_splited_env        [9] open_file

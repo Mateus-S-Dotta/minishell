@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/05 17:57:57 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:14:57 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		if_redirect(t_flags *f1, t_flags *f2);
 int		confitions_redirect(t_flags *f1, int situation);
 void	free_flag(t_flags *f1);
 void	free_cmd(t_cmds *f1);
-void	handle_more(t_cmds *cmds, char more, int *controller);
+void	handle_more(t_cmds *cmds, int *controller);
 
 // Unify_.c
 int		unify(int i, char **cmd);
