@@ -6,13 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:49:37 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/29 20:34:02 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:33:47 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static int ft_strisonly(const char *str, char c)
+static int	ft_strisonly(const char *str, char c)
 {
 	while (*str)
 	{
@@ -30,8 +30,8 @@ static t_flags	*process_flags(t_cmds *cmd, int *flag_n)
 	*flag_n = 0;
 	flag_ptr = cmd->flags;
 	while (flag_ptr && flag_ptr->flag
-		   && ft_strncmp(flag_ptr->flag, "-n", 2) == 0
-		   && ft_strisonly(flag_ptr->flag + 1, 'n'))
+		&& ft_strncmp(flag_ptr->flag, "-n", 2) == 0
+		&& ft_strisonly(flag_ptr->flag + 1, 'n'))
 	{
 		*flag_n = 1;
 		flag_ptr = flag_ptr->next;

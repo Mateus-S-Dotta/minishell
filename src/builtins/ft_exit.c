@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 14:57:20 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/05 16:18:00 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:31:57 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	ft_exit(t_cmds *cmds, int *fd)
 {
 	int		exit_code;
 
-	exit_code = 0;
 	ft_putstr_fd("exit\n", 1);
 	if (!cmds->flags)
 	{

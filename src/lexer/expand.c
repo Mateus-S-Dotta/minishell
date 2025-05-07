@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:01:07 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 16:16:42 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:34:20 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	redo_env(char **cmd, int init, int *i, char *env)
 
 	l[0] = ft_strlen(env);
 	l[1] = ft_strlen(cmd[0]);
-	new_cmd = (char *)ft_calloc(l[0] + l[1] - (*i - init) + 1, sizeof(char)); 
+	new_cmd = (char *)ft_calloc(l[0] + l[1] - (*i - init) + 1, sizeof(char));
 	if (new_cmd == NULL)
 		exit_error_minishell("Malloc Error", 1);
 	j = -1;
@@ -54,7 +54,7 @@ void	verify_money(char **cmd, int *i)
 	i_initial = *i;
 	sig_ati = NULL;
 	*i += 1;
- 	if (cmd[0][*i] == '?')
+	if (cmd[0][*i] == '?')
 	{
 		sig_ati = ft_itoa(get_t_min()->sig);
 		return (*i += 1, redo_env(cmd, i_initial, i, sig_ati), free(sig_ati));

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 00:49:01 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/07 16:18:10 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:31:05 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	create_cmds(t_cmds *cmds, char **cmd_w, int d)
 	new_cmds->path = NULL;
 	new_cmds->next = NULL;
 	new_cmds->flags = NULL;
-	copy_verify(cmds, new_cmds, cmd_w, d + 1); 
+	copy_verify(cmds, new_cmds, cmd_w, d + 1);
 }
 
 void	free_normal_comand(t_cmds *new_cmds, char **cmd_w)

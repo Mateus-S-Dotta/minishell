@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 09:28:16 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 16:19:37 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:30:53 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	count_unify(int i, char **cmd, char quote)
 {
 	int	j;
 	int	pair;
-	int	count; 
+	int	count;
 
 	count = 0;
 	pair = 0;
@@ -44,8 +44,8 @@ static int	count_unify(int i, char **cmd, char quote)
 		while (cmd[i][++j] != '\0')
 			if (cmd[i][j] != quote)
 				count++;
-			else
-				pair++;
+		else
+			pair++;
 		if (cmd[i + 1] != NULL && (pair == 0 || pair % 2 != 0))
 			count++;
 	}
@@ -80,8 +80,8 @@ static void	real_unify(int i, char **cmd, char quote)
 		while (cmd[i][++num[2]] != '\0')
 			if (cmd[i][num[2]] != quote)
 				new[num[1]++] = cmd[i][num[2]];
-			else
-				num[0]++;
+		else
+			num[0]++;
 		if (cmd[i + 1] != NULL && (num[0] == 0 || num[0] % 2 != 0))
 			new[num[1]++] = ' ';
 		free(cmd[i]);

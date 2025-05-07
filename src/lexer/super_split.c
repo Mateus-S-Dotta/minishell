@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:10:05 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 16:17:52 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:35:32 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static char	**super_split(char *cmd)
 	while (++i < max)
 		if (cmd[j] == '|')
 			pipe_case(split, cmd, &j, i);
-		else
-		{
-			split[i] = (char *)calloc(count_letter(cmd, j) + 1, sizeof(char *));
-			copy_str(split[i], cmd, &j);
-		}
+	else
+	{
+		split[i] = (char *)calloc(count_letter(cmd, j) + 1, sizeof(char *));
+		copy_str(split[i], cmd, &j);
+	}
 	return (split);
 }
 

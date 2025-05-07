@@ -6,14 +6,13 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/06 20:52:37 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:35:03 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
 void	exec_builtins(t_cmds *cmds, int *fd);
-
 
 static char	**builtins_arr(void)
 {
@@ -74,7 +73,6 @@ void	exec_builtins(t_cmds *cmds, int *fd)
 		env->sig = ft_cd(cmds, &get_t_min()->env);
 	else if (!ft_strncmp(cmds->cmd, btarr[1], cmd_s) && env->pipe_cnt == 1)
 	{
-
 		builtins_free(&btarr);
 		env->sig = ft_exit(cmds, fd);
 	}

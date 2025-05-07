@@ -51,5 +51,5 @@ XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/nfs/homes/lsilva-x/.local/shar
 PATH=/nfs/homes/lsilva-x/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin://nfs/homes/lsilva-x/Android/Sdk/platform-tools:/opt/flutter/flutter/bin
 GDMSESSION=ubuntu
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1428541/bus
-OLDPWD=/nfs/homes/lsilva-x/minishell_all/little_bolsonaro/minishell_tester
+OLDPWD=/nfs/homes/lsilva-x/minishell_all
 _=./minishell

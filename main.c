@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 16:15:43 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:30:17 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_min	*get_t_min(void)
 	return (&min);
 }
 
-static void	sig_quit_behavior()
+static void	sig_quit_behavior(void)
 {
 	ft_putstr_fd("exit\n", 1);
 	free_split(get_t_min()->env);
@@ -55,7 +55,6 @@ void	minishell(void)
 		add_history(input);
 		normal_comand(input);
 		wait_last_status();
-		
 		free_all(NULL, -1);
 		if (dup2(get_t_min()->in_fd, 0) == -1)
 			return ;

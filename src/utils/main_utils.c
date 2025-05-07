@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:21:51 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/05 19:25:27 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:36:20 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	verify_spaces(char *input)
 {
 	int	i;
 
-	i = 0;	
+	i = 0;
 	while (input[i] != '\0' && ((input[i] >= 7
 				&& input[i] <= 13) || input[i] == 32))
 		i++;
