@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 15:18:19 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:18:45 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 
 	print_cmds();
 	if (cmds2 != NULL)
-		redirect(p_fd[1], 1, cmds); // redirect de saida do pipe vira o padrao STDOUT_FILENO
+		redirect(p_fd[1], 1, cmds);
 	else
 		redirect(get_t_min()->out_fd, 1, cmds);
 	close_all(p_fd[0], p_fd[1]);
@@ -36,7 +36,6 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 		}
 	}
 	free_all(NULL, get_t_min()->sig);
-	// exit (get_t_min()->sig);
 }
 
 static int	heredoc_counter(t_cmds *cmds)
@@ -56,27 +55,6 @@ static int	heredoc_counter(t_cmds *cmds)
 	}
 	return (i);
 }
-
-// static int	pipe_node_node(t_cmds *cmds, int *p_fd, int qnd_hd)
-// {
-// 	if (is_builtins(cmds->cmd, 2) == 1)
-// 	{
-// 		if (get_t_min()->pipe_cnt == 1)
-// 			exec_builtins(cmds, p_fd);
-// 		return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
-// 	}
-// 	if (cmds->cmd[0] == '$')
-// 	{
-// 		if (ft_strcmp(cmds->cmd, "$EMPTY") == 0)
-// 			return (super_close(p_fd[0], p_fd[1], 0, qnd_hd), 0);
-// 		else
-// 		{
-// 			ft_putstr_fd("Error: is a directory\n", 2);
-// 			return (super_close(p_fd[0], p_fd[1], 1, qnd_hd), -1);
-// 		}
-// 	}
-// 	return (0);
-// }
 
 static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 {
@@ -113,9 +91,8 @@ void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
 	i = -1;
 	while (cmd_w[++i + d] != NULL && ft_strncmp(cmd_w[i + d], "|", 1) != 0)
 	{
-		type = unify(i + d - 1, cmd_w);// you pass 1 sum with 0 to subtract -1 to get 0, bro wtf
-		// in the end this type problay is just indicade the if the flag is in quoute or not because at this point dont had any thing to unify
-		if (new_flag(new_cmds, cmd_w[i + d], type) == 0) // create the flags of the current cmd
+		type = unify(i + d - 1, cmd_w);
+		if (new_flag(new_cmds, cmd_w[i + d], type) == 0)
 		{
 			free_split(cmd_w);
 			free_all("Malloc Error", 1);
@@ -128,7 +105,7 @@ void	copy_verify(t_cmds *cmds, t_cmds *new_cmds, char **cmd_w, int d)
 	if (cmd_w[i + d] != NULL && ft_strncmp(cmd_w[i + d], "|", 1) == 0
 		&& cmd_w[i + d + 1] != NULL
 		&& ft_strncmp(cmd_w[i + d + 1], "|", 1) != 0)
-		create_cmds(new_cmds, cmd_w, d + i + 1); // recursive create all the commands
+		create_cmds(new_cmds, cmd_w, d + i + 1);
 	else if (cmd_w[i + d] != NULL && ft_strncmp(cmd_w[i + d], "|", 1) == 0)
 		free_all("Invalid pipe compare\n", 1);
 }
@@ -140,8 +117,8 @@ void	normal_comand(char *cmd)
 	int		i;
 
 	i = -1;
-	cmd_w = super_ft_split(cmd); // Recive the input captured by readline and split into a char**
-	create_cmds(get_t_min()->cmds, cmd_w, 0); // create all the command and thier flags recursively
+	cmd_w = super_ft_split(cmd);
+	create_cmds(get_t_min()->cmds, cmd_w, 0);
 	free_split(cmd_w);
 	count_pipe();
 	cmds = get_t_min()->cmds;

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:16:52 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 12:06:14 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:17:02 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	copy_quotes(char *split, char *cmd, int *j, int *i_copy)
 
 	while (cmd[*j] != '\0' && (cmd[*j] == '\'' || cmd[*j] == '\"'))
 	{
-		quote = cmd[*j]; //save the type of quoutes
+		quote = cmd[*j];
 		copy_quotes_copy(split, cmd, j, i_copy);
-		while (cmd[*j] != '\0' && cmd[*j] != quote) //copia ate achar o mesmo tipo de aspas
+		while (cmd[*j] != '\0' && cmd[*j] != quote)
 			copy_quotes_copy(split, cmd, j, i_copy);
 		if (cmd[*j] != '\0' && (cmd[*j] == '\'' || cmd[*j] == '\"'))
 			copy_quotes_copy(split, cmd, j, i_copy);
@@ -49,16 +49,15 @@ void	copy_str(char *split, char *cmd, int *j)
 		split[i_copy++] = cmd[*j];
 		*j += 1;
 	}
-	if (cmd[*j] != '\0' && (cmd[*j] == '\'' || cmd[*j] == '\"')) // continua copiando se for aspas simples ou duplas
+	if (cmd[*j] != '\0' && (cmd[*j] == '\'' || cmd[*j] == '\"'))
 		copyed = 1;
-	copy_quotes(split, cmd, j, &i_copy); // copias aspas simples e duplas para dentro da split
-	//if a word or quoute was not find previous it copy the redirect to be a token
+	copy_quotes(split, cmd, j, &i_copy);
 	while (copyed == 0 && cmd[*j] != '\0' && (cmd[*j] == '<' || cmd[*j] == '>'))
 	{
 		split[i_copy++] = cmd[*j];
 		*j += 1;
 	}
-	while (cmd[*j] != '\0' && cmd[*j] == ' ') // do not copy empty spaces to be a token
+	while (cmd[*j] != '\0' && cmd[*j] == ' ')
 		*j += 1;
 }
 

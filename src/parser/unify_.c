@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 09:28:16 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 12:43:37 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:19:37 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	redefiny_split_unify(int i, int max, char **cmds)
 {
 	int	no_null;
 
-	no_null = i + 1; // the next token can be null
+	no_null = i + 1;
 	if (cmds[no_null] != NULL)
 		return ;
 	while (no_null < max && cmds[no_null] == NULL)
@@ -30,14 +30,6 @@ static void	redefiny_split_unify(int i, int max, char **cmds)
 	}
 }
 
-/*
-Vai retornar o tamanho exato que um token divido ou nao por aspas deve ter quando 
-retiramos as aspas
-cmd = {"echo", "\"Hello", "World\""}; -> a contagem do segundo e terceiro token vai ser somente 1
-e ele vai contar 11 caracteres pois a aspas que abre no segundo token e fechada somente 
-no terceiro token.
-
-*/
 static int	count_unify(int i, char **cmd, char quote)
 {
 	int	j;
@@ -55,7 +47,7 @@ static int	count_unify(int i, char **cmd, char quote)
 			else
 				pair++;
 		if (cmd[i + 1] != NULL && (pair == 0 || pair % 2 != 0))
-			count++; // the space between a token and another when the quoute are not close into a single quouote
+			count++;
 	}
 	return (count);
 }
@@ -75,40 +67,38 @@ static void	real_unify(int i, char **cmd, char quote)
 	int		num[5];
 	char	*new;
 
-	num[4] = max_count(i, cmd); //how many token has in the cmd**
-	num[3] = i;// the current token
+	num[4] = max_count(i, cmd);
+	num[3] = i;
 	new = (char *)ft_calloc(count_unify(num[3], cmd, quote) + 1, sizeof(char));
 	if (new == NULL)
 		exit_error_minishell("Malloc Error", 1);
-	//indices para copiar corretamente do antigo para o novo token agr unificado
-	num[0] = 0; // contador de quantos indices
-	num[1] = 0; //indice da posicao da new char *
-	//num[2] // indice para antiga posicao do char *
+	num[0] = 0;
+	num[1] = 0;
 	while (cmd[++i] != NULL && (num[0] == 0 || num[0] % 2 != 0))
 	{
 		num[2] = -1;
 		while (cmd[i][++num[2]] != '\0')
-			if (cmd[i][num[2]] != quote) // it the current char is different from the quoute copy
+			if (cmd[i][num[2]] != quote)
 				new[num[1]++] = cmd[i][num[2]];
 			else
-				num[0]++; // if not go to the next char and update this quoute counter
-		if (cmd[i + 1] != NULL && (num[0] == 0 || num[0] % 2 != 0)) // if the quoute counter was not complet and has other token add a space into this new char
+				num[0]++;
+		if (cmd[i + 1] != NULL && (num[0] == 0 || num[0] % 2 != 0))
 			new[num[1]++] = ' ';
 		free(cmd[i]);
 		cmd[i] = NULL;
 	}
 	cmd[num[3] + 1] = new;
-	redefiny_split_unify(num[3] + 1, num[4], cmd); //reposiciona o array de token para nao termos array com nulos
+	redefiny_split_unify(num[3] + 1, num[4], cmd);
 }
 
-int	unify(int i, char **cmd) //for some reason the first call i is -1
+int	unify(int i, char **cmd)
 {
 	int		j;
 	char	quote;
 
 	j = -1;
 	quote = '\0';
-	while (cmd[i + 1][++j] != '\0') //verify if the current token has any type of quoute
+	while (cmd[i + 1][++j] != '\0')
 	{
 		if (cmd[i + 1][j] == '\'' || cmd[i + 1][j] == '\"')
 		{
@@ -119,9 +109,9 @@ int	unify(int i, char **cmd) //for some reason the first call i is -1
 			break ;
 		}
 	}
-	if (quote != '\0') // if has it call the real_unify
+	if (quote != '\0')
 	{
-		real_unify(i, cmd, quote); //unifica os tokens baseado nas aspas simples e duplas
+		real_unify(i, cmd, quote);
 		if (quote == '\'')
 			return (2);
 		else
