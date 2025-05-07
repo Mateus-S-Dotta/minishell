@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:42:43 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/06 20:27:20 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:03:59 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ void	redirect(int fd, int to_fd, t_cmds *c)
 	controller[0] = 0;
 	controller[1] = 0;
 	redirect_c(c, controller);
-	handle_more(c, '<', controller);
 	handle_more(c, '>', controller);
+	handle_more(c, '<', controller);
 	if (controller[to_fd] == 0)
 		if (dup2(fd, to_fd) == -1)
 			exit_error_minishell("Dup2 Error\n", 1);
