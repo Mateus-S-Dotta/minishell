@@ -3,5 +3,5 @@
 *.o
 debug.txt
 .*
-minishell_tester
 env_tmp
+minishell_tester
