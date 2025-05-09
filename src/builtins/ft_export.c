@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:20:25 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 01:48:45 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/09 02:57:28 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_export(t_cmds *cmds, char ***env)
 	char	*i_hate_norm;
 	char	*str;
 
-	if (!cmds->flags)
+	if (!cmds->flags || cmds->flags->redirect == 1)
 		return (print_in_order(*env), 0);
 	if (get_t_min()->pipe_cnt != 1)
 		return (0);

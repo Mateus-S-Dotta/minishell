@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:42:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/09 02:57:10 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	handle_more(t_cmds *cmds, int *controller)
 		if (flags_copy->quote == 0 && flags_copy->flag
 			&& (flags_copy->flag[0] == '>' || flags_copy->flag[0] == '<'))
 		{
+			flags_copy->redirect = 1;
 			flags_next = flags_copy->next;
 			controller[if_redirect(flags_copy, flags_next)] = 1;
 			flags_copy = cmds->flags;

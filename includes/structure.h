@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:23:24 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/08 18:49:19 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/09 02:54:29 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_flags
 {
 	char			*flag;
 	int				quote;
+	int				redirect;
 	struct s_flags	*next;
 }	t_flags;
 
