@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:20:25 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/09 01:48:45 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	ft_export(t_cmds *cmds, char ***env)
 
 	if (!cmds->flags)
 		return (print_in_order(*env), 0);
+	if (get_t_min()->pipe_cnt != 1)
+		return (0);
 	str = cmds->flags->flag;
 	i_hate_norm = ": not a valid identifier\n";
 	if (!check_input(cmds->flags->flag))
