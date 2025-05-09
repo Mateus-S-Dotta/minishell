@@ -6,11 +6,11 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:37:58 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/02 19:06:21 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../includes/minishell.h"
 
 int		int_env_file(char **env);
 int		open_file(char *file_name, int oflag);

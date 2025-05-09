@@ -6,11 +6,11 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:06:39 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/07 16:36:07 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../includes/minishell.h"
 
 void	see_free(char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:59:39 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/04/27 17:29:03 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../includes/minishell.h"
 
 static void	sig_int_sh(int sig);
 void		set_std_sig(void);
