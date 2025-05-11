@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/11 16:57:40 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 20:26:40 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	free_all(char *str, int error_num);
 
 //Env.c
 char	*get_env(char *loo);
-char	*find_paths(char *cmd);
+char	*find_paths(char *cmd, char **cmds);
 
 //Normal_comand.c
 void	normal_comand(char *cmd);
@@ -115,6 +115,7 @@ int		count_letter(char *cmd, int j);
 int		there_is_heredok(char **cmd, int i);
 void	open_here_doc(t_flags *f2);
 void	find_all_here_doc(t_cmds *cmd, int *c);
+int		*set_heredoc_ptr(int *ptr, int cod);
 
 // Here_doc_utils.c
 void	sig_int_hd(int sig);
@@ -132,6 +133,7 @@ int		open_file(char *file_name, int oflag);
 void	write_in_file(int fd_f, char **env);
 char	**update_env(char ***env);
 int		cnt_env(void);
+char	*env_tmp_relative(void);
 
 // Env_function.c
 void	env_update(char ***env, char *mng_input, int i);

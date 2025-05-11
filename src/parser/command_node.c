@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 00:49:01 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 18:19:16 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	create_cmds(t_cmds *cmds, char **cmd_w, int d)
 	new_cmds = (t_cmds *)malloc(sizeof(t_cmds));
 	if (new_cmds == NULL)
 		exit_error_minishell("Malloc Error\n", 1);
+	new_cmds->cmd = NULL;
 	new_cmds->quote = unify(d - 1, cmd_w);
 	new_cmds->cmd = ft_strdup(cmd_w[d]);
 	if (new_cmds->cmd == NULL)

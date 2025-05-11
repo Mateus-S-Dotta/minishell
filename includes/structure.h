@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:23:24 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/11 00:08:41 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 20:10:24 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_min
 	int		out_fd;
 	int		sig;
 	char	**env;
+	char	*p_cwd;
 	int		pipe_cnt;
 	int		*pipe_ptr;
 	int		error;

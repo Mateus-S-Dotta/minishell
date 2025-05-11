@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 17:17:42 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 20:49:40 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_print_sorted(char **env, int count)
 		{
 			key = strndup(env[i], equal_sign - env[i]);
 			value = strdup(equal_sign + 1);
-			value[strlen(value) - 1] = '\0';
+			value[strlen(value)] = '\0';
 			printf("declare -x %s=\"%s\"\n", key, value);
 			free(key);
 			free(value);

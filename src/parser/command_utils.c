@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:07:20 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/10 23:58:36 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:37:50 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	complete_array(t_cmds *cmds, char **new_cmds)
 		flags_copy = flags_copy->next;
 	}
 	if (!is_builtins(cmds->cmd, 7))
-		cmds->path = find_paths(new_cmds[0]);
+		cmds->path = find_paths(new_cmds[0], new_cmds);
 }
 
 char	**unify_flags(t_cmds *cmds)
@@ -64,9 +64,21 @@ void	close_all(int fd_1, int fd_2)
 
 void	super_close(int fd_1, int fd_2, int redirect, int qnt_hd)
 {
+	t_min	*env;
+	int		i;
+	int		status;
+
+	env = get_t_min();
+	status = -1;
+	i = -1;
 	while (qnt_hd > 0)
 	{
-		wait(NULL);
+		if (env->prc_pid[++i])
+		{
+			waitpid (env->prc_pid[i], &status, 0);
+			if (WIFEXITED(status))
+				env->sig = WEXITSTATUS(status);
+		}
 		qnt_hd--;
 	}
 	if (dup2(fd_1, redirect) == -1)

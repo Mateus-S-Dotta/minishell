@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/11 16:55:40 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:36:59 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	is_builtins(char *cmd, int range)
 	return (builtins_free(&btarr), 0);
 }
 
-static void	exec_node(t_cmds *cmds, char **btarr, int cmd_s)
+static int	exec_node(t_cmds *cmds, char **btarr, int cmd_s)
 {
 	t_min	*env;
 
@@ -73,6 +73,7 @@ static void	exec_node(t_cmds *cmds, char **btarr, int cmd_s)
 		env->sig = ft_pwd();
 	else if (!ft_strncmp(cmds->cmd, btarr[6], cmd_s))
 		env->sig = ft_env();
+	return (0);
 }
 
 void	exec_builtins(t_cmds *cmds, int *fd)
@@ -95,5 +96,8 @@ void	exec_builtins(t_cmds *cmds, int *fd)
 	}
 	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s))
 		env->sig = ft_export(cmds, &get_t_min()->env);
-	exec_node(cmds, btarr, cmd_s);
+	else
+		exec_node(cmds, btarr, cmd_s);
+	if (btarr)
+		builtins_free(&btarr);
 }

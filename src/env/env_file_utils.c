@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:37:58 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 20:56:01 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,28 @@ int	open_file(char *file_name, int oflag)
 	return (fd);
 }
 
+char	*env_tmp_relative(void)
+{
+	char	*tmp;
+	char	*tmp2;
+	char	*p_cwd;
+
+	p_cwd = get_t_min()->p_cwd;
+	tmp = ft_strjoin(p_cwd, "/");
+	tmp2 = ft_strjoin(tmp, FILE_NAME);
+	free(tmp);
+	tmp = tmp2;
+	return (tmp);
+}
+
 int	int_env_file(char **env)
 {
 	int		fd_f;
+	char	*path;
 
-	fd_f = open_file(FILE_NAME, O_WRONLY | O_TRUNC | O_CREAT);
+	path = env_tmp_relative();
+	fd_f = open_file(path, O_WRONLY | O_TRUNC | O_CREAT);
+	free(path);
 	if (fd_f == -1)
 		return (perror ("Failed in open file"), -1);
 	write_in_file(fd_f, env);
@@ -39,30 +56,12 @@ int	int_env_file(char **env)
 	return (0);
 }
 
-void	write_in_file(int fd_f, char **env)
-{
-	int	i;
-
-	i = -1;
-	if (fd_f == -1 || !env)
-		return ;
-	while (env[++i])
-	{
-		if (write(fd_f, env[i], strlen(env[i])) == -1)
-			break ;
-		if (env[i][strlen(env[i]) - 1] != '\n')
-		{
-			if (write(fd_f, "\n", 1) == -1)
-				break ;
-		}
-	}
-}
-
 char	**update_env(char ***env)
 {
 	int		i;
 	int		fd_f;
 	char	*line_gnl;
+	char	*tmp;
 	char	**new_env;
 
 	i = -1;
@@ -71,9 +70,8 @@ char	**update_env(char ***env)
 	new_env = (char **)malloc(sizeof(char *) * (cnt_env() + 1));
 	if (!new_env)
 		return (perror("Malloc env** error\n"), NULL);
-	fd_f = open_file(FILE_NAME, O_RDONLY);
-	if (fd_f == -1)
-		return (NULL);
+	tmp = env_tmp_relative();
+	fd_f = open_file(tmp, O_RDONLY);
 	line_gnl = get_next_line(fd_f);
 	while (line_gnl)
 	{
@@ -84,17 +82,20 @@ char	**update_env(char ***env)
 	}
 	new_env[++i] = NULL;
 	close(fd_f);
-	return (new_env);
+	return (free(tmp), new_env);
 }
 
 int	cnt_env(void)
 {
 	int		fd_f;
+	char	*str_tmp;
 	int		count;
 	char	*line_gnl;
 
 	count = 0;
-	fd_f = open_file(FILE_NAME, O_RDONLY);
+	str_tmp = env_tmp_relative();
+	fd_f = open_file(str_tmp, O_RDONLY);
+	free(str_tmp);
 	if (fd_f == -1)
 		return (-1);
 	line_gnl = get_next_line(fd_f);

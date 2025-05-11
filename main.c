@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/11 16:20:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 20:42:06 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 static void	inicialize(char **env)
 {
+	static char	cwd[1024];
+
+	if (getcwd(cwd, 1024) == NULL)
+	{
+		perror("getcwd");
+		exit(EXIT_FAILURE);
+	}
+	get_t_min()->p_cwd = cwd;
 	get_t_min()->in_fd = dup(0);
 	get_t_min()->out_fd = dup(1);
 	get_t_min()->sig = 0;

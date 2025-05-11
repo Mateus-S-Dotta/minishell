@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 09:28:16 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/11 16:45:58 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:53:00 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ static void	real_unify(int i, char **cmd, char quote)
 	char	*new;
 
 	new = init_val(num, i, cmd, quote);
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: Memory allocation failed in init_val\n");
+		exit(EXIT_FAILURE);
+	}
 	while (cmd[++i] != NULL && (num[0] == 0 || num[0] % 2 != 0))
 	{
 		while (cmd[i][++num[2]] != '\0')
@@ -65,7 +70,7 @@ static void	real_unify(int i, char **cmd, char quote)
 		if (cmd[i + 1] != NULL && (num[0] == 0 || num[0] % 2 != 0))
 			new[num[1]++] = ' ';
 		free(cmd[i]);
-		cmd[i++] = NULL;
+		cmd[i] = NULL;
 		num[2] = 0;
 	}
 	cmd[num[3] + 1] = new;

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 18:45:23 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/11 00:34:43 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 20:57:18 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	open_node(t_flags *f2, int *p_fd)
 
 	input = NULL;
 	hate_norm = "at line 14 delimited by end-of-file (wanted `EOF')\n";
+	set_heredoc_ptr(p_fd, 0);
 	while (1)
 	{
 		std_hd_sig();
