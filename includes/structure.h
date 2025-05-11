@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:23:24 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 02:54:29 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:08:41 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_min
 	int		sig;
 	char	**env;
 	int		pipe_cnt;
+	int		*pipe_ptr;
 	int		error;
 	pid_t	prc_pid[1024];
 	t_cmds	*cmds;

@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:27:50 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:49:33 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	sig_int_hd(int sig)
 		env->sig = 130;
 		write(1, "\n", 1);
 	}
-	exit(130);
 }
 
 void	std_hd_sig(void)

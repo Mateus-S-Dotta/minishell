@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/09 01:48:02 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/10 23:55:25 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	is_builtins(char *cmd, int range)
 
 	i = -1;
 	btarr = builtins_arr();
+	if (!cmd)
+		return (builtins_free(&btarr), 0);
 	while (++i < range)
 		if (ft_strncmp(cmd, btarr[i], ft_strlen(btarr[i]) + 1) == 0)
 			return (builtins_free(&btarr), 1);

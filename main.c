@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:01:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 01:07:24 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:08:52 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	inicialize(char **env)
 	get_t_min()->out_fd = dup(1);
 	get_t_min()->sig = 0;
 	get_t_min()->pipe_cnt = 0;
+	get_t_min()->pipe_ptr = NULL;
 	int_env_file(env);
 	get_t_min()->env = NULL;
 }

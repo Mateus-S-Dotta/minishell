@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:21:51 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:39:07 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	wait_last_status(void)
 
 	i = -1;
 	env = get_t_min();
+	status = -1;
 	while (env->prc_pid[++i])
 	{
 		waitpid (env->prc_pid[i], &status, 0);

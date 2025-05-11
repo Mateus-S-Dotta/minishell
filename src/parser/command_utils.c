@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:07:20 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/10 23:58:36 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	new_flag(t_cmds *new_cmds, char *cmd, int type)
 	if (new_flag == NULL)
 		return (free_normal_comand(new_cmds, NULL), 0);
 	new_flag->next = NULL;
+	new_flag->redirect = 0;
 	new_flag->flag = ft_strdup(cmd);
 	if (new_flag->flag == NULL)
 		return (free(new_flag), free_normal_comand(new_cmds, NULL), 0);

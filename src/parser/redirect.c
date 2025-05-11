@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:42:43 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 02:55:01 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:12:03 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ static void	def_red(t_flags *cmd, int flags, int to_fd, char *arq)
 			error_msg = "Error: Permission denied\n";
 		else
 			error_msg = "Error: Could not open file\n";
+		close_all(get_t_min()->pipe_ptr[0], get_t_min()->pipe_ptr[1]);
 		free_all(error_msg, 1);
 	}
 	if (dup2(fd, to_fd) == -1)
+	{
+		close_all(get_t_min()->pipe_ptr[0], get_t_min()->pipe_ptr[1]);
 		free_all("Error: Dup2 failed\n", 1);
+	}
 	close(fd);
 	if (cmd != NULL)
 	{

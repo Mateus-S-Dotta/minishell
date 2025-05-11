@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:09:13 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 02:55:37 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:09:02 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	pipe_node(t_cmds *cmds, t_cmds *cmds2, int *p_fd)
 	else
 		redirect(get_t_min()->out_fd, 1, cmds);
 	close_all(p_fd[0], p_fd[1]);
-	if (!cmds->cmd)
-		exit (get_t_min()->sig);
+	// if (!cmds->cmd)
+	// 	exit (get_t_min()->sig);
 	if (is_builtins(cmds->cmd, 7))
 		exec_builtins(cmds, p_fd);
 	else
 	{
 		cmd_w = unify_flags(cmds);
-		if (execve(cmds->path, cmd_w, get_t_min()->env) == -1)
+		if (!cmds->path || execve(cmds->path, cmd_w, get_t_min()->env) == -1)
 		{
 			free_split(get_t_min()->env);
 			new_error(cmd_w);
@@ -68,6 +68,7 @@ static int	pipe_comand(t_cmds *cmds, t_cmds *cmds2)
 		signal(SIGINT, SIG_IGN);
 	if (pipe(p_fd) == -1)
 		return (-1);
+	get_t_min()->pipe_ptr = p_fd;
 	if (is_builtins(cmds->cmd, 2) == 1)
 	{
 		if (get_t_min()->pipe_cnt == 1)
