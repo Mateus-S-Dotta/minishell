@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 09:28:16 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 01:08:48 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:45:58 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	redefiny_split_unify(int i, int max, char **cmds)
 	}
 }
 
-static int	count_unify(int i, char **cmd, char quote)
+int	count_unify(int i, char **cmd, char quote)
 {
 	int	j;
 	int	pair;
@@ -42,8 +42,8 @@ static int	count_unify(int i, char **cmd, char quote)
 	{
 		j = -1;
 		while (cmd[i][++j] != '\0')
-		if (cmd[i][j] != quote)
-			count++;
+			if (cmd[i][j] != quote)
+				count++;
 		else
 			pair++;
 		if (cmd[i + 1] != NULL && (pair == 0 || pair % 2 != 0))
@@ -52,57 +52,21 @@ static int	count_unify(int i, char **cmd, char quote)
 	return (count);
 }
 
-static int	max_count(int i, char **cmds)
-{
-	int	count;
-
-	count = 0;
-	while (cmds[++i] != NULL)
-		count++;
-	return (count);
-}
-
 static void	real_unify(int i, char **cmd, char quote)
 {
 	int		num[5];
-	int		s_tay;
 	char	*new;
 
-	s_tay = 0;
-	num[4] = max_count(i, cmd);
-	num[3] = i;
-	new = (char *)ft_calloc(count_unify(num[3], cmd, quote) + 1, sizeof(char));
-	if (new == NULL)
-		exit_error_minishell("Malloc Error", 1);
-	num[0] = 0;
-	num[1] = 0;
-	num[2] = -1;
-	i++;
-	while (cmd[i] != NULL && (num[0] == 0 || num[0] % 2 != 0))
+	new = init_val(num, i, cmd, quote);
+	while (cmd[++i] != NULL && (num[0] == 0 || num[0] % 2 != 0))
 	{
 		while (cmd[i][++num[2]] != '\0')
-		{
-			if (cmd[i][num[2]] == quote)
-				num[0]++;
-			else if ((cmd[i][num[2]] == '\'' || cmd[i][num[2]] == '\"') && num[0] % 2 == 0)
-			{
-				quote = cmd[i][num[2]];
-				num[0]++;
-			}
-			else
-				new[num[1]++] = cmd[i][num[2]];
-		}
-		if (s_tay)
-		{
-			s_tay = 0;
-			continue ;
-		}
+			process_char(cmd[i][num[2]], &quote, num, new);
 		if (cmd[i + 1] != NULL && (num[0] == 0 || num[0] % 2 != 0))
 			new[num[1]++] = ' ';
 		free(cmd[i]);
-		cmd[i] = NULL;
+		cmd[i++] = NULL;
 		num[2] = 0;
-		i++;
 	}
 	cmd[num[3] + 1] = new;
 	redefiny_split_unify(num[3] + 1, num[4], cmd);

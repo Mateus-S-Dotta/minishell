@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:42:43 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/11 00:12:03 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:57:13 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,11 @@
 static void	def_red(t_flags *cmd, int flags, int to_fd, char *arq)
 {
 	int		fd;
-	char	*error_msg;
 
 	if (arq == NULL)
-		fd = open(cmd->flag, flags, 0644);
+		fd = open_file_r(cmd->flag, flags);
 	else
-		fd = open(arq, flags, 0644);
-	if (fd == -1)
-	{
-		if (errno == ENOENT)
-			error_msg = "Error: No such file or directory\n";
-		else if (errno == EACCES)
-			error_msg = "Error: Permission denied\n";
-		else
-			error_msg = "Error: Could not open file\n";
-		close_all(get_t_min()->pipe_ptr[0], get_t_min()->pipe_ptr[1]);
-		free_all(error_msg, 1);
-	}
+		fd = open_file_r(arq, flags);
 	if (dup2(fd, to_fd) == -1)
 	{
 		close_all(get_t_min()->pipe_ptr[0], get_t_min()->pipe_ptr[1]);

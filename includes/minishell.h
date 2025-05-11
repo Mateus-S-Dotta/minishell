@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:07:17 by msalaibb          #+#    #+#             */
-/*   Updated: 2025/05/09 01:09:08 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:57:40 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@
 
 //Get_next_line.c
 char	*get_next_line(int fd);
-
-// Debug.c
-int		debug_fd(void);
-void	print_cmds(void);
-void	print_split(char **cmds);
-void	print_env(char **env);
 
 // Main
 t_min	*get_t_min(void);
@@ -89,9 +83,16 @@ int		confitions_redirect(t_flags *f1, int situation);
 void	free_flag(t_flags *f1);
 void	free_cmd(t_cmds *f1);
 void	handle_more(t_cmds *cmds, int *controller);
+int		open_file_r(char *filepath, int flags);
 
 // Unify_.c
 int		unify(int i, char **cmd);
+int		count_unify(int i, char **cmd, char quote);
+
+// Unify_utils_.c
+void	process_char(char current_char, char *quote, int *num, char *new);
+char	*init_val(int *num, int i, char **cmd, char quote);
+int		max_count(int i, char **cmds);
 
 // Expand.c
 void	verify_money_start(char **cmd, int *i, int *in_quote, int *count);

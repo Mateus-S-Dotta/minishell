@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/27 17:03:25 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/05/07 14:58:32 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/05/11 16:55:15 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ BUILTINS_DIR = $(SRC_DIR)/builtins
 
 SRCS_MAIN = main.c
 SRCS_UTILS = $(UTILS_DIR)/main_utils.c \
-             $(UTILS_DIR)/debug.c \
              $(UTILS_DIR)/get_next_line.c \
              $(UTILS_DIR)/error.c \
              $(UTILS_DIR)/function_utils.c
@@ -48,7 +47,8 @@ SRCS_PARSER = $(PARSER_DIR)/redirect.c \
               $(PARSER_DIR)/command.c \
               $(PARSER_DIR)/command_node.c \
               $(PARSER_DIR)/command_utils.c \
-              $(PARSER_DIR)/unify_.c
+              $(PARSER_DIR)/unify_.c \
+              $(PARSER_DIR)/unify_utils.c
 SRCS_HEREDOC = $(HEREDOC_DIR)/here_doc.c \
                $(HEREDOC_DIR)/here_doc_utils.c
 SRCS_SIGNAL = $(SIGNAL_DIR)/signals.c

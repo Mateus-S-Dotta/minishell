@@ -6,7 +6,7 @@
 /*   By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 20:44:31 by lsilva-x          #+#    #+#             */
-/*   Updated: 2025/05/10 23:55:25 by lsilva-x         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:55:40 by lsilva-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,21 @@ int	is_builtins(char *cmd, int range)
 	return (builtins_free(&btarr), 0);
 }
 
+static void	exec_node(t_cmds *cmds, char **btarr, int cmd_s)
+{
+	t_min	*env;
+
+	env = get_t_min();
+	if (!ft_strncmp(cmds->cmd, btarr[3], cmd_s) && env->pipe_cnt == 1)
+		env->sig = ft_unset(cmds, &get_t_min()->env);
+	else if (!ft_strncmp(cmds->cmd, btarr[4], cmd_s))
+		env->sig = ft_echo(cmds);
+	else if (!ft_strncmp(cmds->cmd, btarr[5], cmd_s))
+		env->sig = ft_pwd();
+	else if (!ft_strncmp(cmds->cmd, btarr[6], cmd_s))
+		env->sig = ft_env();
+}
+
 void	exec_builtins(t_cmds *cmds, int *fd)
 {
 	char	**btarr;
@@ -80,14 +95,5 @@ void	exec_builtins(t_cmds *cmds, int *fd)
 	}
 	else if (!ft_strncmp(cmds->cmd, btarr[2], cmd_s))
 		env->sig = ft_export(cmds, &get_t_min()->env);
-	else if (!ft_strncmp(cmds->cmd, btarr[3], cmd_s) && env->pipe_cnt == 1)
-		env->sig = ft_unset(cmds, &get_t_min()->env);
-	else if (!ft_strncmp(cmds->cmd, btarr[4], cmd_s))
-		env->sig = ft_echo(cmds);
-	else if (!ft_strncmp(cmds->cmd, btarr[5], cmd_s))
-		env->sig = ft_pwd();
-	else if (!ft_strncmp(cmds->cmd, btarr[6], cmd_s))
-		env->sig = ft_env();
-	if (btarr)
-		builtins_free(&btarr);
+	exec_node(cmds, btarr, cmd_s);
 }
